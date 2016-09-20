@@ -9,9 +9,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Android.Runtime.ResourceDesignerAttribute("PhabrikAndroid.Resource", IsApplication=true)]
+[assembly: global::Android.Runtime.ResourceDesignerAttribute("Phabrik.Android.Resource", IsApplication=true)]
 
-namespace PhabrikAndroid
+namespace Phabrik.Android
 {
 	
 	

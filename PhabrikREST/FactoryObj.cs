@@ -1,7 +1,12 @@
-package com.eweware.phabrik.obj;
 
 /**
  * Created by davidvronay on 9/5/16.
  */
-public class FactoryObj {
+
+namespace Phabrik.Core
+{
+    public class FactoryObj
+    {
+    }
+
 }
