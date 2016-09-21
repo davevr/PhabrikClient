@@ -91,6 +91,9 @@
     <Compile Include="..\PhabrikREST\FarmObj.cs">
       <Link>PhabrikREST\FarmObj.cs</Link>
     </Compile>
+    <Compile Include="..\PhabrikREST\Gas.cs">
+      <Link>PhabrikREST\Gas.cs</Link>
+    </Compile>
     <Compile Include="..\PhabrikREST\HabitatObj.cs">
       <Link>PhabrikREST\HabitatObj.cs</Link>
     </Compile>

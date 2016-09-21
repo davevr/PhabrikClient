@@ -14,7 +14,7 @@ namespace Phabrik.Core
         public long solarSystemId;
         public List<PlanetObj> planets;
         public long discovererId;
-        public String name;
+        public string name;
 
         // simulation variables
         public double luminosity;
