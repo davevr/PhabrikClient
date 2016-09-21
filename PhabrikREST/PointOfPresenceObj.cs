@@ -9,11 +9,12 @@ namespace Phabrik.Core
 {
     public class PointOfPresenceObj
     {
-        public long Id;
-        public long playerId;   // player who owns this
-        public long structureId;
-        public DateTime created;
-        public DateTime lastactive;
-        public StructureObj structure;
+        public long Id { get; set; }
+        public long playerId { get; set; }   // player who owns this
+        public long structureId { get; set; }
+        public DateTime created { get; set; }
+        public DateTime lastactive { get; set; }
+        public StructureObj structure { get; set; }
+		public string nickname { get; set; }
     }
 }

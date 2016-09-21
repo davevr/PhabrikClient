@@ -9,7 +9,7 @@
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Phabrik.Android</RootNamespace>
+    <RootNamespace>Phabrik.AndroidApp</RootNamespace>
     <AssemblyName>PhabrAndroid</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <AndroidApplication>true</AndroidApplication>
@@ -77,6 +77,10 @@
       <HintPath>..\packages\Xamarin.Android.Support.Vector.Drawable.23.4.0.1\lib\MonoAndroid403\Xamarin.Android.Support.Vector.Drawable.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Refractored.PagerSlidingTabStrip">
+      <HintPath>..\packages\Refractored.PagerSlidingTabStrip.1.0.9\lib\MonoAndroid10\Refractored.PagerSlidingTabStrip.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Android.Export" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\PhabrikREST\AnomalyObj.cs">
@@ -133,12 +137,25 @@
     <Compile Include="..\PhabrikREST\TerrainObj.cs">
       <Link>PhabrikREST\TerrainObj.cs</Link>
     </Compile>
-    <Compile Include="..\PhabrikREST\UserAccountObj.cs">
-      <Link>PhabrikREST\UserAccountObj.cs</Link>
-    </Compile>
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="..\PhabrikREST\Gas.cs">
+      <Link>PhabrikREST\Gas.cs</Link>
+    </Compile>
+    <Compile Include="Activities\GameFragment.cs" />
+    <Compile Include="Activities\AboutFragment.cs" />
+    <Compile Include="Activities\ProfileFragment.cs" />
+    <Compile Include="HelperClasses\BitmapHelper.cs" />
+    <Compile Include="HelperClasses\StreamHelper.cs" />
+    <Compile Include="HelperClasses\TypefaceSpan.cs" />
+    <Compile Include="Activities\LoginActivity.cs" />
+    <Compile Include="Activities\PointOfPresenceFragment.cs" />
+    <Compile Include="Activities\SolSysPopFragment.cs" />
+    <Compile Include="Activities\PlanetPopFragment.cs" />
+    <Compile Include="Activities\GalaxyPopFragment.cs" />
+    <Compile Include="Activities\SectorPopFragment.cs" />
+    <Compile Include="Activities\StructurePopFragment.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="GettingStarted.Xamarin" />
@@ -150,6 +167,19 @@
     <AndroidResource Include="Resources\layout\Main.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\values\colors.xml" />
+    <AndroidResource Include="Resources\layout\AboutLayout.axml" />
+    <AndroidResource Include="Resources\layout\ProfileLayout.axml" />
+    <AndroidResource Include="Resources\layout\DrawerListItem.axml" />
+    <AndroidResource Include="Resources\layout\GameLayout.axml" />
+    <AndroidResource Include="Resources\drawable\davevr.jpg" />
+    <AndroidResource Include="Resources\layout\LoginLayout.axml" />
+    <AndroidResource Include="Resources\layout\PointOfPresenceLayout.axml" />
+    <AndroidResource Include="Resources\layout\NotifyTabView.axml" />
+    <AndroidResource Include="Resources\drawable\RounderCorner.xml" />
+    <AndroidResource Include="Resources\values\dimens.xml" />
+    <AndroidResource Include="Resources\layout\SolSysPopLayout.axml" />
+    <AndroidResource Include="Resources\layout\PlanetListItemLayout.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />
@@ -182,6 +212,30 @@
       <Visible>False</Visible>
       <Version>23.4.0.1</Version>
     </XamarinComponentReference>
+    <XamarinComponentReference Include="PagerSlidingTabStrip">
+      <Version>1.0.9</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Activities\" />
+    <Folder Include="HelperClasses\" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\fonts\Lato-Black.ttf" />
+    <AndroidAsset Include="Assets\fonts\Lato-BlackItalic.ttf" />
+    <AndroidAsset Include="Assets\fonts\Lato-Bold.ttf" />
+    <AndroidAsset Include="Assets\fonts\Lato-BoldItalic.ttf" />
+    <AndroidAsset Include="Assets\fonts\Lato-Hairline.ttf" />
+    <AndroidAsset Include="Assets\fonts\Lato-HairlineItalic.ttf" />
+    <AndroidAsset Include="Assets\fonts\Lato-Italic.ttf" />
+    <AndroidAsset Include="Assets\fonts\Lato-Light.ttf" />
+    <AndroidAsset Include="Assets\fonts\Lato-LightItalic.ttf" />
+    <AndroidAsset Include="Assets\fonts\Lato-Regular.ttf" />
+    <AndroidAsset Include="Assets\fonts\Orbitron-Black.ttf" />
+    <AndroidAsset Include="Assets\fonts\Orbitron-Bold.ttf" />
+    <AndroidAsset Include="Assets\fonts\Orbitron-Medium.ttf" />
+    <AndroidAsset Include="Assets\fonts\Orbitron-Regular.ttf" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Android.Support.Vector.Drawable.23.4.0.1\build\Xamarin.Android.Support.Vector.Drawable.targets" Condition="Exists('..\packages\Xamarin.Android.Support.Vector.Drawable.23.4.0.1\build\Xamarin.Android.Support.Vector.Drawable.targets')" />

@@ -10,7 +10,7 @@ using System.Collections.Generic;
 namespace Phabrik.Core
 {
     public class Gas {
-        public long Id;
+        public long Id { get; set; }
        
 
     }

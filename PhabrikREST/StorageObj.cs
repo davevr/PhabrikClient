@@ -5,6 +5,6 @@
 
 namespace Phabrik.Core
 {
-    public class StorageObj extends StructureObj {
+    public class StorageObj : StructureObj {
     }
 }
