@@ -21,40 +21,40 @@ namespace Phabrik.Core
             SpacePort,
             Storage
         }
-        public long Id;
-        public SectorObj sector;
-        public long sectorId;
-        public int xLoc;
-        public int yLoc;
-        public int xSize;
-        public int ySize;
-        public int curPop;
-        public int maxPop;
-        public int curHP;
-        public int maxHP;
-        public int minPowerNeed;
-        public int minPopNeed;
-        public int solidStorageSpace;
-        public int gasStorageSpace;
-        public int foodStorageSpace;
-        public int liquidStorageSpace;
-        public int energyStorageSpace;
-        public int strangeStorageSpace;
-        public int maxSolidStorageSpace;
-        public int maxGasStorageSpace;
-        public int maxFoodStorageSpace;
-        public int maxLiquidStorageSpace;
-        public int maxEnergyStorageSpace;
-        public int maxStrangeStorageSpace;
-        public DateTime creationDate;
-        public DateTime lastTick;
-        public long ownerId;
-        public double physicalDefense;
-        public double energyDefense;
-        public bool isVacuumSafe;
-        public bool isRadiationSafe;
-        public bool isPublic;
-        public StructureType structureType;
+        public long Id { get; set; }
+        public SectorObj sector { get; set; }
+        public long sectorId { get; set; }
+        public int xLoc { get; set; }
+        public int yLoc { get; set; }
+        public int xSize { get; set; }
+        public int ySize { get; set; }
+        public int curPop { get; set; }
+        public int maxPop { get; set; }
+        public int curHP { get; set; }
+        public int maxHP { get; set; }
+        public int minPowerNeed { get; set; }
+        public int minPopNeed { get; set; }
+        public int solidStorageSpace { get; set; }
+        public int gasStorageSpace { get; set; }
+        public int foodStorageSpace { get; set; }
+        public int liquidStorageSpace { get; set; }
+        public int energyStorageSpace { get; set; }
+        public int strangeStorageSpace { get; set; }
+        public int maxSolidStorageSpace { get; set; }
+        public int maxGasStorageSpace { get; set; }
+        public int maxFoodStorageSpace { get; set; }
+        public int maxLiquidStorageSpace { get; set; }
+        public int maxEnergyStorageSpace { get; set; }
+        public int maxStrangeStorageSpace { get; set; }
+        public DateTime creationDate { get; set; }
+        public DateTime lastTick { get; set; }
+        public long ownerId { get; set; }
+        public double physicalDefense { get; set; }
+        public double energyDefense { get; set; }
+        public bool isVacuumSafe { get; set; }
+        public bool isRadiationSafe { get; set; }
+        public bool isPublic { get; set; }
+        public StructureType structureType { get; set; }
 
         public StructureObj()
         {

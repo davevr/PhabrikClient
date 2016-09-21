@@ -9,15 +9,15 @@ using System.Collections.Generic;
 namespace Phabrik.Core
 {
     public class SolSysObj {
-        public long Id;
-        public int xLoc;
-        public int yLoc;
-        public int zLoc;
-        public long discovererId;
-        public string systemName;
-        public bool underProtection;
+        public long Id { get; set; }
+        public int xLoc { get; set; }
+        public int yLoc { get; set; }
+        public int zLoc { get; set; }
+        public long discovererId { get; set; }
+        public string systemName { get; set; }
+        public bool underProtection { get; set; }
 
-        public List<SunObj> suns;
+        public List<SunObj> suns { get; set; }
 
     }
 }

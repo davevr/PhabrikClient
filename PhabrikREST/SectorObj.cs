@@ -17,16 +17,16 @@ namespace Phabrik.Core
             Unknown
         }
 
-        public long Id;
-        public double lowTemp;
-        public double highTemp;
-        public SurfaceType surfaceType;
-        public List<StructureObj> structures;
-        public long ownerId;
-        public bool claimed;
-        public int xLoc;
-        public int yLoc;
-        public long terrainId;
+        public long Id { get; set; }
+        public double lowTemp { get; set; }
+        public double highTemp { get; set; }
+        public SurfaceType surfaceType { get; set; }
+        public List<StructureObj> structures { get; set; }
+        public long ownerId { get; set; }
+        public bool claimed { get; set; }
+        public int xLoc { get; set; }
+        public int yLoc { get; set; }
+        public long terrainId { get; set; }
 
         public SectorObj() {
             structures = new List<StructureObj>();

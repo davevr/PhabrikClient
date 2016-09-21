@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="Hello">Hello World, Click Me!</string>
-    <string name="ApplicationName">PhabrikClient</string>
+    <string name="ApplicationName">Phabrik</string>
+	<string name="AboutPhabrikText">Here is a bunch of info about Phabrik</string>
+	<string name="AboutDavevrText">Here is some info about me, Davevr!</string>
+
+	<string name="Game_Menu">Game</string>
+	<string name="Profile_Menu">Profile</string>
+	<string name="About_Menu">About</string>
+
+	<string name="drawer_open">open</string>
+	<string name="drawer_close">close</string>
 </resources>

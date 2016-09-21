@@ -10,25 +10,25 @@ using System.Collections.Generic;
 namespace Phabrik.Core
 {
     public class SunObj {
-        public long Id;
-        public long solarSystemId;
-        public List<PlanetObj> planets;
-        public long discovererId;
-        public string name;
+        public long Id { get; set; }
+        public long solarSystemId { get; set; }
+        public List<PlanetObj> planets { get; set; }
+        public long discovererId { get; set; }
+        public String name { get; set; }
 
         // simulation variables
-        public double luminosity;
-        public double mass;
-        public double life;
-        public double age;
-        public double r_ecosphere;
-        public double m2;
-        public double e;
-        public double a;
+        public double luminosity { get; set; }
+        public double mass { get; set; }
+        public double life { get; set; }
+        public double age { get; set; }
+        public double r_ecosphere { get; set; }
+        public double m2 { get; set; }
+        public double e { get; set; }
+        public double a { get; set; }
 
-        public int earthlike = 0;
-        public int habitable = 0;
-        public int habitable_jovians = 0;
+        public int earthlike { get; set; } = 0;
+        public int habitable { get; set; } = 0;
+        public int habitable_jovians { get; set; } = 0;
 
     }
 }

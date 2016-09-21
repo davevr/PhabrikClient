@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<color name="Phabrik_white">#FFFFFF</color>
+	<color name="Phabrik_black">#000000</color>
+	<color name="Phabrik_green">#00FF00</color>
+	<color name="Phabrik_red">#FF0000</color>
+	<color name="Phabrik_yellow">#FFFF00</color>
+	<color name="Phabrik_orange">#FF8000</color>
+	<color name="Phabrik_blue">#0000FF</color>
+</resources>

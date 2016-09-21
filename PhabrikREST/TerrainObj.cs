@@ -7,12 +7,12 @@
 namespace Phabrik.Core
 {
     public class TerrainObj {
-        public long Id;
-        public int width;
-        public int height;
-        public long planetId;
+        public long Id { get; set; }
+        public int width { get; set; }
+        public int height { get; set; }
+        public long planetId { get; set; }
 
-        public SectorObj[][] _sectorArray;
+        public SectorObj[][] _sectorArray { get; set; }
 
 
         public TerrainObj() {

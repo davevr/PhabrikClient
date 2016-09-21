@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="About the Game"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/titleAboutGame"
+            android:gravity="center_horizontal"
+            android:textStyle="bold"
+            android:textColor="@color/Phabrik_black" />
+        <ImageView
+            android:src="@drawable/davevr"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="8dp" />
+        <TextView
+            android:text="@string/AboutPhabrikText"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="false"
+            android:id="@+id/textAboutGame"
+            android:layout_margin="8dp" />
+        <TextView
+            android:text="About the Author"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/titleAboutAuthor"
+            android:gravity="center"
+            android:textColor="@color/Phabrik_black"
+            android:textStyle="bold" />
+        <ImageView
+            android:src="@drawable/davevr"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="8dp" />
+        <TextView
+            android:text="@string/AboutDavevrText"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textAboutDavevr"
+            android:layout_margin="8dp" />
+    </LinearLayout>
+</ScrollView>

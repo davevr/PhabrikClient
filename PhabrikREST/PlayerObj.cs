@@ -11,11 +11,11 @@ namespace Phabrik.Core
 
     public class PlayerObj
     {
-        public long Id;
-        public List<PointOfPresenceObj> popList;
-        public bool isAdmin;
-        public string playerName;
-        public DateTime lastlogin;
+		public long Id { get; set; }
+        public List<PointOfPresenceObj> popList { get; set; }
+        public bool isAdmin { get; set; }
+        public string playerName { get; set; }
+        public DateTime lastlogin { get; set; }
 
     }
 }
