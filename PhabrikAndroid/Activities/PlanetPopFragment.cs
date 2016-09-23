@@ -16,11 +16,13 @@ using Phabrik.Core;
 namespace Phabrik.AndroidApp
 {
 	[Activity(Label = "PlanetPopFragment")]
-	public class PlanetPopFragment : PopSubFragment
+	public class PlanetPopFragment : PopSubFragment, View.IOnTouchListener
     {
         TerrainObj curPlanet;
         TextView titleView;
         GridLayout gridView;
+        HorizontalScrollView hScroller;
+        ScrollView vScroller;
 
 		public override void OnCreate(Bundle savedInstanceState)
 		{
@@ -29,15 +31,56 @@ namespace Phabrik.AndroidApp
 			// Create your application here
 		}
 
+    
+
 		public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 		{
 			// Use this to return your custom view for this Fragment
 			var theView = inflater.Inflate(Resource.Layout.PlanetPopLayout, container, false);
             titleView = theView.FindViewById<TextView>(Resource.Id.PlanetInfo);
             gridView = theView.FindViewById<GridLayout>(Resource.Id.Map);
+            hScroller = theView.FindViewById<HorizontalScrollView>(Resource.Id.hscroller);
+            vScroller = theView.FindViewById<ScrollView>(Resource.Id.vscroller);
 
+            hScroller.SetOnTouchListener(this);
+            vScroller.SetOnTouchListener(this);
             return theView;
 		}
+        private float mx, my, curX, curY;
+        private bool started = false;
+
+        public bool OnTouch(View v, MotionEvent evt) {
+            if (v == hScroller)
+                return false;
+            else 
+            {
+                curX = evt.GetX();
+                curY = evt.GetY();
+                int dx = (int)(mx - curX);
+                int dy = (int)(my - curY);
+                switch (evt.Action) {
+                    case MotionEventActions.Move:
+                        if (started)
+                        {
+                            vScroller.ScrollBy(0, dy);
+                            hScroller.ScrollBy(dx, 0);
+                        }
+                        else
+                        {
+                            started = true;
+                        }
+                        mx = curX;
+                        my = curY;
+                        break;
+                    case MotionEventActions.Up:
+                        vScroller.ScrollBy(0, dy);
+                        hScroller.ScrollBy(dx, 0);
+                        started = false;
+                        break;
+                }
+                return true;
+            }
+        }
 
         public void InitializeForPlanetId(long planetId)
         {
@@ -83,8 +126,8 @@ namespace Phabrik.AndroidApp
                             gridView.AddView(newView);
                             var gridLayout = new GridLayout.LayoutParams(GridLayout.InvokeSpec(y), GridLayout.InvokeSpec(x));
                             gridLayout.SetMargins(2, 2, 2, 2);
-                            gridLayout.Width = 200;
-                            gridLayout.Height = 200;
+                            gridLayout.Width = 600;
+                            gridLayout.Height = 600;
                             newView.LayoutParameters = gridLayout;
                             newView.Text = string.Format("{0},{1}", x, y);
                             newView.SetBackgroundColor(Color.Blue);

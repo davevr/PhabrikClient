@@ -1606,14 +1606,14 @@ namespace Phabrik.AndroidApp
 			// aapt resource value: 0x7f0b0064
 			public const int AutoSignIn = 2131427428;
 			
-			// aapt resource value: 0x7f0b008d
-			public const int FragmentHolder = 2131427469;
+			// aapt resource value: 0x7f0b008f
+			public const int FragmentHolder = 2131427471;
 			
 			// aapt resource value: 0x7f0b0056
 			public const int ItemName = 2131427414;
 			
-			// aapt resource value: 0x7f0b008c
-			public const int Map = 2131427468;
+			// aapt resource value: 0x7f0b008e
+			public const int Map = 2131427470;
 			
 			// aapt resource value: 0x7f0b008b
 			public const int PlanetInfo = 2131427467;
@@ -1621,8 +1621,8 @@ namespace Phabrik.AndroidApp
 			// aapt resource value: 0x7f0b0063
 			public const int SignInBtn = 2131427427;
 			
-			// aapt resource value: 0x7f0b0098
-			public const int SolSysTitle = 2131427480;
+			// aapt resource value: 0x7f0b009a
+			public const int SolSysTitle = 2131427482;
 			
 			// aapt resource value: 0x7f0b006b
 			public const int action0 = 2131427435;
@@ -1690,11 +1690,11 @@ namespace Phabrik.AndroidApp
 			// aapt resource value: 0x7f0b006c
 			public const int cancel_action = 2131427436;
 			
-			// aapt resource value: 0x7f0b0090
-			public const int changeImageBtn = 2131427472;
+			// aapt resource value: 0x7f0b0092
+			public const int changeImageBtn = 2131427474;
 			
-			// aapt resource value: 0x7f0b0096
-			public const int changePwdBtn = 2131427478;
+			// aapt resource value: 0x7f0b0098
+			public const int changePwdBtn = 2131427480;
 			
 			// aapt resource value: 0x7f0b003b
 			public const int checkbox = 2131427387;
@@ -1765,8 +1765,8 @@ namespace Phabrik.AndroidApp
 			// aapt resource value: 0x7f0b003a
 			public const int expanded_menu = 2131427386;
 			
-			// aapt resource value: 0x7f0b008e
-			public const int fragment = 2131427470;
+			// aapt resource value: 0x7f0b0090
+			public const int fragment = 2131427472;
 			
 			// aapt resource value: 0x7f0b0067
 			public const int fragmentContainer = 2131427431;
@@ -1782,6 +1782,9 @@ namespace Phabrik.AndroidApp
 			
 			// aapt resource value: 0x7f0b000d
 			public const int homeAsUp = 2131427341;
+			
+			// aapt resource value: 0x7f0b008d
+			public const int hscroller = 2131427469;
 			
 			// aapt resource value: 0x7f0b002b
 			public const int icon = 2131427371;
@@ -1843,11 +1846,11 @@ namespace Phabrik.AndroidApp
 			// aapt resource value: 0x7f0b001f
 			public const int never = 2131427359;
 			
-			// aapt resource value: 0x7f0b0092
-			public const int nicknameField = 2131427474;
+			// aapt resource value: 0x7f0b0094
+			public const int nicknameField = 2131427476;
 			
-			// aapt resource value: 0x7f0b0091
-			public const int nicknameLabel = 2131427473;
+			// aapt resource value: 0x7f0b0093
+			public const int nicknameLabel = 2131427475;
 			
 			// aapt resource value: 0x7f0b000e
 			public const int none = 2131427342;
@@ -1861,8 +1864,8 @@ namespace Phabrik.AndroidApp
 			// aapt resource value: 0x7f0b005f
 			public const int passwordField = 2131427423;
 			
-			// aapt resource value: 0x7f0b009a
-			public const int planetCount = 2131427482;
+			// aapt resource value: 0x7f0b009c
+			public const int planetCount = 2131427484;
 			
 			// aapt resource value: 0x7f0b007b
 			public const int planetImage = 2131427451;
@@ -1870,8 +1873,8 @@ namespace Phabrik.AndroidApp
 			// aapt resource value: 0x7f0b007c
 			public const int planetInfo = 2131427452;
 			
-			// aapt resource value: 0x7f0b009b
-			public const int planetList = 2131427483;
+			// aapt resource value: 0x7f0b009d
+			public const int planetList = 2131427485;
 			
 			// aapt resource value: 0x7f0b007a
 			public const int planetName = 2131427450;
@@ -1891,8 +1894,8 @@ namespace Phabrik.AndroidApp
 			// aapt resource value: 0x7f0b003d
 			public const int radio = 2131427389;
 			
-			// aapt resource value: 0x7f0b0095
-			public const int saveChangesBtn = 2131427477;
+			// aapt resource value: 0x7f0b0097
+			public const int saveChangesBtn = 2131427479;
 			
 			// aapt resource value: 0x7f0b008a
 			public const int scanPlanetBtn = 2131427466;
@@ -1954,14 +1957,14 @@ namespace Phabrik.AndroidApp
 			// aapt resource value: 0x7f0b0011
 			public const int showTitle = 2131427345;
 			
-			// aapt resource value: 0x7f0b0097
-			public const int signInBtn = 2131427479;
+			// aapt resource value: 0x7f0b0099
+			public const int signInBtn = 2131427481;
 			
 			// aapt resource value: 0x7f0b0065
 			public const int signinTextField = 2131427429;
 			
-			// aapt resource value: 0x7f0b0099
-			public const int solSysCoord = 2131427481;
+			// aapt resource value: 0x7f0b009b
+			public const int solSysCoord = 2131427483;
 			
 			// aapt resource value: 0x7f0b002e
 			public const int spacer = 2131427374;
@@ -2047,17 +2050,20 @@ namespace Phabrik.AndroidApp
 			// aapt resource value: 0x7f0b0012
 			public const int useLogo = 2131427346;
 			
-			// aapt resource value: 0x7f0b008f
-			public const int userImage = 2131427471;
+			// aapt resource value: 0x7f0b0091
+			public const int userImage = 2131427473;
 			
 			// aapt resource value: 0x7f0b005d
 			public const int userNameField = 2131427421;
 			
-			// aapt resource value: 0x7f0b0093
-			public const int usernameLabel = 2131427475;
+			// aapt resource value: 0x7f0b0095
+			public const int usernameLabel = 2131427477;
 			
-			// aapt resource value: 0x7f0b0094
-			public const int usernameText = 2131427476;
+			// aapt resource value: 0x7f0b0096
+			public const int usernameText = 2131427478;
+			
+			// aapt resource value: 0x7f0b008c
+			public const int vscroller = 2131427468;
 			
 			// aapt resource value: 0x7f0b0020
 			public const int withText = 2131427360;

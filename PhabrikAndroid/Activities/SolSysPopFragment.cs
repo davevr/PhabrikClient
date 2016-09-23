@@ -66,6 +66,15 @@ namespace Phabrik.AndroidApp
 			});
 		}
 
+        public override void OnActivityCreated(Bundle savedInstanceState)
+        {
+            base.OnActivityCreated(savedInstanceState);
+        }
+
+        public override void OnResume()
+        {
+            base.OnResume();
+        }
         private void UpdateForNewSystem()
         {
             titleText.Text = curSystem.systemName;
