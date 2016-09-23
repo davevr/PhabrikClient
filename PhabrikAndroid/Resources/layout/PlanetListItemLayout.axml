@@ -4,25 +4,212 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:minWidth="25px"
-    android:minHeight="25px">
-    <ImageView
-        android:src="@android:drawable/ic_menu_gallery"
-        android:layout_width="128dp"
-        android:layout_height="128dp"
-        android:id="@+id/planetImage"
-        android:layout_gravity="center_horizontal" />
+    android:minHeight="25px"
+    android:background="@color/Phabrik_black">
     <TextView
         android:text="Planet Name"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/planetName"
-        android:gravity="center_horizontal" />
+        android:gravity="center_horizontal"
+        android:textColor="@color/Phabrik_white"
+        android:textStyle="bold"
+        android:textSize="24dp" />
+    <ImageView
+        android:src="@android:drawable/ic_menu_gallery"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:id="@+id/planetImage"
+        android:layout_gravity="center_horizontal" />
     <TextView
         android:text="Planet Info"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/planetInfo"
-        android:gravity="center_horizontal" />
+        android:gravity="left"
+        android:textColor="@color/Phabrik_white"
+        android:textAlignment="viewStart"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout1">
+        <GridLayout
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:rowCount="5"
+            android:columnCount="2"
+            android:id="@+id/gridLayout1"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:background="@color/Phabrik_green">
+            <TextView
+                android:textColor="@color/Phabrik_white"
+                android:text="orbit:"
+                android:id="@+id/distanceStatic"
+                android:layout_gravity="right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginLeft="1dp"
+                android:layout_row="0"
+                android:layout_column="0"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:background="@color/Phabrik_black" />
+            <TextView
+                android:textColor="@color/Phabrik_white"
+                android:text="mass:"
+                android:id="@+id/massStatic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginLeft="1dp"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:layout_row="1"
+                android:layout_column="0"
+                android:layout_gravity="right"
+                android:background="@color/Phabrik_black" />
+            <TextView
+                android:textColor="@color/Phabrik_white"
+                android:text="surface temp:"
+                android:id="@+id/tempStatic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:layout_marginLeft="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_row="2"
+                android:layout_gravity="right"
+                android:background="@color/Phabrik_black"
+                android:layout_column="0" />
+            <TextView
+                android:textColor="@color/Phabrik_white"
+                android:text="length of Year:"
+                android:layout_marginLeft="1dp"
+                android:layout_gravity="right"
+                android:id="@+id/yearStatic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:layout_row="3"
+                android:background="@color/Phabrik_black"
+                android:layout_column="0" />
+            <TextView
+                android:textColor="@color/Phabrik_white"
+                android:text="length of Day:"
+                android:layout_marginLeft="1dp"
+                android:layout_gravity="right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_marginTop="1dp"
+                android:id="@+id/dayStatic"
+                android:layout_row="4"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:background="@color/Phabrik_black"
+                android:layout_column="0" />
+            <TextView
+                android:text="12.23AU"
+                android:textColor="@color/Phabrik_green"
+                android:id="@+id/distanceLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_marginTop="1dp"
+                android:background="@color/Phabrik_black"
+                android:layout_row="0"
+                android:layout_column="1"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1" />
+            <TextView
+                android:text="4.05E123 (4.3x Earth)"
+                android:textColor="@color/Phabrik_green"
+                android:id="@+id/massLabel"
+                android:background="@color/Phabrik_black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:layout_row="1"
+                android:layout_column="1" />
+            <TextView
+                android:text="23.3C (82.4F)"
+                android:textColor="@color/Phabrik_green"
+                android:id="@+id/tempLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="2"
+                android:layout_marginRight="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:background="@color/Phabrik_black"
+                android:layout_column="1" />
+            <TextView
+                android:text="365 days"
+                android:textColor="@color/Phabrik_green"
+                android:id="@+id/yearLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="3"
+                android:layout_marginRight="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:background="@color/Phabrik_black"
+                android:layout_column="1" />
+            <TextView
+                android:text="24 hours"
+                android:textColor="@color/Phabrik_green"
+                android:id="@+id/dayLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="4"
+                android:layout_marginRight="1dp"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:layout_marginTop="1dp"
+                android:background="@color/Phabrik_black"
+                android:layout_column="1" />
+        </GridLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/gotoPlanetBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="go to" />
+            <Button
+                android:id="@+id/scanPlanetBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="scan" />
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

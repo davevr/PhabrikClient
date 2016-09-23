@@ -18,13 +18,18 @@ namespace Phabrik.Core
     public delegate void string_callback(string theResult);
 	public delegate void bool_callback(bool theResult);
 	public delegate void null_callback();
+    public delegate void SolSysObj_callback(SolSysObj theResult);
+    public delegate void TerrainObj_callback(TerrainObj theResult);
 
     public class PhabrikServer
     {
         private static RestClient apiClient;
-		private static string serverAPI = "http://phabrik-server-01.appspot.com/api/v1/";
-		private static string localAPI = "http://10.0.3.2:8080/api/v1/"; // "http://127.0.0.1:8080/api/v1/";
-		private static string apiPath;
+        private static string prodServerPath = "http://phabrik-server-01.appspot.com";
+        private static string localServerPath = "http://192.168.0.22:8080";
+
+		private static string apiPathExt = "/api/v1/";
+        private static string imagePathExt = "/Images/";
+        private static string serverPath;
         private static PlayerObj _currentUser = null;
 		public static string LastError {get; set;}
 		private static bool useProdServer = false;
@@ -34,13 +39,13 @@ namespace Phabrik.Core
 			if (useProdServer)
 			{
 				System.Console.WriteLine("Using Production Server");
-				apiPath = serverAPI;
+				serverPath = prodServerPath;
 			}
 			else {
 				System.Console.WriteLine("Using Local Server");
-				apiPath = localAPI;
+				serverPath = localServerPath;
 			}
-            apiClient = new RestClient(apiPath);
+            apiClient = new RestClient(serverPath + apiPathExt);
             apiClient.CookieContainer = new CookieContainer();
 
 			RestRequest request = new RestRequest("status", Method.GET);
@@ -51,6 +56,14 @@ namespace Phabrik.Core
 				else
 					callback(false);
 			});
+        }
+
+        public static string BaseImageUrl
+        {
+            get
+            {
+                return serverPath + imagePathExt;
+            }
         }
 
         
@@ -73,6 +86,47 @@ namespace Phabrik.Core
             _currentUser = null;
         }
 
+        public static void FetchSolSys(int xLoc, int yLoc, int zLoc, SolSysObj_callback callback)
+        {
+            string fullURL = "solsys";
+            RestRequest request = new RestRequest(fullURL, Method.GET);
+            request.AddParameter("xloc", xLoc);
+            request.AddParameter("yloc", yLoc);
+            request.AddParameter("zloc", zLoc);
+
+            apiClient.ExecuteAsync(request, (response) =>
+            {
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    SolSysObj newObj = response.Content.FromJson<SolSysObj>();
+                    callback(newObj);
+                } else
+                {
+                    callback(null);
+                }
+            });
+        }
+
+        public static void FetchTerrain(long planetId, TerrainObj_callback callback)
+        {
+            string fullURL = "terrain";
+            RestRequest request = new RestRequest(fullURL, Method.GET);
+            request.AddParameter("planetid", planetId);
+
+
+            apiClient.ExecuteAsync(request, (response) =>
+            {
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    TerrainObj newObj = response.Content.FromJson<TerrainObj>();
+                    callback(newObj);
+                }
+                else
+                {
+                    callback(null);
+                }
+            });
+        }
 
 
         public static void Login(string username, string pwd, bool create, Player_callback callback)

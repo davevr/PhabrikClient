@@ -112,5 +112,205 @@ namespace Phabrik.Core
 
         }
 
+        static double FREEZING_POINT_OF_WATER = 273.15;
+        static double EARTH_AVERAGE_CELSIUS = 14;
+        static double EARTH_SURF_PRES_IN_MILLIBARS = 1013.25;
+        static double EARTH_SURF_PRES_IN_PSI = 14.696;
+        static double EARTH_SURF_PRES_IN_MMHG = 760.0;
+        static double PSI_TO_MILLIBARS = (EARTH_SURF_PRES_IN_MILLIBARS / EARTH_SURF_PRES_IN_PSI);
+        static double MAX_HABITABLE_PRESSURE = (118 * PSI_TO_MILLIBARS);
+        static double MMHG_TO_MILLIBARS = (EARTH_SURF_PRES_IN_MILLIBARS / EARTH_SURF_PRES_IN_MMHG);
+        static double MIN_O2_IPP = (72.0 * MMHG_TO_MILLIBARS);
+        static double SOLAR_MASS_IN_KG = 1.989E30;
+        static double EARTH_MASS_IN_KG = 5.972E24;
+
+
+        public string Description
+        {
+            get
+            {
+                string desc = "";
+
+                if ((planetType == planet_type.tGasGiant)
+     || (planetType == planet_type.tSubGasGiant)
+     || (planetType == planet_type.tSubSubGasGiant))
+                {
+                    // Nothing, for now.
+                    desc = "A Gas Giant";
+                }
+                else
+                {
+                    double rel_temp = (surf_temp - FREEZING_POINT_OF_WATER) -
+                                        EARTH_AVERAGE_CELSIUS;
+                    double seas = (hydrosphere * 100.0);
+                    double clouds = (cloud_cover * 100.0);
+                    double atmosphere = (surf_pressure /
+                                        EARTH_SURF_PRES_IN_MILLIBARS);
+                    double ice = (ice_cover * 100.0);
+                    double gravity = surf_grav;
+
+                    if (gravity < .8)
+                        desc += "Low-G, ";   /* .8 gees */
+                    else if (gravity > 1.2)
+                        desc += "High-G, ";
+
+
+                    if (rel_temp < -5.0) desc += "Cold "; /* 5 C below earth */
+                    else if (rel_temp < -2.0) desc += "Cool";
+                    else if (rel_temp > 7.5) desc += "Hot";
+                    else if (rel_temp > 3.0) desc += "Warm";
+                    else desc += "Moderate climate";
+
+            
+
+                    if (ice > 10.0)
+                        desc += ", Icy ";        /* 10% surface is ice */
+
+                    if (atmosphere < 0.001)
+                        desc += ", Airless";
+                    else
+                    {
+                        if (planetType != planet_type.tWater)
+                        {
+                            if (seas < 25.0) desc += ", Arid";   
+                            else if (seas < 50.0) desc += ", Dry";
+                            else if (seas > 80.0) desc += ", Wet";
+                        }
+
+                        if (clouds < 10.0)
+                            desc += ", Cloudless";/* 10% cloud cover */
+                        else if (clouds < 40.0)
+                            desc += ", Few clouds";
+                        else if (clouds > 80.0)
+                            desc += ", Cloudy";
+            
+
+                         if (max_temp >= boil_point)
+                            desc += "Boiling ocean";
+
+                        if (surf_pressure < MIN_O2_IPP)
+                            desc += ", Unbreathably thin atmosphere";
+                        else if (atmosphere < 0.5)
+                            desc += ", Thin atmosphere";
+                        else if (atmosphere > MAX_HABITABLE_PRESSURE / EARTH_SURF_PRES_IN_MILLIBARS)
+                            desc += ", Unbreathably thick atmosphere";
+                        else if (atmosphere > 2.0)
+                            desc += ", Thick atmosphere";
+                        else if (planetType != planet_type.tTerrestrial)
+                            desc += ", Normal atmosphere";
+                    }
+
+                    if (earthlike)
+                        desc += ", Earth-like";
+
+                    /*
+                    if (planet->gases > 0)
+                    {
+                        int i;
+                        int first = TRUE;
+                        unsigned int temp;
+
+                        fprintf(file, " (");
+
+                        for (i = 0; i < planet->gases; i++)
+                        {
+                            int n;
+                            int index = max_gas;
+
+                            for (n = 0; n < max_gas; n++)
+                            {
+                                if (gases[n].num == planet->atmosphere[i].num)
+                                    index = n;
+                            }
+
+                            if ((planet->atmosphere[i].surf_pressure / planet->surf_pressure)
+                                > .01)
+                            {
+                                LPRINT(gases[index].html_symbol);
+                            }
+                        }
+
+                        if ((temp = breathability(planet)) != NONE)
+                            fprintf(file, " - %s)",
+                                 breathability_phrase[temp]);
+                    }
+                    */
+
+                    if ((int)day == (int)(orb_period * 24.0)
+                     || (resonant_period))
+                        desc += ", tidally locked";
+                }
+
+                return desc;
+            }
+        }
+
+        public string ImageUrl
+        {
+            get
+            {
+                string newUrl = "unknown";
+
+                switch (this.planetType)
+                {
+                    case PlanetObj.planet_type.tRock:
+                        newUrl = "RockPlanet";
+                        break;
+                    case PlanetObj.planet_type.tVenusian:
+                        newUrl = "VenusianPlanet";
+                        break;
+                    case PlanetObj.planet_type.tTerrestrial:
+                        newUrl = "TerrestrialPlanet";
+                        break;
+                    case PlanetObj.planet_type.tGasGiant:
+                        newUrl = "JovianPlanet";
+                        break;
+                    case PlanetObj.planet_type.tMartian:
+                        newUrl = "MartianPlanet";
+                        break;
+                    case PlanetObj.planet_type.tWater:
+                        newUrl = "WaterPlanet";
+                        break;
+                    case PlanetObj.planet_type.tIce:
+                        newUrl = "IcePlanet";
+                        break;
+                    case PlanetObj.planet_type.tSubGasGiant:
+                        newUrl = "Sub-JovianPlanet";
+                        break;
+                    case PlanetObj.planet_type.tSubSubGasGiant:
+                        newUrl = "GasDwarfPlanet";
+                        break;
+                    case PlanetObj.planet_type.tAsteroids:
+                        newUrl = "AsteroidsPlanet";
+                        break;
+                    case PlanetObj.planet_type.t1Face:
+                        newUrl = "1FacePlanet";
+                        break;
+                    default:
+                        newUrl = "UnknownPlanet";
+                        break;
+                }
+
+                return PhabrikServer.BaseImageUrl + newUrl + ".png";
+            }
+        }
+
+        public double massInKG
+        {
+            get
+            {
+                return mass * SOLAR_MASS_IN_KG;
+            }
+        }
+
+        public double massInEarthMass
+        {
+            get
+            {
+                return massInKG / EARTH_MASS_IN_KG;
+            }
+        }
+        
+
     }
 }

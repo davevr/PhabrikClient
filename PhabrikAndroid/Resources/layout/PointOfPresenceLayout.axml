@@ -4,11 +4,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:minWidth="25px"
-    android:minHeight="25px">
+    android:minHeight="25px"
+              android:id="@+id/FragmentHolder">
     <TextView
         android:text="Woot, this is a point of presence!"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="0"
         android:id="@+id/textView1" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/fragment"
+        android:layout_weight="1"
+    
+    />
 </LinearLayout>

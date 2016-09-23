@@ -21,6 +21,7 @@ using Android.Text;
 using Android.Text.Style;
 using Android.Content.PM;
 using Phabrik.Core;
+using Java.Lang;
 
 namespace Phabrik.AndroidApp
 {
@@ -72,7 +73,13 @@ namespace Phabrik.AndroidApp
 			{
 				return fragmentList[position];
 			}
-		}
+
+            public override int GetItemPosition(Java.Lang.Object objectValue)
+            {
+                //return base.GetItemPosition(objectValue);
+                return PositionNone;
+            }
+        }
 
 		public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 		{
@@ -103,13 +110,16 @@ namespace Phabrik.AndroidApp
             // ready to play!
             if (PhabrikServer.CurrentUser.popList.Count == 0)
             {
-                var pop1 = new SolSysPopFragment();
-                pop1.InitializeForXYZ(0, 0, 0);
+                var pop1 = new PointOfPresenceFragment();
+                pop1.gameFragment = this;
+                
                 fragmentList.Add(pop1);
+
             }
             else {
                 foreach (PointOfPresenceObj curPop in PhabrikServer.CurrentUser.popList)
                 {
+                    /*
                     PointOfPresenceFragment popFrag = null;
                     switch (curPop.scale)
                     {
@@ -132,8 +142,11 @@ namespace Phabrik.AndroidApp
 
                     }
 
-                    popFrag.InitializeForPop(curPop);
+                    popFrag.gameFragment = this;
+                    popFrag.InitPop(curPop);
                     fragmentList.Add(popFrag);
+                    */
+
                 }
             }
 			pager.Adapter.NotifyDataSetChanged();
@@ -154,5 +167,7 @@ namespace Phabrik.AndroidApp
 		{
 			fragmentList[position].Update();
 		}
+
+        
 	}
 }

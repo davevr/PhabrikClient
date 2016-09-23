@@ -26,6 +26,48 @@ namespace Phabrik.AndroidApp
 		
 		public static void UpdateIdValues()
 		{
+			global::com.refractored.Resource.Attribute.pstsDividerColor = global::Phabrik.AndroidApp.Resource.Attribute.pstsDividerColor;
+			global::com.refractored.Resource.Attribute.pstsDividerPadding = global::Phabrik.AndroidApp.Resource.Attribute.pstsDividerPadding;
+			global::com.refractored.Resource.Attribute.pstsDividerWidth = global::Phabrik.AndroidApp.Resource.Attribute.pstsDividerWidth;
+			global::com.refractored.Resource.Attribute.pstsIndicatorColor = global::Phabrik.AndroidApp.Resource.Attribute.pstsIndicatorColor;
+			global::com.refractored.Resource.Attribute.pstsIndicatorHeight = global::Phabrik.AndroidApp.Resource.Attribute.pstsIndicatorHeight;
+			global::com.refractored.Resource.Attribute.pstsPaddingMiddle = global::Phabrik.AndroidApp.Resource.Attribute.pstsPaddingMiddle;
+			global::com.refractored.Resource.Attribute.pstsScrollOffset = global::Phabrik.AndroidApp.Resource.Attribute.pstsScrollOffset;
+			global::com.refractored.Resource.Attribute.pstsShouldExpand = global::Phabrik.AndroidApp.Resource.Attribute.pstsShouldExpand;
+			global::com.refractored.Resource.Attribute.pstsTabBackground = global::Phabrik.AndroidApp.Resource.Attribute.pstsTabBackground;
+			global::com.refractored.Resource.Attribute.pstsTabPaddingLeftRight = global::Phabrik.AndroidApp.Resource.Attribute.pstsTabPaddingLeftRight;
+			global::com.refractored.Resource.Attribute.pstsTextAllCaps = global::Phabrik.AndroidApp.Resource.Attribute.pstsTextAllCaps;
+			global::com.refractored.Resource.Attribute.pstsTextAlpha = global::Phabrik.AndroidApp.Resource.Attribute.pstsTextAlpha;
+			global::com.refractored.Resource.Attribute.pstsTextColorSelected = global::Phabrik.AndroidApp.Resource.Attribute.pstsTextColorSelected;
+			global::com.refractored.Resource.Attribute.pstsTextSelectedStyle = global::Phabrik.AndroidApp.Resource.Attribute.pstsTextSelectedStyle;
+			global::com.refractored.Resource.Attribute.pstsTextStyle = global::Phabrik.AndroidApp.Resource.Attribute.pstsTextStyle;
+			global::com.refractored.Resource.Attribute.pstsUnderlineColor = global::Phabrik.AndroidApp.Resource.Attribute.pstsUnderlineColor;
+			global::com.refractored.Resource.Attribute.pstsUnderlineHeight = global::Phabrik.AndroidApp.Resource.Attribute.pstsUnderlineHeight;
+			global::com.refractored.Resource.Color.psts_background_tab_pressed = global::Phabrik.AndroidApp.Resource.Color.psts_background_tab_pressed;
+			global::com.refractored.Resource.Drawable.psts_background_tab = global::Phabrik.AndroidApp.Resource.Drawable.psts_background_tab;
+			global::com.refractored.Resource.Id.bold = global::Phabrik.AndroidApp.Resource.Id.bold;
+			global::com.refractored.Resource.Id.italic = global::Phabrik.AndroidApp.Resource.Id.italic;
+			global::com.refractored.Resource.Id.normal = global::Phabrik.AndroidApp.Resource.Id.normal;
+			global::com.refractored.Resource.Id.psts_tab_title = global::Phabrik.AndroidApp.Resource.Id.psts_tab_title;
+			global::com.refractored.Resource.Layout.psts_tab = global::Phabrik.AndroidApp.Resource.Layout.psts_tab;
+			global::com.refractored.Resource.Styleable.PagerSlidingTabStrip = global::Phabrik.AndroidApp.Resource.Styleable.PagerSlidingTabStrip;
+			global::com.refractored.Resource.Styleable.PagerSlidingTabStrip_pstsDividerColor = global::Phabrik.AndroidApp.Resource.Styleable.PagerSlidingTabStrip_pstsDividerColor;
+			global::com.refractored.Resource.Styleable.PagerSlidingTabStrip_pstsDividerPadding = global::Phabrik.AndroidApp.Resource.Styleable.PagerSlidingTabStrip_pstsDividerPadding;
+			global::com.refractored.Resource.Styleable.PagerSlidingTabStrip_pstsDividerWidth = global::Phabrik.AndroidApp.Resource.Styleable.PagerSlidingTabStrip_pstsDividerWidth;
+			global::com.refractored.Resource.Styleable.PagerSlidingTabStrip_pstsIndicatorColor = global::Phabrik.AndroidApp.Resource.Styleable.PagerSlidingTabStrip_pstsIndicatorColor;
+			global::com.refractored.Resource.Styleable.PagerSlidingTabStrip_pstsIndicatorHeight = global::Phabrik.AndroidApp.Resource.Styleable.PagerSlidingTabStrip_pstsIndicatorHeight;
+			global::com.refractored.Resource.Styleable.PagerSlidingTabStrip_pstsPaddingMiddle = global::Phabrik.AndroidApp.Resource.Styleable.PagerSlidingTabStrip_pstsPaddingMiddle;
+			global::com.refractored.Resource.Styleable.PagerSlidingTabStrip_pstsScrollOffset = global::Phabrik.AndroidApp.Resource.Styleable.PagerSlidingTabStrip_pstsScrollOffset;
+			global::com.refractored.Resource.Styleable.PagerSlidingTabStrip_pstsShouldExpand = global::Phabrik.AndroidApp.Resource.Styleable.PagerSlidingTabStrip_pstsShouldExpand;
+			global::com.refractored.Resource.Styleable.PagerSlidingTabStrip_pstsTabBackground = global::Phabrik.AndroidApp.Resource.Styleable.PagerSlidingTabStrip_pstsTabBackground;
+			global::com.refractored.Resource.Styleable.PagerSlidingTabStrip_pstsTabPaddingLeftRight = global::Phabrik.AndroidApp.Resource.Styleable.PagerSlidingTabStrip_pstsTabPaddingLeftRight;
+			global::com.refractored.Resource.Styleable.PagerSlidingTabStrip_pstsTextAllCaps = global::Phabrik.AndroidApp.Resource.Styleable.PagerSlidingTabStrip_pstsTextAllCaps;
+			global::com.refractored.Resource.Styleable.PagerSlidingTabStrip_pstsTextAlpha = global::Phabrik.AndroidApp.Resource.Styleable.PagerSlidingTabStrip_pstsTextAlpha;
+			global::com.refractored.Resource.Styleable.PagerSlidingTabStrip_pstsTextColorSelected = global::Phabrik.AndroidApp.Resource.Styleable.PagerSlidingTabStrip_pstsTextColorSelected;
+			global::com.refractored.Resource.Styleable.PagerSlidingTabStrip_pstsTextSelectedStyle = global::Phabrik.AndroidApp.Resource.Styleable.PagerSlidingTabStrip_pstsTextSelectedStyle;
+			global::com.refractored.Resource.Styleable.PagerSlidingTabStrip_pstsTextStyle = global::Phabrik.AndroidApp.Resource.Styleable.PagerSlidingTabStrip_pstsTextStyle;
+			global::com.refractored.Resource.Styleable.PagerSlidingTabStrip_pstsUnderlineColor = global::Phabrik.AndroidApp.Resource.Styleable.PagerSlidingTabStrip_pstsUnderlineColor;
+			global::com.refractored.Resource.Styleable.PagerSlidingTabStrip_pstsUnderlineHeight = global::Phabrik.AndroidApp.Resource.Styleable.PagerSlidingTabStrip_pstsUnderlineHeight;
 		}
 		
 		public partial class Animation
@@ -500,6 +542,57 @@ namespace Phabrik.AndroidApp
 			// aapt resource value: 0x7f010011
 			public const int progressBarStyle = 2130771985;
 			
+			// aapt resource value: 0x7f0100d3
+			public const int pstsDividerColor = 2130772179;
+			
+			// aapt resource value: 0x7f0100d7
+			public const int pstsDividerPadding = 2130772183;
+			
+			// aapt resource value: 0x7f0100d4
+			public const int pstsDividerWidth = 2130772180;
+			
+			// aapt resource value: 0x7f0100d1
+			public const int pstsIndicatorColor = 2130772177;
+			
+			// aapt resource value: 0x7f0100d5
+			public const int pstsIndicatorHeight = 2130772181;
+			
+			// aapt resource value: 0x7f0100dd
+			public const int pstsPaddingMiddle = 2130772189;
+			
+			// aapt resource value: 0x7f0100d9
+			public const int pstsScrollOffset = 2130772185;
+			
+			// aapt resource value: 0x7f0100db
+			public const int pstsShouldExpand = 2130772187;
+			
+			// aapt resource value: 0x7f0100da
+			public const int pstsTabBackground = 2130772186;
+			
+			// aapt resource value: 0x7f0100d8
+			public const int pstsTabPaddingLeftRight = 2130772184;
+			
+			// aapt resource value: 0x7f0100dc
+			public const int pstsTextAllCaps = 2130772188;
+			
+			// aapt resource value: 0x7f0100df
+			public const int pstsTextAlpha = 2130772191;
+			
+			// aapt resource value: 0x7f0100de
+			public const int pstsTextColorSelected = 2130772190;
+			
+			// aapt resource value: 0x7f0100e1
+			public const int pstsTextSelectedStyle = 2130772193;
+			
+			// aapt resource value: 0x7f0100e0
+			public const int pstsTextStyle = 2130772192;
+			
+			// aapt resource value: 0x7f0100d2
+			public const int pstsUnderlineColor = 2130772178;
+			
+			// aapt resource value: 0x7f0100d6
+			public const int pstsUnderlineHeight = 2130772182;
+			
 			// aapt resource value: 0x7f0100b4
 			public const int queryBackground = 2130772148;
 			
@@ -751,53 +844,53 @@ namespace Phabrik.AndroidApp
 		public partial class Color
 		{
 			
-			// aapt resource value: 0x7f0a003b
-			public const int Phabrik_black = 2131361851;
-			
-			// aapt resource value: 0x7f0a0040
-			public const int Phabrik_blue = 2131361856;
-			
 			// aapt resource value: 0x7f0a003c
-			public const int Phabrik_green = 2131361852;
-			
-			// aapt resource value: 0x7f0a003f
-			public const int Phabrik_orange = 2131361855;
-			
-			// aapt resource value: 0x7f0a003d
-			public const int Phabrik_red = 2131361853;
-			
-			// aapt resource value: 0x7f0a003a
-			public const int Phabrik_white = 2131361850;
-			
-			// aapt resource value: 0x7f0a003e
-			public const int Phabrik_yellow = 2131361854;
+			public const int Phabrik_black = 2131361852;
 			
 			// aapt resource value: 0x7f0a0041
-			public const int abc_background_cache_hint_selector_material_dark = 2131361857;
+			public const int Phabrik_blue = 2131361857;
+			
+			// aapt resource value: 0x7f0a003d
+			public const int Phabrik_green = 2131361853;
+			
+			// aapt resource value: 0x7f0a0040
+			public const int Phabrik_orange = 2131361856;
+			
+			// aapt resource value: 0x7f0a003e
+			public const int Phabrik_red = 2131361854;
+			
+			// aapt resource value: 0x7f0a003b
+			public const int Phabrik_white = 2131361851;
+			
+			// aapt resource value: 0x7f0a003f
+			public const int Phabrik_yellow = 2131361855;
 			
 			// aapt resource value: 0x7f0a0042
-			public const int abc_background_cache_hint_selector_material_light = 2131361858;
+			public const int abc_background_cache_hint_selector_material_dark = 2131361858;
 			
 			// aapt resource value: 0x7f0a0043
-			public const int abc_color_highlight_material = 2131361859;
+			public const int abc_background_cache_hint_selector_material_light = 2131361859;
+			
+			// aapt resource value: 0x7f0a0044
+			public const int abc_color_highlight_material = 2131361860;
 			
 			// aapt resource value: 0x7f0a0000
 			public const int abc_input_method_navigation_guard = 2131361792;
 			
-			// aapt resource value: 0x7f0a0044
-			public const int abc_primary_text_disable_only_material_dark = 2131361860;
-			
 			// aapt resource value: 0x7f0a0045
-			public const int abc_primary_text_disable_only_material_light = 2131361861;
+			public const int abc_primary_text_disable_only_material_dark = 2131361861;
 			
 			// aapt resource value: 0x7f0a0046
-			public const int abc_primary_text_material_dark = 2131361862;
+			public const int abc_primary_text_disable_only_material_light = 2131361862;
 			
 			// aapt resource value: 0x7f0a0047
-			public const int abc_primary_text_material_light = 2131361863;
+			public const int abc_primary_text_material_dark = 2131361863;
 			
 			// aapt resource value: 0x7f0a0048
-			public const int abc_search_url_text = 2131361864;
+			public const int abc_primary_text_material_light = 2131361864;
+			
+			// aapt resource value: 0x7f0a0049
+			public const int abc_search_url_text = 2131361865;
 			
 			// aapt resource value: 0x7f0a0001
 			public const int abc_search_url_text_normal = 2131361793;
@@ -808,11 +901,11 @@ namespace Phabrik.AndroidApp
 			// aapt resource value: 0x7f0a0003
 			public const int abc_search_url_text_selected = 2131361795;
 			
-			// aapt resource value: 0x7f0a0049
-			public const int abc_secondary_text_material_dark = 2131361865;
-			
 			// aapt resource value: 0x7f0a004a
-			public const int abc_secondary_text_material_light = 2131361866;
+			public const int abc_secondary_text_material_dark = 2131361866;
+			
+			// aapt resource value: 0x7f0a004b
+			public const int abc_secondary_text_material_light = 2131361867;
 			
 			// aapt resource value: 0x7f0a0004
 			public const int accent_material_dark = 2131361796;
@@ -946,6 +1039,9 @@ namespace Phabrik.AndroidApp
 			// aapt resource value: 0x7f0a002f
 			public const int primary_text_disabled_material_light = 2131361839;
 			
+			// aapt resource value: 0x7f0a003a
+			public const int psts_background_tab_pressed = 2131361850;
+			
 			// aapt resource value: 0x7f0a0030
 			public const int ripple_material_dark = 2131361840;
 			
@@ -970,11 +1066,11 @@ namespace Phabrik.AndroidApp
 			// aapt resource value: 0x7f0a0037
 			public const int switch_thumb_disabled_material_light = 2131361847;
 			
-			// aapt resource value: 0x7f0a004b
-			public const int switch_thumb_material_dark = 2131361867;
-			
 			// aapt resource value: 0x7f0a004c
-			public const int switch_thumb_material_light = 2131361868;
+			public const int switch_thumb_material_dark = 2131361868;
+			
+			// aapt resource value: 0x7f0a004d
+			public const int switch_thumb_material_light = 2131361869;
 			
 			// aapt resource value: 0x7f0a0038
 			public const int switch_thumb_normal_material_dark = 2131361848;
@@ -1485,11 +1581,14 @@ namespace Phabrik.AndroidApp
 			// aapt resource value: 0x7f02004c
 			public const int Icon = 2130837580;
 			
-			// aapt resource value: 0x7f02004e
-			public const int notification_template_icon_bg = 2130837582;
+			// aapt resource value: 0x7f02004f
+			public const int notification_template_icon_bg = 2130837583;
 			
 			// aapt resource value: 0x7f02004d
-			public const int RounderCorner = 2130837581;
+			public const int psts_background_tab = 2130837581;
+			
+			// aapt resource value: 0x7f02004e
+			public const int RounderCorner = 2130837582;
 			
 			static Drawable()
 			{
@@ -1504,47 +1603,56 @@ namespace Phabrik.AndroidApp
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f0b0062
-			public const int AutoSignIn = 2131427426;
+			// aapt resource value: 0x7f0b0064
+			public const int AutoSignIn = 2131427428;
 			
-			// aapt resource value: 0x7f0b0054
-			public const int ItemName = 2131427412;
+			// aapt resource value: 0x7f0b008d
+			public const int FragmentHolder = 2131427469;
 			
-			// aapt resource value: 0x7f0b0061
-			public const int SignInBtn = 2131427425;
+			// aapt resource value: 0x7f0b0056
+			public const int ItemName = 2131427414;
 			
-			// aapt resource value: 0x7f0b0084
-			public const int SolSysTitle = 2131427460;
+			// aapt resource value: 0x7f0b008c
+			public const int Map = 2131427468;
 			
-			// aapt resource value: 0x7f0b0069
-			public const int action0 = 2131427433;
+			// aapt resource value: 0x7f0b008b
+			public const int PlanetInfo = 2131427467;
 			
-			// aapt resource value: 0x7f0b0041
-			public const int action_bar = 2131427393;
+			// aapt resource value: 0x7f0b0063
+			public const int SignInBtn = 2131427427;
+			
+			// aapt resource value: 0x7f0b0098
+			public const int SolSysTitle = 2131427480;
+			
+			// aapt resource value: 0x7f0b006b
+			public const int action0 = 2131427435;
+			
+			// aapt resource value: 0x7f0b0043
+			public const int action_bar = 2131427395;
 			
 			// aapt resource value: 0x7f0b0000
 			public const int action_bar_activity_content = 2131427328;
 			
-			// aapt resource value: 0x7f0b0040
-			public const int action_bar_container = 2131427392;
+			// aapt resource value: 0x7f0b0042
+			public const int action_bar_container = 2131427394;
 			
-			// aapt resource value: 0x7f0b003c
-			public const int action_bar_root = 2131427388;
+			// aapt resource value: 0x7f0b003e
+			public const int action_bar_root = 2131427390;
 			
 			// aapt resource value: 0x7f0b0001
 			public const int action_bar_spinner = 2131427329;
 			
-			// aapt resource value: 0x7f0b0022
-			public const int action_bar_subtitle = 2131427362;
+			// aapt resource value: 0x7f0b0024
+			public const int action_bar_subtitle = 2131427364;
 			
-			// aapt resource value: 0x7f0b0021
-			public const int action_bar_title = 2131427361;
+			// aapt resource value: 0x7f0b0023
+			public const int action_bar_title = 2131427363;
 			
-			// aapt resource value: 0x7f0b0042
-			public const int action_context_bar = 2131427394;
+			// aapt resource value: 0x7f0b0044
+			public const int action_context_bar = 2131427396;
 			
-			// aapt resource value: 0x7f0b006d
-			public const int action_divider = 2131427437;
+			// aapt resource value: 0x7f0b006f
+			public const int action_divider = 2131427439;
 			
 			// aapt resource value: 0x7f0b0002
 			public const int action_menu_divider = 2131427330;
@@ -1552,20 +1660,20 @@ namespace Phabrik.AndroidApp
 			// aapt resource value: 0x7f0b0003
 			public const int action_menu_presenter = 2131427331;
 			
-			// aapt resource value: 0x7f0b003e
-			public const int action_mode_bar = 2131427390;
+			// aapt resource value: 0x7f0b0040
+			public const int action_mode_bar = 2131427392;
 			
-			// aapt resource value: 0x7f0b003d
-			public const int action_mode_bar_stub = 2131427389;
+			// aapt resource value: 0x7f0b003f
+			public const int action_mode_bar_stub = 2131427391;
 			
-			// aapt resource value: 0x7f0b0023
-			public const int action_mode_close_button = 2131427363;
+			// aapt resource value: 0x7f0b0025
+			public const int action_mode_close_button = 2131427365;
 			
-			// aapt resource value: 0x7f0b0024
-			public const int activity_chooser_view_content = 2131427364;
+			// aapt resource value: 0x7f0b0026
+			public const int activity_chooser_view_content = 2131427366;
 			
-			// aapt resource value: 0x7f0b0030
-			public const int alertTitle = 2131427376;
+			// aapt resource value: 0x7f0b0032
+			public const int alertTitle = 2131427378;
 			
 			// aapt resource value: 0x7f0b001c
 			public const int always = 2131427356;
@@ -1573,77 +1681,101 @@ namespace Phabrik.AndroidApp
 			// aapt resource value: 0x7f0b0019
 			public const int beginning = 2131427353;
 			
-			// aapt resource value: 0x7f0b002b
-			public const int buttonPanel = 2131427371;
+			// aapt resource value: 0x7f0b0021
+			public const int bold = 2131427361;
 			
-			// aapt resource value: 0x7f0b006a
-			public const int cancel_action = 2131427434;
+			// aapt resource value: 0x7f0b002d
+			public const int buttonPanel = 2131427373;
 			
-			// aapt resource value: 0x7f0b007c
-			public const int changeImageBtn = 2131427452;
+			// aapt resource value: 0x7f0b006c
+			public const int cancel_action = 2131427436;
 			
-			// aapt resource value: 0x7f0b0082
-			public const int changePwdBtn = 2131427458;
+			// aapt resource value: 0x7f0b0090
+			public const int changeImageBtn = 2131427472;
 			
-			// aapt resource value: 0x7f0b0039
-			public const int checkbox = 2131427385;
+			// aapt resource value: 0x7f0b0096
+			public const int changePwdBtn = 2131427478;
 			
-			// aapt resource value: 0x7f0b0070
-			public const int chronometer = 2131427440;
+			// aapt resource value: 0x7f0b003b
+			public const int checkbox = 2131427387;
+			
+			// aapt resource value: 0x7f0b0072
+			public const int chronometer = 2131427442;
 			
 			// aapt resource value: 0x7f0b001d
 			public const int collapseActionView = 2131427357;
 			
-			// aapt resource value: 0x7f0b005f
-			public const int confirmField = 2131427423;
-			
-			// aapt resource value: 0x7f0b005e
-			public const int confirmText = 2131427422;
-			
-			// aapt resource value: 0x7f0b0031
-			public const int contentPanel = 2131427377;
-			
-			// aapt resource value: 0x7f0b0077
-			public const int counter = 2131427447;
+			// aapt resource value: 0x7f0b0061
+			public const int confirmField = 2131427425;
 			
 			// aapt resource value: 0x7f0b0060
-			public const int createBtn = 2131427424;
+			public const int confirmText = 2131427424;
 			
-			// aapt resource value: 0x7f0b0037
-			public const int custom = 2131427383;
+			// aapt resource value: 0x7f0b0033
+			public const int contentPanel = 2131427379;
 			
-			// aapt resource value: 0x7f0b0036
-			public const int customPanel = 2131427382;
+			// aapt resource value: 0x7f0b0079
+			public const int counter = 2131427449;
 			
-			// aapt resource value: 0x7f0b003f
-			public const int decor_content_parent = 2131427391;
+			// aapt resource value: 0x7f0b0062
+			public const int createBtn = 2131427426;
 			
-			// aapt resource value: 0x7f0b0027
-			public const int default_activity_button = 2131427367;
+			// aapt resource value: 0x7f0b0039
+			public const int custom = 2131427385;
+			
+			// aapt resource value: 0x7f0b0038
+			public const int customPanel = 2131427384;
+			
+			// aapt resource value: 0x7f0b0088
+			public const int dayLabel = 2131427464;
+			
+			// aapt resource value: 0x7f0b0083
+			public const int dayStatic = 2131427459;
+			
+			// aapt resource value: 0x7f0b0041
+			public const int decor_content_parent = 2131427393;
+			
+			// aapt resource value: 0x7f0b0029
+			public const int default_activity_button = 2131427369;
 			
 			// aapt resource value: 0x7f0b000c
 			public const int disableHome = 2131427340;
 			
-			// aapt resource value: 0x7f0b0064
-			public const int drawer_layout = 2131427428;
+			// aapt resource value: 0x7f0b0084
+			public const int distanceLabel = 2131427460;
 			
-			// aapt resource value: 0x7f0b0043
-			public const int edit_query = 2131427395;
+			// aapt resource value: 0x7f0b007f
+			public const int distanceStatic = 2131427455;
+			
+			// aapt resource value: 0x7f0b0066
+			public const int drawer_layout = 2131427430;
+			
+			// aapt resource value: 0x7f0b0045
+			public const int edit_query = 2131427397;
 			
 			// aapt resource value: 0x7f0b001a
 			public const int end = 2131427354;
 			
-			// aapt resource value: 0x7f0b0075
-			public const int end_padder = 2131427445;
+			// aapt resource value: 0x7f0b0077
+			public const int end_padder = 2131427447;
 			
-			// aapt resource value: 0x7f0b0025
-			public const int expand_activities_button = 2131427365;
+			// aapt resource value: 0x7f0b0027
+			public const int expand_activities_button = 2131427367;
 			
-			// aapt resource value: 0x7f0b0038
-			public const int expanded_menu = 2131427384;
+			// aapt resource value: 0x7f0b003a
+			public const int expanded_menu = 2131427386;
 			
-			// aapt resource value: 0x7f0b0065
-			public const int fragmentContainer = 2131427429;
+			// aapt resource value: 0x7f0b008e
+			public const int fragment = 2131427470;
+			
+			// aapt resource value: 0x7f0b0067
+			public const int fragmentContainer = 2131427431;
+			
+			// aapt resource value: 0x7f0b0089
+			public const int gotoPlanetBtn = 2131427465;
+			
+			// aapt resource value: 0x7f0b007e
+			public const int gridLayout1 = 2131427454;
 			
 			// aapt resource value: 0x7f0b0004
 			public const int home = 2131427332;
@@ -1651,44 +1783,56 @@ namespace Phabrik.AndroidApp
 			// aapt resource value: 0x7f0b000d
 			public const int homeAsUp = 2131427341;
 			
-			// aapt resource value: 0x7f0b0029
-			public const int icon = 2131427369;
+			// aapt resource value: 0x7f0b002b
+			public const int icon = 2131427371;
 			
-			// aapt resource value: 0x7f0b0067
-			public const int iconview = 2131427431;
+			// aapt resource value: 0x7f0b0069
+			public const int iconview = 2131427433;
 			
 			// aapt resource value: 0x7f0b001e
 			public const int ifRoom = 2131427358;
 			
-			// aapt resource value: 0x7f0b0026
-			public const int image = 2131427366;
+			// aapt resource value: 0x7f0b0028
+			public const int image = 2131427368;
 			
-			// aapt resource value: 0x7f0b0074
-			public const int info = 2131427444;
+			// aapt resource value: 0x7f0b0076
+			public const int info = 2131427446;
 			
-			// aapt resource value: 0x7f0b0066
-			public const int left_drawer = 2131427430;
+			// aapt resource value: 0x7f0b0022
+			public const int italic = 2131427362;
 			
 			// aapt resource value: 0x7f0b0068
-			public const int left_drawer_list = 2131427432;
+			public const int left_drawer = 2131427432;
 			
-			// aapt resource value: 0x7f0b006e
-			public const int line1 = 2131427438;
+			// aapt resource value: 0x7f0b006a
+			public const int left_drawer_list = 2131427434;
 			
-			// aapt resource value: 0x7f0b0072
-			public const int line3 = 2131427442;
+			// aapt resource value: 0x7f0b0070
+			public const int line1 = 2131427440;
+			
+			// aapt resource value: 0x7f0b0074
+			public const int line3 = 2131427444;
+			
+			// aapt resource value: 0x7f0b007d
+			public const int linearLayout1 = 2131427453;
 			
 			// aapt resource value: 0x7f0b0009
 			public const int listMode = 2131427337;
 			
-			// aapt resource value: 0x7f0b0028
-			public const int list_item = 2131427368;
+			// aapt resource value: 0x7f0b002a
+			public const int list_item = 2131427370;
 			
-			// aapt resource value: 0x7f0b0058
-			public const int manualSignIn = 2131427416;
+			// aapt resource value: 0x7f0b005a
+			public const int manualSignIn = 2131427418;
 			
-			// aapt resource value: 0x7f0b006c
-			public const int media_actions = 2131427436;
+			// aapt resource value: 0x7f0b0085
+			public const int massLabel = 2131427461;
+			
+			// aapt resource value: 0x7f0b0080
+			public const int massStatic = 2131427456;
+			
+			// aapt resource value: 0x7f0b006e
+			public const int media_actions = 2131427438;
 			
 			// aapt resource value: 0x7f0b001b
 			public const int middle = 2131427355;
@@ -1699,11 +1843,11 @@ namespace Phabrik.AndroidApp
 			// aapt resource value: 0x7f0b001f
 			public const int never = 2131427359;
 			
-			// aapt resource value: 0x7f0b007e
-			public const int nicknameField = 2131427454;
+			// aapt resource value: 0x7f0b0092
+			public const int nicknameField = 2131427474;
 			
-			// aapt resource value: 0x7f0b007d
-			public const int nicknameLabel = 2131427453;
+			// aapt resource value: 0x7f0b0091
+			public const int nicknameLabel = 2131427473;
 			
 			// aapt resource value: 0x7f0b000e
 			public const int none = 2131427342;
@@ -1711,29 +1855,29 @@ namespace Phabrik.AndroidApp
 			// aapt resource value: 0x7f0b000a
 			public const int normal = 2131427338;
 			
-			// aapt resource value: 0x7f0b002d
-			public const int parentPanel = 2131427373;
+			// aapt resource value: 0x7f0b002f
+			public const int parentPanel = 2131427375;
 			
-			// aapt resource value: 0x7f0b005d
-			public const int passwordField = 2131427421;
+			// aapt resource value: 0x7f0b005f
+			public const int passwordField = 2131427423;
 			
-			// aapt resource value: 0x7f0b0086
-			public const int planetCount = 2131427462;
+			// aapt resource value: 0x7f0b009a
+			public const int planetCount = 2131427482;
 			
-			// aapt resource value: 0x7f0b0078
-			public const int planetImage = 2131427448;
+			// aapt resource value: 0x7f0b007b
+			public const int planetImage = 2131427451;
+			
+			// aapt resource value: 0x7f0b007c
+			public const int planetInfo = 2131427452;
+			
+			// aapt resource value: 0x7f0b009b
+			public const int planetList = 2131427483;
 			
 			// aapt resource value: 0x7f0b007a
-			public const int planetInfo = 2131427450;
+			public const int planetName = 2131427450;
 			
-			// aapt resource value: 0x7f0b0087
-			public const int planetList = 2131427463;
-			
-			// aapt resource value: 0x7f0b0079
-			public const int planetName = 2131427449;
-			
-			// aapt resource value: 0x7f0b0056
-			public const int post_pager = 2131427414;
+			// aapt resource value: 0x7f0b0058
+			public const int post_pager = 2131427416;
 			
 			// aapt resource value: 0x7f0b0005
 			public const int progress_circular = 2131427333;
@@ -1741,62 +1885,65 @@ namespace Phabrik.AndroidApp
 			// aapt resource value: 0x7f0b0006
 			public const int progress_horizontal = 2131427334;
 			
-			// aapt resource value: 0x7f0b0076
-			public const int psts_tab_title = 2131427446;
+			// aapt resource value: 0x7f0b0078
+			public const int psts_tab_title = 2131427448;
 			
-			// aapt resource value: 0x7f0b003b
-			public const int radio = 2131427387;
+			// aapt resource value: 0x7f0b003d
+			public const int radio = 2131427389;
 			
-			// aapt resource value: 0x7f0b0081
-			public const int saveChangesBtn = 2131427457;
+			// aapt resource value: 0x7f0b0095
+			public const int saveChangesBtn = 2131427477;
+			
+			// aapt resource value: 0x7f0b008a
+			public const int scanPlanetBtn = 2131427466;
 			
 			// aapt resource value: 0x7f0b0015
 			public const int screen = 2131427349;
 			
+			// aapt resource value: 0x7f0b0037
+			public const int scrollIndicatorDown = 2131427383;
+			
+			// aapt resource value: 0x7f0b0034
+			public const int scrollIndicatorUp = 2131427380;
+			
 			// aapt resource value: 0x7f0b0035
-			public const int scrollIndicatorDown = 2131427381;
-			
-			// aapt resource value: 0x7f0b0032
-			public const int scrollIndicatorUp = 2131427378;
-			
-			// aapt resource value: 0x7f0b0033
-			public const int scrollView = 2131427379;
-			
-			// aapt resource value: 0x7f0b0045
-			public const int search_badge = 2131427397;
-			
-			// aapt resource value: 0x7f0b0044
-			public const int search_bar = 2131427396;
-			
-			// aapt resource value: 0x7f0b0046
-			public const int search_button = 2131427398;
-			
-			// aapt resource value: 0x7f0b004b
-			public const int search_close_btn = 2131427403;
+			public const int scrollView = 2131427381;
 			
 			// aapt resource value: 0x7f0b0047
-			public const int search_edit_frame = 2131427399;
+			public const int search_badge = 2131427399;
 			
-			// aapt resource value: 0x7f0b004d
-			public const int search_go_btn = 2131427405;
+			// aapt resource value: 0x7f0b0046
+			public const int search_bar = 2131427398;
 			
 			// aapt resource value: 0x7f0b0048
-			public const int search_mag_icon = 2131427400;
+			public const int search_button = 2131427400;
+			
+			// aapt resource value: 0x7f0b004d
+			public const int search_close_btn = 2131427405;
 			
 			// aapt resource value: 0x7f0b0049
-			public const int search_plate = 2131427401;
-			
-			// aapt resource value: 0x7f0b004a
-			public const int search_src_text = 2131427402;
-			
-			// aapt resource value: 0x7f0b004e
-			public const int search_voice_btn = 2131427406;
+			public const int search_edit_frame = 2131427401;
 			
 			// aapt resource value: 0x7f0b004f
-			public const int select_dialog_listview = 2131427407;
+			public const int search_go_btn = 2131427407;
 			
-			// aapt resource value: 0x7f0b003a
-			public const int shortcut = 2131427386;
+			// aapt resource value: 0x7f0b004a
+			public const int search_mag_icon = 2131427402;
+			
+			// aapt resource value: 0x7f0b004b
+			public const int search_plate = 2131427403;
+			
+			// aapt resource value: 0x7f0b004c
+			public const int search_src_text = 2131427404;
+			
+			// aapt resource value: 0x7f0b0050
+			public const int search_voice_btn = 2131427408;
+			
+			// aapt resource value: 0x7f0b0051
+			public const int select_dialog_listview = 2131427409;
+			
+			// aapt resource value: 0x7f0b003c
+			public const int shortcut = 2131427388;
 			
 			// aapt resource value: 0x7f0b000f
 			public const int showCustom = 2131427343;
@@ -1807,17 +1954,17 @@ namespace Phabrik.AndroidApp
 			// aapt resource value: 0x7f0b0011
 			public const int showTitle = 2131427345;
 			
-			// aapt resource value: 0x7f0b0083
-			public const int signInBtn = 2131427459;
+			// aapt resource value: 0x7f0b0097
+			public const int signInBtn = 2131427479;
 			
-			// aapt resource value: 0x7f0b0063
-			public const int signinTextField = 2131427427;
+			// aapt resource value: 0x7f0b0065
+			public const int signinTextField = 2131427429;
 			
-			// aapt resource value: 0x7f0b0085
-			public const int solSysCoord = 2131427461;
+			// aapt resource value: 0x7f0b0099
+			public const int solSysCoord = 2131427481;
 			
-			// aapt resource value: 0x7f0b002c
-			public const int spacer = 2131427372;
+			// aapt resource value: 0x7f0b002e
+			public const int spacer = 2131427374;
 			
 			// aapt resource value: 0x7f0b0007
 			public const int split_action_bar = 2131427335;
@@ -1831,62 +1978,68 @@ namespace Phabrik.AndroidApp
 			// aapt resource value: 0x7f0b0018
 			public const int src_over = 2131427352;
 			
-			// aapt resource value: 0x7f0b006b
-			public const int status_bar_latest_event_content = 2131427435;
+			// aapt resource value: 0x7f0b006d
+			public const int status_bar_latest_event_content = 2131427437;
 			
-			// aapt resource value: 0x7f0b004c
-			public const int submit_area = 2131427404;
+			// aapt resource value: 0x7f0b004e
+			public const int submit_area = 2131427406;
 			
 			// aapt resource value: 0x7f0b000b
 			public const int tabMode = 2131427339;
 			
-			// aapt resource value: 0x7f0b0055
-			public const int tabs = 2131427413;
+			// aapt resource value: 0x7f0b0057
+			public const int tabs = 2131427415;
+			
+			// aapt resource value: 0x7f0b0086
+			public const int tempLabel = 2131427462;
+			
+			// aapt resource value: 0x7f0b0081
+			public const int tempStatic = 2131427457;
+			
+			// aapt resource value: 0x7f0b0075
+			public const int text = 2131427445;
 			
 			// aapt resource value: 0x7f0b0073
-			public const int text = 2131427443;
+			public const int text2 = 2131427443;
 			
-			// aapt resource value: 0x7f0b0071
-			public const int text2 = 2131427441;
+			// aapt resource value: 0x7f0b0055
+			public const int textAboutDavevr = 2131427413;
 			
 			// aapt resource value: 0x7f0b0053
-			public const int textAboutDavevr = 2131427411;
+			public const int textAboutGame = 2131427411;
 			
-			// aapt resource value: 0x7f0b0051
-			public const int textAboutGame = 2131427409;
-			
-			// aapt resource value: 0x7f0b0034
-			public const int textSpacerNoButtons = 2131427380;
-			
-			// aapt resource value: 0x7f0b0057
-			public const int textView1 = 2131427415;
-			
-			// aapt resource value: 0x7f0b005a
-			public const int textView2 = 2131427418;
-			
-			// aapt resource value: 0x7f0b005c
-			public const int textView3 = 2131427420;
+			// aapt resource value: 0x7f0b0036
+			public const int textSpacerNoButtons = 2131427382;
 			
 			// aapt resource value: 0x7f0b0059
-			public const int textView4 = 2131427417;
+			public const int textView1 = 2131427417;
 			
-			// aapt resource value: 0x7f0b006f
-			public const int time = 2131427439;
+			// aapt resource value: 0x7f0b005c
+			public const int textView2 = 2131427420;
 			
-			// aapt resource value: 0x7f0b002a
-			public const int title = 2131427370;
+			// aapt resource value: 0x7f0b005e
+			public const int textView3 = 2131427422;
+			
+			// aapt resource value: 0x7f0b005b
+			public const int textView4 = 2131427419;
+			
+			// aapt resource value: 0x7f0b0071
+			public const int time = 2131427441;
+			
+			// aapt resource value: 0x7f0b002c
+			public const int title = 2131427372;
+			
+			// aapt resource value: 0x7f0b0054
+			public const int titleAboutAuthor = 2131427412;
 			
 			// aapt resource value: 0x7f0b0052
-			public const int titleAboutAuthor = 2131427410;
+			public const int titleAboutGame = 2131427410;
 			
-			// aapt resource value: 0x7f0b0050
-			public const int titleAboutGame = 2131427408;
+			// aapt resource value: 0x7f0b0031
+			public const int title_template = 2131427377;
 			
-			// aapt resource value: 0x7f0b002f
-			public const int title_template = 2131427375;
-			
-			// aapt resource value: 0x7f0b002e
-			public const int topPanel = 2131427374;
+			// aapt resource value: 0x7f0b0030
+			public const int topPanel = 2131427376;
 			
 			// aapt resource value: 0x7f0b0008
 			public const int up = 2131427336;
@@ -1894,23 +2047,29 @@ namespace Phabrik.AndroidApp
 			// aapt resource value: 0x7f0b0012
 			public const int useLogo = 2131427346;
 			
-			// aapt resource value: 0x7f0b007b
-			public const int userImage = 2131427451;
+			// aapt resource value: 0x7f0b008f
+			public const int userImage = 2131427471;
 			
-			// aapt resource value: 0x7f0b005b
-			public const int userNameField = 2131427419;
+			// aapt resource value: 0x7f0b005d
+			public const int userNameField = 2131427421;
 			
-			// aapt resource value: 0x7f0b007f
-			public const int usernameLabel = 2131427455;
+			// aapt resource value: 0x7f0b0093
+			public const int usernameLabel = 2131427475;
 			
-			// aapt resource value: 0x7f0b0080
-			public const int usernameText = 2131427456;
+			// aapt resource value: 0x7f0b0094
+			public const int usernameText = 2131427476;
 			
 			// aapt resource value: 0x7f0b0020
 			public const int withText = 2131427360;
 			
 			// aapt resource value: 0x7f0b0013
 			public const int wrap_content = 2131427347;
+			
+			// aapt resource value: 0x7f0b0087
+			public const int yearLabel = 2131427463;
+			
+			// aapt resource value: 0x7f0b0082
+			public const int yearStatic = 2131427458;
 			
 			static Id()
 			{
@@ -2077,25 +2236,34 @@ namespace Phabrik.AndroidApp
 			public const int PlanetListItemLayout = 2130903079;
 			
 			// aapt resource value: 0x7f030028
-			public const int PointOfPresenceLayout = 2130903080;
+			public const int PlanetPopLayout = 2130903080;
 			
 			// aapt resource value: 0x7f030029
-			public const int ProfileLayout = 2130903081;
+			public const int PointOfPresenceLayout = 2130903081;
 			
 			// aapt resource value: 0x7f03002a
-			public const int select_dialog_item_material = 2130903082;
+			public const int ProfileLayout = 2130903082;
 			
 			// aapt resource value: 0x7f03002b
-			public const int select_dialog_multichoice_material = 2130903083;
+			public const int psts_tab = 2130903083;
 			
 			// aapt resource value: 0x7f03002c
-			public const int select_dialog_singlechoice_material = 2130903084;
+			public const int SectorPopLayout = 2130903084;
 			
 			// aapt resource value: 0x7f03002d
-			public const int SolSysPopLayout = 2130903085;
+			public const int select_dialog_item_material = 2130903085;
 			
 			// aapt resource value: 0x7f03002e
-			public const int support_simple_spinner_dropdown_item = 2130903086;
+			public const int select_dialog_multichoice_material = 2130903086;
+			
+			// aapt resource value: 0x7f03002f
+			public const int select_dialog_singlechoice_material = 2130903087;
+			
+			// aapt resource value: 0x7f030030
+			public const int SolSysPopLayout = 2130903088;
+			
+			// aapt resource value: 0x7f030031
+			public const int support_simple_spinner_dropdown_item = 2130903089;
 			
 			static Layout()
 			{
@@ -4082,6 +4250,76 @@ namespace Phabrik.AndroidApp
 			
 			// aapt resource value: 7
 			public const int MenuView_preserveIconSpacing = 7;
+			
+			public static int[] PagerSlidingTabStrip = new int[] {
+					2130772177,
+					2130772178,
+					2130772179,
+					2130772180,
+					2130772181,
+					2130772182,
+					2130772183,
+					2130772184,
+					2130772185,
+					2130772186,
+					2130772187,
+					2130772188,
+					2130772189,
+					2130772190,
+					2130772191,
+					2130772192,
+					2130772193};
+			
+			// aapt resource value: 2
+			public const int PagerSlidingTabStrip_pstsDividerColor = 2;
+			
+			// aapt resource value: 6
+			public const int PagerSlidingTabStrip_pstsDividerPadding = 6;
+			
+			// aapt resource value: 3
+			public const int PagerSlidingTabStrip_pstsDividerWidth = 3;
+			
+			// aapt resource value: 0
+			public const int PagerSlidingTabStrip_pstsIndicatorColor = 0;
+			
+			// aapt resource value: 4
+			public const int PagerSlidingTabStrip_pstsIndicatorHeight = 4;
+			
+			// aapt resource value: 12
+			public const int PagerSlidingTabStrip_pstsPaddingMiddle = 12;
+			
+			// aapt resource value: 8
+			public const int PagerSlidingTabStrip_pstsScrollOffset = 8;
+			
+			// aapt resource value: 10
+			public const int PagerSlidingTabStrip_pstsShouldExpand = 10;
+			
+			// aapt resource value: 9
+			public const int PagerSlidingTabStrip_pstsTabBackground = 9;
+			
+			// aapt resource value: 7
+			public const int PagerSlidingTabStrip_pstsTabPaddingLeftRight = 7;
+			
+			// aapt resource value: 11
+			public const int PagerSlidingTabStrip_pstsTextAllCaps = 11;
+			
+			// aapt resource value: 14
+			public const int PagerSlidingTabStrip_pstsTextAlpha = 14;
+			
+			// aapt resource value: 13
+			public const int PagerSlidingTabStrip_pstsTextColorSelected = 13;
+			
+			// aapt resource value: 16
+			public const int PagerSlidingTabStrip_pstsTextSelectedStyle = 16;
+			
+			// aapt resource value: 15
+			public const int PagerSlidingTabStrip_pstsTextStyle = 15;
+			
+			// aapt resource value: 1
+			public const int PagerSlidingTabStrip_pstsUnderlineColor = 1;
+			
+			// aapt resource value: 5
+			public const int PagerSlidingTabStrip_pstsUnderlineHeight = 5;
 			
 			public static int[] PopupWindow = new int[] {
 					16843126,
