@@ -16,6 +16,8 @@ namespace Phabrik.AndroidApp
     public class PopSubFragment : Android.Support.V4.App.Fragment
     {
         public PointOfPresenceFragment parent { get; set; }
-        
+
+
+        public virtual void Initialize() { }
     }
 }

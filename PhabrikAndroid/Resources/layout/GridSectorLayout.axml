@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:src="@android:drawable/ic_menu_gallery"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/backgroundImage" />
+    <TextView
+        android:text="x,y"
+        android:textSize="9dp"
+        android:layout_width="16dp"
+        android:background="@color/Phabrik_blue"
+         android:textColor="@color/Phabrik_white"
+        android:layout_height="16dp"
+        android:id="@+id/coordLabel" />
+  <View
+    android:id="@+id/nighttime"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:alpha=".5"
+    android:background="@color/Phabrik_black" />
+</RelativeLayout>

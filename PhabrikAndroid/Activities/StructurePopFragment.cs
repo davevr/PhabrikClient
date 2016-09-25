@@ -14,8 +14,8 @@ using Android.Widget;
 
 namespace Phabrik.AndroidApp
 {
-	public class StructurePopFragment : PointOfPresenceFragment
-	{
+	public class StructurePopFragment : PopSubFragment
+    {
 		public override void OnCreate(Bundle savedInstanceState)
 		{
 			base.OnCreate(savedInstanceState);

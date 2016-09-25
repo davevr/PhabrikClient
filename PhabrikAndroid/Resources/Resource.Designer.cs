@@ -850,6 +850,9 @@ namespace Phabrik.AndroidApp
 			// aapt resource value: 0x7f0a0041
 			public const int Phabrik_blue = 2131361857;
 			
+			// aapt resource value: 0x7f0a0042
+			public const int Phabrik_darkgray = 2131361858;
+			
 			// aapt resource value: 0x7f0a003d
 			public const int Phabrik_green = 2131361853;
 			
@@ -865,32 +868,32 @@ namespace Phabrik.AndroidApp
 			// aapt resource value: 0x7f0a003f
 			public const int Phabrik_yellow = 2131361855;
 			
-			// aapt resource value: 0x7f0a0042
-			public const int abc_background_cache_hint_selector_material_dark = 2131361858;
-			
 			// aapt resource value: 0x7f0a0043
-			public const int abc_background_cache_hint_selector_material_light = 2131361859;
+			public const int abc_background_cache_hint_selector_material_dark = 2131361859;
 			
 			// aapt resource value: 0x7f0a0044
-			public const int abc_color_highlight_material = 2131361860;
+			public const int abc_background_cache_hint_selector_material_light = 2131361860;
+			
+			// aapt resource value: 0x7f0a0045
+			public const int abc_color_highlight_material = 2131361861;
 			
 			// aapt resource value: 0x7f0a0000
 			public const int abc_input_method_navigation_guard = 2131361792;
 			
-			// aapt resource value: 0x7f0a0045
-			public const int abc_primary_text_disable_only_material_dark = 2131361861;
-			
 			// aapt resource value: 0x7f0a0046
-			public const int abc_primary_text_disable_only_material_light = 2131361862;
+			public const int abc_primary_text_disable_only_material_dark = 2131361862;
 			
 			// aapt resource value: 0x7f0a0047
-			public const int abc_primary_text_material_dark = 2131361863;
+			public const int abc_primary_text_disable_only_material_light = 2131361863;
 			
 			// aapt resource value: 0x7f0a0048
-			public const int abc_primary_text_material_light = 2131361864;
+			public const int abc_primary_text_material_dark = 2131361864;
 			
 			// aapt resource value: 0x7f0a0049
-			public const int abc_search_url_text = 2131361865;
+			public const int abc_primary_text_material_light = 2131361865;
+			
+			// aapt resource value: 0x7f0a004a
+			public const int abc_search_url_text = 2131361866;
 			
 			// aapt resource value: 0x7f0a0001
 			public const int abc_search_url_text_normal = 2131361793;
@@ -901,11 +904,11 @@ namespace Phabrik.AndroidApp
 			// aapt resource value: 0x7f0a0003
 			public const int abc_search_url_text_selected = 2131361795;
 			
-			// aapt resource value: 0x7f0a004a
-			public const int abc_secondary_text_material_dark = 2131361866;
-			
 			// aapt resource value: 0x7f0a004b
-			public const int abc_secondary_text_material_light = 2131361867;
+			public const int abc_secondary_text_material_dark = 2131361867;
+			
+			// aapt resource value: 0x7f0a004c
+			public const int abc_secondary_text_material_light = 2131361868;
 			
 			// aapt resource value: 0x7f0a0004
 			public const int accent_material_dark = 2131361796;
@@ -1066,11 +1069,11 @@ namespace Phabrik.AndroidApp
 			// aapt resource value: 0x7f0a0037
 			public const int switch_thumb_disabled_material_light = 2131361847;
 			
-			// aapt resource value: 0x7f0a004c
-			public const int switch_thumb_material_dark = 2131361868;
-			
 			// aapt resource value: 0x7f0a004d
-			public const int switch_thumb_material_light = 2131361869;
+			public const int switch_thumb_material_dark = 2131361869;
+			
+			// aapt resource value: 0x7f0a004e
+			public const int switch_thumb_material_light = 2131361870;
 			
 			// aapt resource value: 0x7f0a0038
 			public const int switch_thumb_normal_material_dark = 2131361848;
@@ -1603,29 +1606,47 @@ namespace Phabrik.AndroidApp
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f0b0064
-			public const int AutoSignIn = 2131427428;
+			// aapt resource value: 0x7f0b0067
+			public const int AutoSignIn = 2131427431;
 			
-			// aapt resource value: 0x7f0b008f
-			public const int FragmentHolder = 2131427471;
+			// aapt resource value: 0x7f0b0093
+			public const int FragmentHolder = 2131427475;
+			
+			// aapt resource value: 0x7f0b0095
+			public const int GalaxyBtn = 2131427477;
 			
 			// aapt resource value: 0x7f0b0056
 			public const int ItemName = 2131427414;
 			
-			// aapt resource value: 0x7f0b008e
-			public const int Map = 2131427470;
+			// aapt resource value: 0x7f0b0092
+			public const int Map = 2131427474;
 			
-			// aapt resource value: 0x7f0b008b
-			public const int PlanetInfo = 2131427467;
+			// aapt resource value: 0x7f0b0081
+			public const int MoreInfo = 2131427457;
 			
-			// aapt resource value: 0x7f0b0063
-			public const int SignInBtn = 2131427427;
+			// aapt resource value: 0x7f0b0097
+			public const int PlanetBtn = 2131427479;
 			
-			// aapt resource value: 0x7f0b009a
-			public const int SolSysTitle = 2131427482;
+			// aapt resource value: 0x7f0b008f
+			public const int PlanetInfo = 2131427471;
 			
-			// aapt resource value: 0x7f0b006b
-			public const int action0 = 2131427435;
+			// aapt resource value: 0x7f0b0098
+			public const int SectorBtn = 2131427480;
+			
+			// aapt resource value: 0x7f0b0066
+			public const int SignInBtn = 2131427430;
+			
+			// aapt resource value: 0x7f0b0096
+			public const int SolSysBtn = 2131427478;
+			
+			// aapt resource value: 0x7f0b00a3
+			public const int SolSysTitle = 2131427491;
+			
+			// aapt resource value: 0x7f0b0099
+			public const int StructureBtn = 2131427481;
+			
+			// aapt resource value: 0x7f0b006e
+			public const int action0 = 2131427438;
 			
 			// aapt resource value: 0x7f0b0043
 			public const int action_bar = 2131427395;
@@ -1651,8 +1672,8 @@ namespace Phabrik.AndroidApp
 			// aapt resource value: 0x7f0b0044
 			public const int action_context_bar = 2131427396;
 			
-			// aapt resource value: 0x7f0b006f
-			public const int action_divider = 2131427439;
+			// aapt resource value: 0x7f0b0072
+			public const int action_divider = 2131427442;
 			
 			// aapt resource value: 0x7f0b0002
 			public const int action_menu_divider = 2131427330;
@@ -1678,6 +1699,9 @@ namespace Phabrik.AndroidApp
 			// aapt resource value: 0x7f0b001c
 			public const int always = 2131427356;
 			
+			// aapt resource value: 0x7f0b0059
+			public const int backgroundImage = 2131427417;
+			
 			// aapt resource value: 0x7f0b0019
 			public const int beginning = 2131427353;
 			
@@ -1687,38 +1711,41 @@ namespace Phabrik.AndroidApp
 			// aapt resource value: 0x7f0b002d
 			public const int buttonPanel = 2131427373;
 			
-			// aapt resource value: 0x7f0b006c
-			public const int cancel_action = 2131427436;
+			// aapt resource value: 0x7f0b006f
+			public const int cancel_action = 2131427439;
 			
-			// aapt resource value: 0x7f0b0092
-			public const int changeImageBtn = 2131427474;
+			// aapt resource value: 0x7f0b009b
+			public const int changeImageBtn = 2131427483;
 			
-			// aapt resource value: 0x7f0b0098
-			public const int changePwdBtn = 2131427480;
+			// aapt resource value: 0x7f0b00a1
+			public const int changePwdBtn = 2131427489;
 			
 			// aapt resource value: 0x7f0b003b
 			public const int checkbox = 2131427387;
 			
-			// aapt resource value: 0x7f0b0072
-			public const int chronometer = 2131427442;
+			// aapt resource value: 0x7f0b0075
+			public const int chronometer = 2131427445;
 			
 			// aapt resource value: 0x7f0b001d
 			public const int collapseActionView = 2131427357;
 			
-			// aapt resource value: 0x7f0b0061
-			public const int confirmField = 2131427425;
+			// aapt resource value: 0x7f0b0064
+			public const int confirmField = 2131427428;
 			
-			// aapt resource value: 0x7f0b0060
-			public const int confirmText = 2131427424;
+			// aapt resource value: 0x7f0b0063
+			public const int confirmText = 2131427427;
 			
 			// aapt resource value: 0x7f0b0033
 			public const int contentPanel = 2131427379;
 			
-			// aapt resource value: 0x7f0b0079
-			public const int counter = 2131427449;
+			// aapt resource value: 0x7f0b005a
+			public const int coordLabel = 2131427418;
 			
-			// aapt resource value: 0x7f0b0062
-			public const int createBtn = 2131427426;
+			// aapt resource value: 0x7f0b007c
+			public const int counter = 2131427452;
+			
+			// aapt resource value: 0x7f0b0065
+			public const int createBtn = 2131427429;
 			
 			// aapt resource value: 0x7f0b0039
 			public const int custom = 2131427385;
@@ -1726,11 +1753,11 @@ namespace Phabrik.AndroidApp
 			// aapt resource value: 0x7f0b0038
 			public const int customPanel = 2131427384;
 			
-			// aapt resource value: 0x7f0b0088
-			public const int dayLabel = 2131427464;
+			// aapt resource value: 0x7f0b008c
+			public const int dayLabel = 2131427468;
 			
-			// aapt resource value: 0x7f0b0083
-			public const int dayStatic = 2131427459;
+			// aapt resource value: 0x7f0b0087
+			public const int dayStatic = 2131427463;
 			
 			// aapt resource value: 0x7f0b0041
 			public const int decor_content_parent = 2131427393;
@@ -1741,14 +1768,14 @@ namespace Phabrik.AndroidApp
 			// aapt resource value: 0x7f0b000c
 			public const int disableHome = 2131427340;
 			
-			// aapt resource value: 0x7f0b0084
-			public const int distanceLabel = 2131427460;
+			// aapt resource value: 0x7f0b0088
+			public const int distanceLabel = 2131427464;
 			
-			// aapt resource value: 0x7f0b007f
-			public const int distanceStatic = 2131427455;
+			// aapt resource value: 0x7f0b0083
+			public const int distanceStatic = 2131427459;
 			
-			// aapt resource value: 0x7f0b0066
-			public const int drawer_layout = 2131427430;
+			// aapt resource value: 0x7f0b0069
+			public const int drawer_layout = 2131427433;
 			
 			// aapt resource value: 0x7f0b0045
 			public const int edit_query = 2131427397;
@@ -1756,8 +1783,8 @@ namespace Phabrik.AndroidApp
 			// aapt resource value: 0x7f0b001a
 			public const int end = 2131427354;
 			
-			// aapt resource value: 0x7f0b0077
-			public const int end_padder = 2131427447;
+			// aapt resource value: 0x7f0b007a
+			public const int end_padder = 2131427450;
 			
 			// aapt resource value: 0x7f0b0027
 			public const int expand_activities_button = 2131427367;
@@ -1765,17 +1792,17 @@ namespace Phabrik.AndroidApp
 			// aapt resource value: 0x7f0b003a
 			public const int expanded_menu = 2131427386;
 			
-			// aapt resource value: 0x7f0b0090
-			public const int fragment = 2131427472;
+			// aapt resource value: 0x7f0b0094
+			public const int fragment = 2131427476;
 			
-			// aapt resource value: 0x7f0b0067
-			public const int fragmentContainer = 2131427431;
+			// aapt resource value: 0x7f0b006a
+			public const int fragmentContainer = 2131427434;
 			
-			// aapt resource value: 0x7f0b0089
-			public const int gotoPlanetBtn = 2131427465;
+			// aapt resource value: 0x7f0b008d
+			public const int gotoPlanetBtn = 2131427469;
 			
-			// aapt resource value: 0x7f0b007e
-			public const int gridLayout1 = 2131427454;
+			// aapt resource value: 0x7f0b0082
+			public const int gridLayout1 = 2131427458;
 			
 			// aapt resource value: 0x7f0b0004
 			public const int home = 2131427332;
@@ -1783,14 +1810,14 @@ namespace Phabrik.AndroidApp
 			// aapt resource value: 0x7f0b000d
 			public const int homeAsUp = 2131427341;
 			
-			// aapt resource value: 0x7f0b008d
-			public const int hscroller = 2131427469;
+			// aapt resource value: 0x7f0b0091
+			public const int hscroller = 2131427473;
 			
 			// aapt resource value: 0x7f0b002b
 			public const int icon = 2131427371;
 			
-			// aapt resource value: 0x7f0b0069
-			public const int iconview = 2131427433;
+			// aapt resource value: 0x7f0b006c
+			public const int iconview = 2131427436;
 			
 			// aapt resource value: 0x7f0b001e
 			public const int ifRoom = 2131427358;
@@ -1798,26 +1825,23 @@ namespace Phabrik.AndroidApp
 			// aapt resource value: 0x7f0b0028
 			public const int image = 2131427368;
 			
-			// aapt resource value: 0x7f0b0076
-			public const int info = 2131427446;
+			// aapt resource value: 0x7f0b0079
+			public const int info = 2131427449;
 			
 			// aapt resource value: 0x7f0b0022
 			public const int italic = 2131427362;
 			
-			// aapt resource value: 0x7f0b0068
-			public const int left_drawer = 2131427432;
+			// aapt resource value: 0x7f0b006b
+			public const int left_drawer = 2131427435;
 			
-			// aapt resource value: 0x7f0b006a
-			public const int left_drawer_list = 2131427434;
+			// aapt resource value: 0x7f0b006d
+			public const int left_drawer_list = 2131427437;
 			
-			// aapt resource value: 0x7f0b0070
-			public const int line1 = 2131427440;
+			// aapt resource value: 0x7f0b0073
+			public const int line1 = 2131427443;
 			
-			// aapt resource value: 0x7f0b0074
-			public const int line3 = 2131427444;
-			
-			// aapt resource value: 0x7f0b007d
-			public const int linearLayout1 = 2131427453;
+			// aapt resource value: 0x7f0b0077
+			public const int line3 = 2131427447;
 			
 			// aapt resource value: 0x7f0b0009
 			public const int listMode = 2131427337;
@@ -1825,17 +1849,17 @@ namespace Phabrik.AndroidApp
 			// aapt resource value: 0x7f0b002a
 			public const int list_item = 2131427370;
 			
-			// aapt resource value: 0x7f0b005a
-			public const int manualSignIn = 2131427418;
+			// aapt resource value: 0x7f0b005d
+			public const int manualSignIn = 2131427421;
 			
-			// aapt resource value: 0x7f0b0085
-			public const int massLabel = 2131427461;
+			// aapt resource value: 0x7f0b0089
+			public const int massLabel = 2131427465;
 			
-			// aapt resource value: 0x7f0b0080
-			public const int massStatic = 2131427456;
+			// aapt resource value: 0x7f0b0084
+			public const int massStatic = 2131427460;
 			
-			// aapt resource value: 0x7f0b006e
-			public const int media_actions = 2131427438;
+			// aapt resource value: 0x7f0b0071
+			public const int media_actions = 2131427441;
 			
 			// aapt resource value: 0x7f0b001b
 			public const int middle = 2131427355;
@@ -1846,11 +1870,14 @@ namespace Phabrik.AndroidApp
 			// aapt resource value: 0x7f0b001f
 			public const int never = 2131427359;
 			
-			// aapt resource value: 0x7f0b0094
-			public const int nicknameField = 2131427476;
+			// aapt resource value: 0x7f0b009d
+			public const int nicknameField = 2131427485;
 			
-			// aapt resource value: 0x7f0b0093
-			public const int nicknameLabel = 2131427475;
+			// aapt resource value: 0x7f0b009c
+			public const int nicknameLabel = 2131427484;
+			
+			// aapt resource value: 0x7f0b005b
+			public const int nighttime = 2131427419;
 			
 			// aapt resource value: 0x7f0b000e
 			public const int none = 2131427342;
@@ -1861,23 +1888,23 @@ namespace Phabrik.AndroidApp
 			// aapt resource value: 0x7f0b002f
 			public const int parentPanel = 2131427375;
 			
-			// aapt resource value: 0x7f0b005f
-			public const int passwordField = 2131427423;
+			// aapt resource value: 0x7f0b0062
+			public const int passwordField = 2131427426;
 			
-			// aapt resource value: 0x7f0b009c
-			public const int planetCount = 2131427484;
+			// aapt resource value: 0x7f0b00a5
+			public const int planetCount = 2131427493;
 			
-			// aapt resource value: 0x7f0b007b
-			public const int planetImage = 2131427451;
+			// aapt resource value: 0x7f0b007e
+			public const int planetImage = 2131427454;
 			
-			// aapt resource value: 0x7f0b007c
-			public const int planetInfo = 2131427452;
+			// aapt resource value: 0x7f0b007f
+			public const int planetInfo = 2131427455;
 			
-			// aapt resource value: 0x7f0b009d
-			public const int planetList = 2131427485;
+			// aapt resource value: 0x7f0b00a6
+			public const int planetList = 2131427494;
 			
-			// aapt resource value: 0x7f0b007a
-			public const int planetName = 2131427450;
+			// aapt resource value: 0x7f0b007d
+			public const int planetName = 2131427453;
 			
 			// aapt resource value: 0x7f0b0058
 			public const int post_pager = 2131427416;
@@ -1888,17 +1915,17 @@ namespace Phabrik.AndroidApp
 			// aapt resource value: 0x7f0b0006
 			public const int progress_horizontal = 2131427334;
 			
-			// aapt resource value: 0x7f0b0078
-			public const int psts_tab_title = 2131427448;
+			// aapt resource value: 0x7f0b007b
+			public const int psts_tab_title = 2131427451;
 			
 			// aapt resource value: 0x7f0b003d
 			public const int radio = 2131427389;
 			
-			// aapt resource value: 0x7f0b0097
-			public const int saveChangesBtn = 2131427479;
+			// aapt resource value: 0x7f0b00a0
+			public const int saveChangesBtn = 2131427488;
 			
-			// aapt resource value: 0x7f0b008a
-			public const int scanPlanetBtn = 2131427466;
+			// aapt resource value: 0x7f0b008e
+			public const int scanPlanetBtn = 2131427470;
 			
 			// aapt resource value: 0x7f0b0015
 			public const int screen = 2131427349;
@@ -1954,17 +1981,20 @@ namespace Phabrik.AndroidApp
 			// aapt resource value: 0x7f0b0010
 			public const int showHome = 2131427344;
 			
+			// aapt resource value: 0x7f0b0080
+			public const int showMore = 2131427456;
+			
 			// aapt resource value: 0x7f0b0011
 			public const int showTitle = 2131427345;
 			
-			// aapt resource value: 0x7f0b0099
-			public const int signInBtn = 2131427481;
+			// aapt resource value: 0x7f0b00a2
+			public const int signInBtn = 2131427490;
 			
-			// aapt resource value: 0x7f0b0065
-			public const int signinTextField = 2131427429;
+			// aapt resource value: 0x7f0b0068
+			public const int signinTextField = 2131427432;
 			
-			// aapt resource value: 0x7f0b009b
-			public const int solSysCoord = 2131427483;
+			// aapt resource value: 0x7f0b00a4
+			public const int solSysCoord = 2131427492;
 			
 			// aapt resource value: 0x7f0b002e
 			public const int spacer = 2131427374;
@@ -1981,8 +2011,8 @@ namespace Phabrik.AndroidApp
 			// aapt resource value: 0x7f0b0018
 			public const int src_over = 2131427352;
 			
-			// aapt resource value: 0x7f0b006d
-			public const int status_bar_latest_event_content = 2131427437;
+			// aapt resource value: 0x7f0b0070
+			public const int status_bar_latest_event_content = 2131427440;
 			
 			// aapt resource value: 0x7f0b004e
 			public const int submit_area = 2131427406;
@@ -1993,17 +2023,17 @@ namespace Phabrik.AndroidApp
 			// aapt resource value: 0x7f0b0057
 			public const int tabs = 2131427415;
 			
-			// aapt resource value: 0x7f0b0086
-			public const int tempLabel = 2131427462;
+			// aapt resource value: 0x7f0b008a
+			public const int tempLabel = 2131427466;
 			
-			// aapt resource value: 0x7f0b0081
-			public const int tempStatic = 2131427457;
+			// aapt resource value: 0x7f0b0085
+			public const int tempStatic = 2131427461;
 			
-			// aapt resource value: 0x7f0b0075
-			public const int text = 2131427445;
+			// aapt resource value: 0x7f0b0078
+			public const int text = 2131427448;
 			
-			// aapt resource value: 0x7f0b0073
-			public const int text2 = 2131427443;
+			// aapt resource value: 0x7f0b0076
+			public const int text2 = 2131427446;
 			
 			// aapt resource value: 0x7f0b0055
 			public const int textAboutDavevr = 2131427413;
@@ -2014,20 +2044,20 @@ namespace Phabrik.AndroidApp
 			// aapt resource value: 0x7f0b0036
 			public const int textSpacerNoButtons = 2131427382;
 			
-			// aapt resource value: 0x7f0b0059
-			public const int textView1 = 2131427417;
-			
 			// aapt resource value: 0x7f0b005c
-			public const int textView2 = 2131427420;
+			public const int textView1 = 2131427420;
+			
+			// aapt resource value: 0x7f0b005f
+			public const int textView2 = 2131427423;
+			
+			// aapt resource value: 0x7f0b0061
+			public const int textView3 = 2131427425;
 			
 			// aapt resource value: 0x7f0b005e
-			public const int textView3 = 2131427422;
+			public const int textView4 = 2131427422;
 			
-			// aapt resource value: 0x7f0b005b
-			public const int textView4 = 2131427419;
-			
-			// aapt resource value: 0x7f0b0071
-			public const int time = 2131427441;
+			// aapt resource value: 0x7f0b0074
+			public const int time = 2131427444;
 			
 			// aapt resource value: 0x7f0b002c
 			public const int title = 2131427372;
@@ -2050,20 +2080,20 @@ namespace Phabrik.AndroidApp
 			// aapt resource value: 0x7f0b0012
 			public const int useLogo = 2131427346;
 			
-			// aapt resource value: 0x7f0b0091
-			public const int userImage = 2131427473;
+			// aapt resource value: 0x7f0b009a
+			public const int userImage = 2131427482;
 			
-			// aapt resource value: 0x7f0b005d
-			public const int userNameField = 2131427421;
+			// aapt resource value: 0x7f0b0060
+			public const int userNameField = 2131427424;
 			
-			// aapt resource value: 0x7f0b0095
-			public const int usernameLabel = 2131427477;
+			// aapt resource value: 0x7f0b009e
+			public const int usernameLabel = 2131427486;
 			
-			// aapt resource value: 0x7f0b0096
-			public const int usernameText = 2131427478;
+			// aapt resource value: 0x7f0b009f
+			public const int usernameText = 2131427487;
 			
-			// aapt resource value: 0x7f0b008c
-			public const int vscroller = 2131427468;
+			// aapt resource value: 0x7f0b0090
+			public const int vscroller = 2131427472;
 			
 			// aapt resource value: 0x7f0b0020
 			public const int withText = 2131427360;
@@ -2071,11 +2101,11 @@ namespace Phabrik.AndroidApp
 			// aapt resource value: 0x7f0b0013
 			public const int wrap_content = 2131427347;
 			
-			// aapt resource value: 0x7f0b0087
-			public const int yearLabel = 2131427463;
+			// aapt resource value: 0x7f0b008b
+			public const int yearLabel = 2131427467;
 			
-			// aapt resource value: 0x7f0b0082
-			public const int yearStatic = 2131427458;
+			// aapt resource value: 0x7f0b0086
+			public const int yearStatic = 2131427462;
 			
 			static Id()
 			{
@@ -2200,76 +2230,100 @@ namespace Phabrik.AndroidApp
 			public const int AboutLayout = 2130903065;
 			
 			// aapt resource value: 0x7f03001a
-			public const int DrawerListItem = 2130903066;
+			public const int ArmyDetailLayout = 2130903066;
 			
 			// aapt resource value: 0x7f03001b
-			public const int GameLayout = 2130903067;
+			public const int DrawerListItem = 2130903067;
 			
 			// aapt resource value: 0x7f03001c
-			public const int LoginLayout = 2130903068;
+			public const int FleetDetailLayout = 2130903068;
 			
 			// aapt resource value: 0x7f03001d
-			public const int Main = 2130903069;
+			public const int FleetListLayout = 2130903069;
 			
 			// aapt resource value: 0x7f03001e
-			public const int notification_media_action = 2130903070;
+			public const int GalaxyPopLayout = 2130903070;
 			
 			// aapt resource value: 0x7f03001f
-			public const int notification_media_cancel_action = 2130903071;
+			public const int GameLayout = 2130903071;
 			
 			// aapt resource value: 0x7f030020
-			public const int notification_template_big_media = 2130903072;
+			public const int GridSectorLayout = 2130903072;
 			
 			// aapt resource value: 0x7f030021
-			public const int notification_template_big_media_narrow = 2130903073;
+			public const int LoginLayout = 2130903073;
 			
 			// aapt resource value: 0x7f030022
-			public const int notification_template_lines = 2130903074;
+			public const int Main = 2130903074;
 			
 			// aapt resource value: 0x7f030023
-			public const int notification_template_media = 2130903075;
+			public const int notification_media_action = 2130903075;
 			
 			// aapt resource value: 0x7f030024
-			public const int notification_template_part_chronometer = 2130903076;
+			public const int notification_media_cancel_action = 2130903076;
 			
 			// aapt resource value: 0x7f030025
-			public const int notification_template_part_time = 2130903077;
+			public const int notification_template_big_media = 2130903077;
 			
 			// aapt resource value: 0x7f030026
-			public const int NotifyTabView = 2130903078;
+			public const int notification_template_big_media_narrow = 2130903078;
 			
 			// aapt resource value: 0x7f030027
-			public const int PlanetListItemLayout = 2130903079;
+			public const int notification_template_lines = 2130903079;
 			
 			// aapt resource value: 0x7f030028
-			public const int PlanetPopLayout = 2130903080;
+			public const int notification_template_media = 2130903080;
 			
 			// aapt resource value: 0x7f030029
-			public const int PointOfPresenceLayout = 2130903081;
+			public const int notification_template_part_chronometer = 2130903081;
 			
 			// aapt resource value: 0x7f03002a
-			public const int ProfileLayout = 2130903082;
+			public const int notification_template_part_time = 2130903082;
 			
 			// aapt resource value: 0x7f03002b
-			public const int psts_tab = 2130903083;
+			public const int NotifyTabView = 2130903083;
 			
 			// aapt resource value: 0x7f03002c
-			public const int SectorPopLayout = 2130903084;
+			public const int PlanetListItemLayout = 2130903084;
 			
 			// aapt resource value: 0x7f03002d
-			public const int select_dialog_item_material = 2130903085;
+			public const int PlanetPopLayout = 2130903085;
 			
 			// aapt resource value: 0x7f03002e
-			public const int select_dialog_multichoice_material = 2130903086;
+			public const int PointOfPresenceLayout = 2130903086;
 			
 			// aapt resource value: 0x7f03002f
-			public const int select_dialog_singlechoice_material = 2130903087;
+			public const int ProfileLayout = 2130903087;
 			
 			// aapt resource value: 0x7f030030
-			public const int SolSysPopLayout = 2130903088;
+			public const int psts_tab = 2130903088;
 			
 			// aapt resource value: 0x7f030031
-			public const int support_simple_spinner_dropdown_item = 2130903089;
+			public const int SectorPopLayout = 2130903089;
+			
+			// aapt resource value: 0x7f030032
+			public const int select_dialog_item_material = 2130903090;
+			
+			// aapt resource value: 0x7f030033
+			public const int select_dialog_multichoice_material = 2130903091;
+			
+			// aapt resource value: 0x7f030034
+			public const int select_dialog_singlechoice_material = 2130903092;
+			
+			// aapt resource value: 0x7f030035
+			public const int ShipDetailLayout = 2130903093;
+			
+			// aapt resource value: 0x7f030036
+			public const int SolSysPopLayout = 2130903094;
+			
+			// aapt resource value: 0x7f030037
+			public const int StructurePopLayout = 2130903095;
+			
+			// aapt resource value: 0x7f030038
+			public const int support_simple_spinner_dropdown_item = 2130903096;
+			
+			// aapt resource value: 0x7f030039
+			public const int TroopDetailLayout = 2130903097;
 			
 			static Layout()
 			{

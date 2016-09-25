@@ -14,6 +14,7 @@ namespace Phabrik.Core
             Gas,
             Dirt,
             Water,
+            Grass,
             Unknown
         }
 
@@ -49,6 +50,43 @@ namespace Phabrik.Core
                 structures.Add(newStruct);
             }
 
+        }
+
+        public string TextureURL
+        {
+            get
+            {
+                string url = "";
+
+                switch (surfaceType)
+                {
+                    case SurfaceType.Rock:
+                        url = "RockTerrain";
+                        break;
+                    case SurfaceType.Gas:
+                        url = "GasTerrain";
+                        break;
+                    case SurfaceType.Dirt:
+                        url = "DirtTerrain";
+                        break;
+                    case SurfaceType.Water:
+                        url = "WaterTerrain";
+                        break;
+                    case SurfaceType.Grass:
+                        url = "GrassTerrain";
+                        break;
+                    case SurfaceType.Ice:
+                        url = "IceTerrain";
+                        break;
+                    case SurfaceType.Unknown:
+                        url = "UnknownTerrain";
+                        break;
+                }
+
+
+
+                return PhabrikServer.BaseImageUrl + url + ".jpg";
+            }
         }
 
     }

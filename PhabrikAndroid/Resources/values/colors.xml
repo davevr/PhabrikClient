@@ -7,4 +7,5 @@
 	<color name="Phabrik_yellow">#FFFF00</color>
 	<color name="Phabrik_orange">#FF8000</color>
 	<color name="Phabrik_blue">#0000FF</color>
+  <color name="Phabrik_darkgray">#404040</color>
 </resources>

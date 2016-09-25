@@ -95,6 +95,9 @@
     <Compile Include="..\PhabrikREST\FarmObj.cs">
       <Link>PhabrikREST\FarmObj.cs</Link>
     </Compile>
+    <Compile Include="..\PhabrikREST\FleetObj.cs">
+      <Link>PhabrikREST\FleetObj.cs</Link>
+    </Compile>
     <Compile Include="..\PhabrikREST\Gas.cs">
       <Link>PhabrikREST\Gas.cs</Link>
     </Compile>
@@ -142,6 +145,7 @@
     </Compile>
     <Compile Include="Activities\PopSubFragment.cs" />
     <Compile Include="MainActivity.cs" />
+    <Compile Include="PhabrikREST\ShipRecordObj.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Activities\GameFragment.cs" />
@@ -167,6 +171,30 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\SectorPopLayout.axml" />
+    <AndroidResource Include="Resources\layout\GridSectorLayout.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\GalaxyPopLayout.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\StructurePopLayout.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\FleetListLayout.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\FleetDetailLayout.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\ShipDetailLayout.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\ArmyDetailLayout.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\TroopDetailLayout.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml">
@@ -184,7 +212,9 @@
     <AndroidResource Include="Resources\drawable\RounderCorner.xml" />
     <AndroidResource Include="Resources\values\dimens.xml" />
     <AndroidResource Include="Resources\layout\SolSysPopLayout.axml" />
-    <AndroidResource Include="Resources\layout\PlanetListItemLayout.axml" />
+    <AndroidResource Include="Resources\layout\PlanetListItemLayout.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />

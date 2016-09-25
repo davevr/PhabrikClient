@@ -18,7 +18,6 @@ namespace Phabrik.AndroidApp
 {
 	public class SolSysPopFragment : PopSubFragment
     {
-		private SolSysObj curSystem;
         private TextView titleText;
         private TextView coordText;
         private TextView planetCountText;
@@ -53,22 +52,16 @@ namespace Phabrik.AndroidApp
 
 		public void InitializeForXYZ(int xLoc, int yLoc, int zLoc)
 		{
-			PhabrikServer.FetchSolSys(xLoc, yLoc, zLoc, (theSys) =>
-			{
-				if (theSys != null)
-				{
-					curSystem = theSys;
-                    this.Activity.RunOnUiThread(() =>
-                    {
-                        UpdateForNewSystem();
-                    });
-				}
-			});
+			
 		}
 
         public override void OnActivityCreated(Bundle savedInstanceState)
         {
             base.OnActivityCreated(savedInstanceState);
+            this.Activity.RunOnUiThread(() =>
+            {
+                UpdateForNewSystem();
+            });
         }
 
         public override void OnResume()
@@ -77,13 +70,15 @@ namespace Phabrik.AndroidApp
         }
         private void UpdateForNewSystem()
         {
-            titleText.Text = curSystem.systemName;
-            coordText.Text = string.Format("coord: X:{0}, Y:{1}, Z:{2}", curSystem.xLoc, curSystem.yLoc, curSystem.zLoc);
-            planetCountText.Text = string.Format("{0} planets", curSystem.suns[0].planets.Count);
-            adapter = new PlanetListAdapter(this, curSystem.suns[0].planets);
+            if (parent.pop.curSolSys != null) { 
+            titleText.Text = parent.pop.curSolSys.systemName;
+            coordText.Text = string.Format("coord: X:{0}, Y:{1}, Z:{2}", parent.pop.curSolSys.xLoc, parent.pop.curSolSys.yLoc, parent.pop.curSolSys.zLoc);
+            planetCountText.Text = string.Format("{0} planets", parent.pop.curSolSys.suns[0].planets.Count);
+            adapter = new PlanetListAdapter(this, parent.pop.curSolSys.suns[0].planets);
             planetList.Adapter = adapter;
 
             RefreshListView();
+            }
 
         }
 
@@ -104,11 +99,16 @@ namespace Phabrik.AndroidApp
         public List<PlanetObj> allItems;
         SolSysPopFragment fragment;
         static double EARTH_RADIUS_SQRT = Math.Sqrt(6378.0);
+        private bool[] expandMap;
+
+
         public PlanetListAdapter(SolSysPopFragment context, List<PlanetObj> theItems) : base()
         {
             this.fragment = context;
             this.allItems = theItems;
+            expandMap = new bool[theItems.Count];
         }
+
         public override long GetItemId(int position)
         {
             return position;
@@ -139,6 +139,8 @@ namespace Phabrik.AndroidApp
             var yearLabel = view.FindViewById<TextView>(Resource.Id.yearLabel);
             var scanBtn = view.FindViewById<Button>(Resource.Id.scanPlanetBtn);
             var gotoBtn = view.FindViewById<Button>(Resource.Id.gotoPlanetBtn);
+            var showMoreBtn = view.FindViewById<TextView>(Resource.Id.showMore);
+            var layout = view.FindViewById<LinearLayout>(Resource.Id.MoreInfo);
 
             if (convertView == null)
             {
@@ -157,13 +159,16 @@ namespace Phabrik.AndroidApp
                 tempLabel.SetTypeface(MainActivity.bodyFace, TypefaceStyle.Normal);
                 dayLabel.SetTypeface(MainActivity.bodyFace, TypefaceStyle.Normal);
                 yearLabel.SetTypeface(MainActivity.bodyFace, TypefaceStyle.Normal);
-
+                showMoreBtn.SetTypeface(MainActivity.bodyFace, TypefaceStyle.Italic);
 
 
                 scanBtn.Click += ScanBtn_Click;
                 gotoBtn.Click += GotoBtn_Click;
+                showMoreBtn.Click += ShowMoreBtn_Click;
 
             }
+
+
 
             PlanetObj curItem = allItems[position];
             Koush.UrlImageViewHelper.SetUrlDrawable(imageView, curItem.ImageUrl, Resource.Drawable.Icon);
@@ -196,7 +201,43 @@ namespace Phabrik.AndroidApp
 
             scanBtn.Tag = curItem.Id;
             gotoBtn.Tag = curItem.Id;
+            layout.Tag = position;
+
+            if (expandMap[position])
+            {
+                layout.Visibility = ViewStates.Visible;
+                showMoreBtn.Text = "hide details";
+            } else
+            {
+                layout.Visibility = ViewStates.Gone;
+                showMoreBtn.Text = "show details";
+            }
+
             return view;
+        }
+
+        private void ShowMoreBtn_Click(object sender, EventArgs e)
+        {
+            TextView theText = sender as TextView;
+
+            if (theText != null)
+            {
+                var parentView = theText.Parent as View;
+                LinearLayout layout = parentView.FindViewById<LinearLayout>(Resource.Id.MoreInfo);
+
+                if (layout.Visibility == ViewStates.Gone)
+                {
+                    layout.Visibility = ViewStates.Visible;
+                    theText.Text = "hide details";
+                    expandMap[(int)layout.Tag] = true;
+                } else
+                {
+                    layout.Visibility = ViewStates.Gone;
+                    theText.Text = "show details";
+                    expandMap[(int)layout.Tag] = false;
+                }
+            }
+   
         }
 
         private void GotoBtn_Click(object sender, EventArgs e)
@@ -206,7 +247,7 @@ namespace Phabrik.AndroidApp
             if (gotoBtn != null)
             {
                 long planetId = (long)gotoBtn.Tag;
-                fragment.parent.InstallPlanet(planetId);
+                fragment.parent.GotoPlanet(planetId);
                 
             }
         }

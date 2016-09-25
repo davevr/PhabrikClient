@@ -14,7 +14,7 @@ using Android.Widget;
 
 namespace Phabrik.AndroidApp
 {
-	public class GalaxyPopFragment : PointOfPresenceFragment
+	public class GalaxyPopFragment : PopSubFragment
 	{
 		public override void OnCreate(Bundle savedInstanceState)
 		{

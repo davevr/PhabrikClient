@@ -122,17 +122,22 @@ namespace Phabrik.AndroidApp
                     {
                         for (int y = 0; y < curPlanet.height; y++)
                         {
-                            TextView newView = new TextView(this.Context);
+                            View newView = Activity.LayoutInflater.Inflate(Resource.Layout.GridSectorLayout, null);
                             gridView.AddView(newView);
                             var gridLayout = new GridLayout.LayoutParams(GridLayout.InvokeSpec(y), GridLayout.InvokeSpec(x));
                             gridLayout.SetMargins(2, 2, 2, 2);
-                            gridLayout.Width = 600;
-                            gridLayout.Height = 600;
+                            gridLayout.Width = 200;
+                            gridLayout.Height = 200;
                             newView.LayoutParameters = gridLayout;
-                            newView.Text = string.Format("{0},{1}", x, y);
-                            newView.SetBackgroundColor(Color.Blue);
-                            newView.SetTextColor(Color.White);
+                            var textField = newView.FindViewById<TextView>(Resource.Id.coordLabel);
+                            textField.Text = string.Format("{0},{1}", x, y);
+                            textField.SetBackgroundColor(Color.Blue);
+                            textField.SetTextColor(Color.White);
 
+
+                            var imageView = newView.FindViewById<ImageView>(Resource.Id.backgroundImage);
+                            SectorObj curSec = curPlanet._sectorArray[x][y];
+                            Koush.UrlImageViewHelper.SetUrlDrawable(imageView, curSec.TextureURL, Resource.Drawable.Icon);
                         }
                     }
                 });
