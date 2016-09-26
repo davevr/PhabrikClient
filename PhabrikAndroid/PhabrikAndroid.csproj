@@ -143,7 +143,10 @@
     <Compile Include="..\PhabrikREST\TerrainObj.cs">
       <Link>PhabrikREST\TerrainObj.cs</Link>
     </Compile>
+    <Compile Include="Activities\FleetListFragment.cs" />
     <Compile Include="Activities\PopSubFragment.cs" />
+    <Compile Include="Activities\ArmyListFragment.cs" />
+    <Compile Include="Activities\ResourcesFragment.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="PhabrikREST\ShipRecordObj.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
@@ -193,6 +196,12 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\TroopDetailLayout.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\ArmyListLayout.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\ResourceListLayout.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
