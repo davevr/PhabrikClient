@@ -11,10 +11,12 @@ using Android.Util;
 using Android.Views;
 using Android.Widget;
 
-namespace Phabrik.AndroidApp.Activities
+namespace Phabrik.AndroidApp
 {
-    public class FleetListFragment : Fragment
+    public class FleetListFragment : Android.Support.V4.App.Fragment
     {
+        public GameFragment gameFragment { get; set; }
+
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);

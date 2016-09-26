@@ -23,18 +23,8 @@ namespace Phabrik.AndroidApp
 			// Use this to return your custom view for this Fragment
 			// return inflater.Inflate(Resource.Layout.YourFragment, container, false);
 
-			var view = inflater.Inflate(Resource.Layout.AboutLayout, container, false);
-			var title = view.FindViewById<TextView>(Resource.Id.titleAboutGame);
-			title.SetTypeface(MainActivity.titleFace, Android.Graphics.TypefaceStyle.Bold);
-
-			title = view.FindViewById<TextView>(Resource.Id.titleAboutAuthor);
-			title.SetTypeface(MainActivity.titleFace, Android.Graphics.TypefaceStyle.Bold);
-
-			title = view.FindViewById<TextView>(Resource.Id.textAboutGame);
-			title.SetTypeface(MainActivity.bodyFace, Android.Graphics.TypefaceStyle.Normal);
-
-			title = view.FindViewById<TextView>(Resource.Id.textAboutDavevr);
-			title.SetTypeface(MainActivity.bodyFace, Android.Graphics.TypefaceStyle.Normal);
+			var view = inflater.Inflate(Resource.Layout.ArmyDetailLayout, container, false);
+			
 
 
 			return view;

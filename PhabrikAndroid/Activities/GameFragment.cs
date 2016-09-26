@@ -29,7 +29,7 @@ namespace Phabrik.AndroidApp
 	{
 		public MainActivity MainPage { get; set; }
 		private Android.Support.V7.Widget.Toolbar toolbar = null;
-		public static List<PointOfPresenceFragment> fragmentList = new List<PointOfPresenceFragment>();
+		public static List<Android.Support.V4.App.Fragment> fragmentList = new List<Android.Support.V4.App.Fragment>();
 		private PagerSlidingTabStrip tabs;
 		private ViewPager pager;
 
@@ -45,8 +45,28 @@ namespace Phabrik.AndroidApp
 
 			public override Java.Lang.ICharSequence GetPageTitleFormatted(int position)
 			{
-				return new Java.Lang.String(fragmentList[position].PopTitle);
+                return new Java.Lang.String(GetTabTitle(position));
 			}
+
+            private string GetTabTitle(int position)
+            {
+                string theStr = "";
+                var theFrag = fragmentList[position];
+
+                if (theFrag is PointOfPresenceFragment)
+                {
+                    var curSub = theFrag as PointOfPresenceFragment;
+                    theStr = curSub.PopTitle;
+                }
+                else if (theFrag is ArmyListFragment)
+                    theStr = "Armies";
+                else if (theFrag is ResourcesFragment)
+                    theStr = "Resources";
+                else if (theFrag is FleetListFragment)
+                    theStr = "Fleets";
+
+                return theStr;
+            }
 
 			public override int Count
 			{
@@ -64,7 +84,7 @@ namespace Phabrik.AndroidApp
 				var counter = tabView.FindViewById<TextView>(Resource.Id.counter);
 				var title = tabView.FindViewById<TextView>(Resource.Id.psts_tab_title);
 				title.SetTypeface(MainActivity.bodyFace, TypefaceStyle.Normal);
-				title.Text = fragmentList[position].PopTitle;
+                title.Text = GetTabTitle(position);
 				counter.Visibility = ViewStates.Gone;
 				return tabView;
 			}
@@ -111,6 +131,7 @@ namespace Phabrik.AndroidApp
             if (PhabrikServer.CurrentUser.popList.Count == 0)
             {
                 var pop1 = new PointOfPresenceFragment();
+                pop1.PopTitle = "POP";
                 pop1.gameFragment = this;
                 
                 fragmentList.Add(pop1);
@@ -149,7 +170,19 @@ namespace Phabrik.AndroidApp
 
                 }
             }
-			pager.Adapter.NotifyDataSetChanged();
+            var fleetList = new FleetListFragment();
+            fleetList.gameFragment = this;
+            fragmentList.Add(fleetList);
+
+            var resourceList = new ResourcesFragment();
+            resourceList.gameFragment = this;
+            fragmentList.Add(resourceList);
+
+            var armyList = new ArmyListFragment();
+            armyList.gameFragment = this;
+            fragmentList.Add(armyList);
+
+            pager.Adapter.NotifyDataSetChanged();
 
 		}
 
@@ -165,7 +198,7 @@ namespace Phabrik.AndroidApp
 
 		public void OnPageSelected(int position)
 		{
-			fragmentList[position].Update();
+			
 		}
 
         
