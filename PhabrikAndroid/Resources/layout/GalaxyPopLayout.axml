@@ -3,12 +3,82 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
+  <LinearLayout
+      android:orientation="horizontal"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content">
+    <TextView
+    android:text="show all (no filter)"
+    android:textColor="@color/Phabrik_green"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+     android:layout_weight="1"
+        android:id="@+id/filtertext"
+    android:layout_gravity="fill_horizontal"/>
+    <Button
+  android:text="Filter"
+  android:id="@+id/FilterBtn"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"/>
+  </LinearLayout>
   <TextView
-      android:text="This is a galaxy pop view"
+      android:text="Your known solar systems"
+      android:textColor="@color/Phabrik_green"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+          android:id="@+id/header" 
+      android:layout_gravity="fill_horizontal"/>
+  <PullToRefresharp.Android.Views.ViewWrapper
+          android:layout_width="match_parent"
+          android:layout_weight="1"
+          android:layout_height="0dp">
+    <PullToRefresharp.Android.Widget.ListView
+android:layout_width="match_parent"
+    android:layout_height="match_parent"
+          android:id="@+id/systemList" />
+  </PullToRefresharp.Android.Views.ViewWrapper>
+
+  <LinearLayout
+        android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+      android:text="X:"
       android:textColor="@color/Phabrik_green"
       android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:background="@color/Phabrik_black"
-      android:layout_gravity="fill_horizontal" />
+      android:layout_height="wrap_content"/>
+    <EditText
+  android:textColor="@color/Phabrik_green"
+  android:id="@+id/xField"
+  android:layout_width="0dp"
+    android:layout_weight="1"
+  android:layout_height="wrap_content"/>
+    <TextView
+  android:text="Y:"
+  android:textColor="@color/Phabrik_green"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"/>
+    <EditText
+  android:textColor="@color/Phabrik_green"
+  android:id="@+id/yField"
+  android:layout_width="0dp"
+    android:layout_weight="1"
+  android:layout_height="wrap_content"/>
+    <TextView
+  android:text="Z:"
+  android:textColor="@color/Phabrik_green"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"/>
+    <EditText
+  android:textColor="@color/Phabrik_green"
+  android:id="@+id/zField"
+  android:layout_weight="1"
+  android:layout_width="0dp"
+  android:layout_height="wrap_content"/>
+    <Button
+  android:text="Scan"
+  android:id="@+id/ScanBtn"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"/>
+  </LinearLayout>
 </LinearLayout>

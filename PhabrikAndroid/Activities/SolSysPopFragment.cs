@@ -13,6 +13,8 @@ using Android.Views;
 using Android.Widget;
 using Phabrik.Core;
 using Android.Graphics;
+using PullToRefresharp.Android;
+
 
 namespace Phabrik.AndroidApp
 {
@@ -21,7 +23,7 @@ namespace Phabrik.AndroidApp
         private TextView titleText;
         private TextView coordText;
         private TextView planetCountText;
-        private ListView planetList;
+        private PullToRefresharp.Android.Widget.ListView planetList;
         private PlanetListAdapter adapter;
 
 		public override void OnCreate(Bundle savedInstanceState)
@@ -39,17 +41,35 @@ namespace Phabrik.AndroidApp
             titleText = theView.FindViewById<TextView>(Resource.Id.SolSysTitle);
             coordText = theView.FindViewById<TextView>(Resource.Id.solSysCoord);
             planetCountText = theView.FindViewById<TextView>(Resource.Id.planetCount);
-            planetList = theView.FindViewById<ListView>(Resource.Id.planetList);
+            planetList = theView.FindViewById<PullToRefresharp.Android.Widget.ListView>(Resource.Id.planetList);
 
             titleText.SetTypeface(MainActivity.titleFace, TypefaceStyle.Normal);
             coordText.SetTypeface(MainActivity.titleFace, TypefaceStyle.Normal);
             planetCountText.SetTypeface(MainActivity.titleFace, TypefaceStyle.Normal);
 
+            planetList.RefreshActivated += (o, e) =>
+            {
+                RefreshFromData(true);
+            };
             
 
             return theView;
 		}
 
+
+        private void RefreshFromData(bool fromPull = false)
+        {
+            // need to load it
+            parent.InitializeSolSys((theSystem) =>
+            {
+                this.Activity.RunOnUiThread(() =>
+                {
+                    UpdateForNewSystem();
+                    if (fromPull)
+                        planetList.OnRefreshCompleted();
+                });
+            });
+        }
 		public void InitializeForXYZ(int xLoc, int yLoc, int zLoc)
 		{
 			
@@ -71,13 +91,18 @@ namespace Phabrik.AndroidApp
         private void UpdateForNewSystem()
         {
             if (parent.pop.curSolSys != null) { 
-            titleText.Text = parent.pop.curSolSys.systemName;
-            coordText.Text = string.Format("coord: X:{0}, Y:{1}, Z:{2}", parent.pop.curSolSys.xLoc, parent.pop.curSolSys.yLoc, parent.pop.curSolSys.zLoc);
-            planetCountText.Text = string.Format("{0} planets", parent.pop.curSolSys.suns[0].planets.Count);
-            adapter = new PlanetListAdapter(this, parent.pop.curSolSys.suns[0].planets);
-            planetList.Adapter = adapter;
-
-            RefreshListView();
+                titleText.Text = parent.pop.curSolSys.systemName;
+                coordText.Text = string.Format("coord: X:{0}, Y:{1}, Z:{2}", parent.pop.curSolSys.xLoc, parent.pop.curSolSys.yLoc, parent.pop.curSolSys.zLoc);
+                planetCountText.Text = string.Format("{0} planets", parent.pop.curSolSys.suns[0].planets.Count);
+                if (adapter == null)
+                {
+                    adapter = new PlanetListAdapter(this, parent.pop.curSolSys.suns[0].planets);
+                }
+                planetList.Adapter = adapter;
+                RefreshListView();
+            } else
+            {
+                RefreshFromData();
             }
 
         }
@@ -254,7 +279,14 @@ namespace Phabrik.AndroidApp
 
         private void ScanBtn_Click(object sender, EventArgs e)
         {
-            // todo scan the planet
+            Button gotoBtn = sender as Button;
+
+            if (gotoBtn != null)
+            {
+                long planetId = (long)gotoBtn.Tag;
+                fragment.parent.ScanPlanet(planetId);
+
+            }
         }
     }
 }

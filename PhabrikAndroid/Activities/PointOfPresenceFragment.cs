@@ -16,12 +16,12 @@ using Phabrik.Core;
 
 namespace Phabrik.AndroidApp
 {
-	public class PointOfPresenceFragment : Android.Support.V4.App.Fragment
-	{
-		public string PopTitle { get; set;} = "No POP";
-		public PointOfPresenceObj pop { get; set; } = null;
+    public class PointOfPresenceFragment : Android.Support.V4.App.Fragment
+    {
+        public string PopTitle { get; set; } = "No POP";
+        public PointOfPresenceObj pop { get; set; } = null;
 
-        public MainActivity mainWindow { get; set; }
+
         public GameFragment gameFragment { get; set; }
 
         bool firstFrag = true;
@@ -43,17 +43,17 @@ namespace Phabrik.AndroidApp
 
         PointOfPresenceObj.PopScale curScale = PointOfPresenceObj.PopScale.None;
 
-		public override void OnCreate(Bundle savedInstanceState)
-		{
-			base.OnCreate(savedInstanceState);
+        public override void OnCreate(Bundle savedInstanceState)
+        {
+            base.OnCreate(savedInstanceState);
 
-			// Create your fragment here
-		}
+            // Create your fragment here
+        }
 
-		public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-		{
-			// Use this to return your custom view for this Fragment
-			 var theView = inflater.Inflate(Resource.Layout.PointOfPresenceLayout, container, false);
+        public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+        {
+            // Use this to return your custom view for this Fragment
+            var theView = inflater.Inflate(Resource.Layout.PointOfPresenceLayout, container, false);
 
             galaxyBtn = theView.FindViewById<TextView>(Resource.Id.GalaxyBtn);
             solSysBtn = theView.FindViewById<TextView>(Resource.Id.SolSysBtn);
@@ -76,11 +76,70 @@ namespace Phabrik.AndroidApp
                 pop.nickname = "primary";
                 pop.scale = PointOfPresenceObj.PopScale.System;
                 pop.structureId = 0;
-
+                SetScale(PointOfPresenceObj.PopScale.System);
             }
+            curScale = PointOfPresenceObj.PopScale.None;
+            RefreshForPop();
 
             return theView;
-		}
+        }
+
+        public void RefreshForPop()
+        {
+            if (pop != null)
+            {
+                SetScale(pop.scale);
+                if (pop.structureId == 0)
+                {
+                    if (pop.fleetId == 0)
+                    {
+                        // no structure - some btns are invalid
+                        if (pop.curSolSys != null)
+                            EnableBtn(solSysBtn);
+                        else
+                            DisableBtn(solSysBtn);
+
+                        if (pop.curPlanet != null)
+                            EnableBtn(planetBtn);
+                        else
+                            DisableBtn(planetBtn);
+
+                        if (pop.curSector != null)
+                            EnableBtn(sectorBtn);
+                        else
+                            DisableBtn(sectorBtn);
+
+                        if (pop.curStructure != null)
+                            EnableBtn(structureBtn);
+                        else
+                            DisableBtn(structureBtn);
+
+                    } else
+                    {
+                        // pop is with a fleet - we have a planet at least
+                        EnableBtn(solSysBtn);
+                        EnableBtn(planetBtn);
+                        if (pop.curSector != null)
+                            EnableBtn(sectorBtn);
+                        else
+                            DisableBtn(sectorBtn);
+
+                        if (pop.curStructure != null)
+                            EnableBtn(structureBtn);
+                        else
+                            DisableBtn(structureBtn);
+                    }
+                } else
+                {
+                    // if there is a structure, we can always go up!
+                    EnableBtn(solSysBtn);
+                    EnableBtn(planetBtn);
+                    EnableBtn(sectorBtn);
+                    EnableBtn(structureBtn);
+                }
+
+            }
+        }
 
         private void StructureBtn_Click(object sender, EventArgs e)
         {
@@ -108,19 +167,15 @@ namespace Phabrik.AndroidApp
         }
 
         public void InitPop(PointOfPresenceObj newPop)
-		{
-			pop = newPop;
-			PopTitle = newPop.nickname;
-			if (string.IsNullOrEmpty(PopTitle))
-				PopTitle = "New Point of Presence";
-		}
+        {
+            pop = newPop;
+            PopTitle = newPop.nickname;
+            if (string.IsNullOrEmpty(PopTitle))
+                PopTitle = "New Point of Presence";
+        }
 
-		public virtual void Update()
-		{
 
-		}
-
-        public virtual void InitializeForPop(PointOfPresenceObj popObj)
+        public virtual void InitializeForNewPop(PointOfPresenceObj popObj)
         {
 
         }
@@ -175,7 +230,7 @@ namespace Phabrik.AndroidApp
                 }
             }
         }
-       
+
 
         private void ClearScaleBtn()
         {
@@ -237,13 +292,27 @@ namespace Phabrik.AndroidApp
             }
         }
 
-        void InitializeSolSys(SolSysObj_callback callback)
+        public override void OnDestroyView()
+        {
+            // drop the nested fragments to save RAM
+            galaxyFragment = null;
+            solSysFragment = null;
+            planetFragment = null;
+            sectorFragment = null;
+            structureFragment = null;
+
+            base.OnDestroyView();
+        }
+
+
+        public void InitializeSolSys(SolSysObj_callback callback)
         {
             if (pop.structureId == 0)
             {
                 InitializeNewPop((theSys) =>
                 {
                     pop.curSolSys = theSys;
+                    EnableBtn(solSysBtn);
                     callback(theSys);
                 });
             } else
@@ -259,15 +328,180 @@ namespace Phabrik.AndroidApp
             }
         }
 
-        void InitializeNewPop(SolSysObj_callback callback)
+
+
+        public void InitializeNewPop(SolSysObj_callback callback)
         {
             // for now, just use an empty system
             PhabrikServer.FetchSolSys(0, 0, 0, callback);
         }
 
+        public void GotoSolSys(long solSysId)
+        {
+            PhabrikServer.FetchSolSysById(solSysId, (theSys) =>
+            {
+                if (theSys != null)
+                {
+                    pop.curSolSys = theSys;
+                    EnableBtn(solSysBtn);
+                    pop.scale = PointOfPresenceObj.PopScale.System;
+                    Activity.RunOnUiThread(() =>
+                    {
+                        SetScale(PointOfPresenceObj.PopScale.System);
+                    });
+                } else
+                {
+                    Activity.RunOnUiThread(() =>
+                    {
+                        MainActivity.ShowAlert(this.Context, "Missing Data", "You have no data on this system.  Try scanning it now.", "ok");
+                    });
+                }
+            });
+        }
+
         public void GotoPlanet(long planetId)
         {
+            // go to a planet in the current system
+            if (pop.curSolSys != null)
+            {
+                var newPlanet = pop.curSolSys.suns[0].planets.Find(p => p.Id == planetId);
+                if (newPlanet == null)
+                {
+                    TravelToDistantPlanet(planetId);
+                } else
+                {
+                    // we are the system, we can travel normally
+                   
+                    PhabrikServer.FetchTerrain(planetId, (theResult) =>
+                    {
+                        if (theResult != null)
+                        {
+                            pop.curTerrain = theResult;
+                            pop.curPlanet = newPlanet;
+                            pop.curStructure = null;
+                            pop.curSector = null;
+                            EnableBtn(planetBtn);
+                            pop.scale = PointOfPresenceObj.PopScale.Planet;
+                            Activity.RunOnUiThread(() =>
+                            {
+                                SetScale(PointOfPresenceObj.PopScale.Planet);
+                            });
+                        } else
+                        {
+                            // null result
+                            Activity.RunOnUiThread(() =>
+                            {
+                                MainActivity.ShowAlert(this.Context, "Missing Data", "You have no data on this planet.  Try scanning it now.", "ok");
+                            });
 
+                        }
+                    });
+
+                }
+            } else
+            {
+                TravelToDistantPlanet(planetId);
+            }
+        }
+
+        public void GotoSector(long sectorId)
+        {
+            if (pop.curTerrain != null)
+            {
+                PhabrikServer.FetchSector(sectorId, (theResult) =>
+                {
+                    pop.curSector = theResult;
+                    EnableBtn(sectorBtn);
+                    Activity.RunOnUiThread(() =>
+                    {
+                        SetScale(PointOfPresenceObj.PopScale.Sector);
+                    });
+                });
+            } else
+            {
+                TravelToDistantSector(sectorId);
+            }
+        }
+        public void TravelToDistantSector(long sectorId)
+        {
+            // todo - figure out how to get there
+            
+        }
+
+        public void GotoStructure(long structureId)
+        {
+            if (pop.curSector != null)
+            {
+                var existingStructure = pop.curSector.structures.Find(s => s.Id == structureId);
+
+                if (existingStructure != null)
+                {
+                    pop.curStructure = existingStructure;
+                    EnableBtn(structureBtn);
+                    Activity.RunOnUiThread(() =>
+                    {
+                        SetScale(PointOfPresenceObj.PopScale.Structure);
+                    });
+                } else
+                    TravelToDistantStructure(structureId);
+                
+            }
+            else
+            {
+                TravelToDistantStructure(structureId);
+            }
+        }
+
+
+
+        public void TravelToDistantStructure(long structureId)
+        {
+            // todo - figure out how to get there
+            PhabrikServer.FetchStructure(structureId, (theResult) =>
+            {
+                pop.curStructure = theResult;
+                EnableBtn(structureBtn);
+                Activity.RunOnUiThread(() =>
+                {
+                    SetScale(PointOfPresenceObj.PopScale.Structure);
+                });
+            });
+        }
+
+        public void EnableBtn(TextView theBtn)
+        {
+            theBtn.Enabled = true;
+            theBtn.Alpha = 1;
+        }
+
+        public void DisableBtn(TextView theBtn)
+        {
+            theBtn.Enabled = false;
+            theBtn.Alpha = .5f;
+        }
+
+        public void TravelToDistantPlanet(long planetId)
+        {
+            
+        }
+
+        public void ScanPlanet(long planetId)
+        {
+            PhabrikServer.ProbePlanet(planetId, (theTerrain) =>
+            {
+                Activity.RunOnUiThread(() =>
+                {
+                    string msgStr;
+                    if (theTerrain != null)
+                    {
+                        msgStr = "Probe successful.  You can view the planet now.";
+                    }
+                    else
+                        msgStr = "Probe destroyed";
+
+                    MainActivity.ShowAlert(Context, "Probe Results", msgStr, "Ok");
+                });
+            });
         }
 
     }

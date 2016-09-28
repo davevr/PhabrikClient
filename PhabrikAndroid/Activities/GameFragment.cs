@@ -113,14 +113,9 @@ namespace Phabrik.AndroidApp
 			pager.OffscreenPageLimit = 2;
 			tabs = view.FindViewById<PagerSlidingTabStrip>(Resource.Id.tabs);
 			tabs.SetViewPager(pager);
-			tabs.IndicatorColor = Resources.GetColor(Resource.Color.Phabrik_green);
 			tabs.IndicatorHeight = Resources.GetDimensionPixelSize(Resource.Dimension.tab_indicator_height);
-			tabs.UnderlineColor = Resources.GetColor(Resource.Color.Phabrik_blue);
 			tabs.TabPaddingLeftRight = Resources.GetDimensionPixelSize(Resource.Dimension.tab_padding);
 			tabs.OnPageChangeListener = this;
-			//tabs.ShouldExpand = true;
-
-			tabs.SetTabTextColor(Color.Blue);
 			pager.CurrentItem = 0;
 			return view;
 		}

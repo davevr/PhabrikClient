@@ -18,11 +18,20 @@ namespace Phabrik.AndroidApp
 	[Activity(Label = "PlanetPopFragment")]
 	public class PlanetPopFragment : PopSubFragment, View.IOnTouchListener
     {
-        TerrainObj curPlanet;
         TextView titleView;
         GridLayout gridView;
         HorizontalScrollView hScroller;
         ScrollView vScroller;
+        Button scanBtn;
+        Button gotoBtn;
+        Button paintBtn;
+        Button bombardBtn;
+        Button colonizeBtn;
+        Button landBtn;
+        bool isDirty = false;
+        
+        private static int kGridSize = 300;
+        private View selectionView;
 
 		public override void OnCreate(Bundle savedInstanceState)
 		{
@@ -42,10 +51,237 @@ namespace Phabrik.AndroidApp
             hScroller = theView.FindViewById<HorizontalScrollView>(Resource.Id.hscroller);
             vScroller = theView.FindViewById<ScrollView>(Resource.Id.vscroller);
 
+            scanBtn = theView.FindViewById<Button>(Resource.Id.scanBtn);
+            gotoBtn = theView.FindViewById<Button>(Resource.Id.gotoSectorBtn);
+            paintBtn = theView.FindViewById<Button>(Resource.Id.paintBtn);
+            bombardBtn = theView.FindViewById<Button>(Resource.Id.bombardBtn);
+            colonizeBtn = theView.FindViewById<Button>(Resource.Id.colonizeBtn);
+            landBtn = theView.FindViewById<Button>(Resource.Id.landBtn);
+
             hScroller.SetOnTouchListener(this);
             vScroller.SetOnTouchListener(this);
+
+            gridView.Touch += GridView_Touch;
+
+            scanBtn.Click += ScanBtn_Click;
+            gotoBtn.Click += GotoBtn_Click;
+            paintBtn.Click += PaintBtn_Click;
+            bombardBtn.Click += BombardBtn_Click;
+            colonizeBtn.Click += ColonizeBtn_Click;
+            landBtn.Click += LandBtn_Click;
+
             return theView;
 		}
+
+        private void LandBtn_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void ColonizeBtn_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void BombardBtn_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void PaintBtn_Click(object sender, EventArgs e)
+        {
+            if (sectorSelected && parent.pop.curTerrain != null)
+            {
+                var curSector = parent.pop.curTerrain._sectorArray[selectedX][selectedY];
+                var curPlanet = parent.pop.curPlanet;
+                PlanetObj.planet_type planetType = PlanetObj.planet_type.tUnknown;
+                if (curPlanet != null)
+                    planetType = curPlanet.planetType;
+                bool updated = true;
+
+                switch (planetType)
+                {
+                    case PlanetObj.planet_type.tRock:
+                    case PlanetObj.planet_type.tGasGiant:
+                    case PlanetObj.planet_type.tSubGasGiant:
+                    case PlanetObj.planet_type.tSubSubGasGiant:
+                    case PlanetObj.planet_type.tAsteroids:
+                    case PlanetObj.planet_type.tVenusian:
+                        updated = false;
+                        break;
+                    case PlanetObj.planet_type.tTerrestrial:
+                    case PlanetObj.planet_type.t1Face:
+                        if (curSector.surfaceType == SectorObj.SurfaceType.Rock)
+                            curSector.surfaceType = SectorObj.SurfaceType.Grass;
+                        else if (curSector.surfaceType == SectorObj.SurfaceType.Grass)
+                            curSector.surfaceType = SectorObj.SurfaceType.Dirt;
+                        else if (curSector.surfaceType == SectorObj.SurfaceType.Dirt)
+                            curSector.surfaceType = SectorObj.SurfaceType.Ice;
+                        else if (curSector.surfaceType == SectorObj.SurfaceType.Ice)
+                            curSector.surfaceType = SectorObj.SurfaceType.Water;
+                        else if (curSector.surfaceType == SectorObj.SurfaceType.Water)
+                            curSector.surfaceType = SectorObj.SurfaceType.Rock;
+                        updated = true;
+                        break;
+                    case PlanetObj.planet_type.tMartian:
+                        if (curSector.surfaceType == SectorObj.SurfaceType.Rock)
+                            curSector.surfaceType = SectorObj.SurfaceType.Dirt;
+                        else if (curSector.surfaceType == SectorObj.SurfaceType.Dirt)
+                            curSector.surfaceType = SectorObj.SurfaceType.Ice;
+                        else if (curSector.surfaceType == SectorObj.SurfaceType.Ice)
+                            curSector.surfaceType = SectorObj.SurfaceType.Rock;
+                        updated = true;
+                        break;
+                    case PlanetObj.planet_type.tWater:
+                        if (curSector.surfaceType == SectorObj.SurfaceType.Rock)
+                            curSector.surfaceType = SectorObj.SurfaceType.Grass;
+                        else if (curSector.surfaceType == SectorObj.SurfaceType.Grass)
+                            curSector.surfaceType = SectorObj.SurfaceType.Dirt;
+                        else if (curSector.surfaceType == SectorObj.SurfaceType.Dirt)
+                            curSector.surfaceType = SectorObj.SurfaceType.Water;
+                        else if (curSector.surfaceType == SectorObj.SurfaceType.Water)
+                            curSector.surfaceType = SectorObj.SurfaceType.Ice;
+                        break;
+                    case PlanetObj.planet_type.tIce:
+                        if (curSector.surfaceType == SectorObj.SurfaceType.Rock)
+                            curSector.surfaceType = SectorObj.SurfaceType.Ice;
+                        else if (curSector.surfaceType == SectorObj.SurfaceType.Ice)
+                            curSector.surfaceType = SectorObj.SurfaceType.Rock;
+                        break;
+                    case PlanetObj.planet_type.tUnknown:
+                        if (curSector.surfaceType == SectorObj.SurfaceType.Rock)
+                            curSector.surfaceType = SectorObj.SurfaceType.Grass;
+                        else if (curSector.surfaceType == SectorObj.SurfaceType.Grass)
+                            curSector.surfaceType = SectorObj.SurfaceType.Dirt;
+                        else if (curSector.surfaceType == SectorObj.SurfaceType.Dirt)
+                            curSector.surfaceType = SectorObj.SurfaceType.Ice;
+                        else if (curSector.surfaceType == SectorObj.SurfaceType.Ice)
+                            curSector.surfaceType = SectorObj.SurfaceType.Water;
+                        else if (curSector.surfaceType == SectorObj.SurfaceType.Water)
+                            curSector.surfaceType = SectorObj.SurfaceType.Gas;
+                        else if (curSector.surfaceType == SectorObj.SurfaceType.Gas)
+                            curSector.surfaceType = SectorObj.SurfaceType.Unknown;
+                        else if (curSector.surfaceType == SectorObj.SurfaceType.Unknown)
+                            curSector.surfaceType = SectorObj.SurfaceType.Rock;
+                        updated = true;
+                        break;
+
+                }
+
+                if (updated)
+                {
+                    curSector.dirty = true;
+                    View sectorView = gridView.FindViewWithTag(curSector.Id);
+                    if (sectorView != null)
+                    {
+                        var imageView = sectorView.FindViewById<ImageView>(Resource.Id.backgroundImage);
+                        Koush.UrlImageViewHelper.SetUrlDrawable(imageView, curSector.TextureURL, Resource.Drawable.Icon);
+
+                    }
+                    isDirty = true;
+                }
+            }
+        }
+
+        private void GotoBtn_Click(object sender, EventArgs e)
+        {
+           if (sectorSelected && parent.pop.curTerrain != null)
+            {
+                parent.GotoSector(parent.pop.curTerrain._sectorArray[selectedX][selectedY].Id);
+            }
+        }
+
+        private void ScanBtn_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private int downX = 0, downY = 0;
+
+        private void GridView_Touch(object sender, View.TouchEventArgs e)
+        {
+            if (e.Event.Action == MotionEventActions.Down)
+            {
+                downX = (int)e.Event.GetX() / kGridSize;
+                downY = (int)e.Event.GetY() / kGridSize;
+
+            } else if (e.Event.Action == MotionEventActions.Up)
+            {
+                var newX = (int)e.Event.GetX() / kGridSize;
+                var newY = (int)e.Event.GetY() / kGridSize;
+
+                if (newX == downX && newY == downY)
+                {
+                    SelectGridSquare(newX, newY);
+                }
+            }
+        }
+
+        public override void OnPause()
+        {
+            if (isDirty)
+            {
+                PhabrikServer.SaveTerrainPaint(parent.pop.curTerrain, (didIt) =>
+                {
+                    isDirty = false;
+                });
+            }
+            base.OnPause();
+        }
+        private int selectedX, selectedY;
+
+        private void SelectGridSquare(int newX, int newY)
+        {
+            if (sectorSelected && selectedX == newX && selectedY == newY)
+            {
+                ClearSelection();
+            }
+            else
+            {
+                var gridLayout = new GridLayout.LayoutParams(GridLayout.InvokeSpec(newY), GridLayout.InvokeSpec(newX));
+                gridLayout.Width = kGridSize;
+                gridLayout.Height = kGridSize;
+                selectionView.LayoutParameters = gridLayout;
+                selectionView.Visibility = ViewStates.Visible;
+                selectedX = newX;
+                selectedY = newY;
+            }
+            UpdateBtns();
+        }
+
+        private void ClearSelection()
+        {
+            selectionView.Visibility = ViewStates.Gone;
+            selectedX = selectedY = -1;
+            UpdateBtns();
+        }
+
+        private void UpdateBtns()
+        {
+            if (sectorSelected)
+            {
+                gotoBtn.Enabled = true;
+                paintBtn.Enabled = true;
+                colonizeBtn.Enabled = true;
+                landBtn.Enabled = true;
+            } else
+            {
+                gotoBtn.Enabled = false;
+                paintBtn.Enabled = false;
+                colonizeBtn.Enabled = false;
+                landBtn.Enabled = false;
+            }
+        }
+        
+
+        private bool sectorSelected
+        {
+            get
+            {
+                return selectionView.Visibility == ViewStates.Visible;
+            }
+        }
+
         private float mx, my, curX, curY;
         private bool started = false;
 
@@ -82,64 +318,83 @@ namespace Phabrik.AndroidApp
             }
         }
 
-        public void InitializeForPlanetId(long planetId)
+        public override void OnActivityCreated(Bundle savedInstanceState)
         {
-            PhabrikServer.FetchTerrain(planetId, (thePlanet) =>
+            base.OnActivityCreated(savedInstanceState);
+            this.Activity.RunOnUiThread(() =>
             {
-                if (thePlanet != null)
-                {
-                    curPlanet = thePlanet;
-                    this.Activity.RunOnUiThread(() =>
-                    {
-                        UpdateForNewPlanet();
-                    });
-                }
+                UpdateForNewPlanet();
             });
         }
 
         private void UpdateForNewPlanet()
         {
-            titleView.Text = string.Format("A cool planet that is {0} by {1}", curPlanet.width, curPlanet.height);
-            /*
-            titleText.Text = curSystem.systemName;
-            coordText.Text = string.Format("coord: X:{0}, Y:{1}, Z:{2}", curSystem.xLoc, curSystem.yLoc, curSystem.zLoc);
-            planetCountText.Text = string.Format("{0} planets", curSystem.suns[0].planets.Count);
-            adapter = new PlanetListAdapter(this, curSystem.suns[0].planets);
-            planetList.Adapter = adapter;
-            */
-            gridView.ColumnCount = curPlanet.width;
-            gridView.RowCount = curPlanet.height;
+            titleView.Text = string.Format("A cool planet that is {0} by {1}", parent.pop.curTerrain.width, parent.pop.curTerrain.height);
+
+            gridView.ColumnCount = parent.pop.curTerrain.width;
+            gridView.RowCount = parent.pop.curTerrain.height;
             RefreshGridView();
 
         }
 
+       
         private void RefreshGridView()
         {
             if (this.View != null)
             {
                 Activity.RunOnUiThread(() => {
-                    for (int x = 0; x < curPlanet.width; x++)
+                    var curPlanet = parent.pop.curPlanet;
+                    var curTerrain = parent.pop.curTerrain;
+
+                    bool tidallyLocked = ((int)curPlanet.day == (int)(curPlanet.orb_period * 24.0)) || curPlanet.resonant_period;
+                    var width = curTerrain.width;
+                    var height = curTerrain.height;
+
+
+                    for (int x = 0; x < width; x++)
                     {
-                        for (int y = 0; y < curPlanet.height; y++)
+                        for (int y = 0; y < height; y++)
                         {
                             View newView = Activity.LayoutInflater.Inflate(Resource.Layout.GridSectorLayout, null);
                             gridView.AddView(newView);
                             var gridLayout = new GridLayout.LayoutParams(GridLayout.InvokeSpec(y), GridLayout.InvokeSpec(x));
-                            gridLayout.SetMargins(2, 2, 2, 2);
-                            gridLayout.Width = 200;
-                            gridLayout.Height = 200;
+                            //gridLayout.SetMargins(2, 2, 2, 2);
+                            gridLayout.Width = kGridSize;
+                            gridLayout.Height = kGridSize;
                             newView.LayoutParameters = gridLayout;
                             var textField = newView.FindViewById<TextView>(Resource.Id.coordLabel);
-                            textField.Text = string.Format("{0},{1}", x, y);
-                            textField.SetBackgroundColor(Color.Blue);
-                            textField.SetTextColor(Color.White);
-
-
+                            if (PhabrikServer.CurrentUser.isAdmin)
+                            {
+                                textField.Text = string.Format("{0},{1}", x, y);
+                                textField.SetBackgroundColor(Color.Blue);
+                                textField.SetTextColor(Color.White);
+                            } else
+                            {
+                                ((ViewGroup)newView).RemoveView(textField);
+                            }
+                            
                             var imageView = newView.FindViewById<ImageView>(Resource.Id.backgroundImage);
-                            SectorObj curSec = curPlanet._sectorArray[x][y];
-                            Koush.UrlImageViewHelper.SetUrlDrawable(imageView, curSec.TextureURL, Resource.Drawable.Icon);
+                            if (curTerrain._sectorArray != null) { 
+                                SectorObj curSec = curTerrain._sectorArray[x][y];
+                                newView.Tag = curSec.Id;
+                                imageView.SetScaleType(ImageView.ScaleType.Center);
+                                Koush.UrlImageViewHelper.SetUrlDrawable(imageView, curSec.TextureURL, Resource.Drawable.Icon);
+                            } else
+                            {
+                                // todo - handle unknown terrain..
+                            }
+                            if (!tidallyLocked || x <= width / 2)
+                            {
+                                var darkness = newView.FindViewById(Resource.Id.nighttime);
+                                ((ViewGroup)newView).RemoveView(darkness);
+                            }
                         }
                     }
+
+                    selectionView = new View(this.Activity);
+                    gridView.AddView(selectionView);
+                    selectionView.Visibility = ViewStates.Gone;
+                    selectionView.SetBackgroundResource(Resource.Drawable.SelectionBorder);
                 });
             }
         }

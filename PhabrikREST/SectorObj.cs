@@ -6,6 +6,7 @@ using System.Collections.Generic;
 
 namespace Phabrik.Core
 {
+
     public class SectorObj {
 
         public enum SurfaceType {
@@ -28,6 +29,8 @@ namespace Phabrik.Core
         public int xLoc { get; set; }
         public int yLoc { get; set; }
         public long terrainId { get; set; }
+
+        public bool dirty = false;
 
         public SectorObj() {
             structures = new List<StructureObj>();
@@ -90,4 +93,17 @@ namespace Phabrik.Core
         }
 
     }
+
+    public class SectorPaintObj
+    {
+        public long Id { get; set; }
+        public SectorObj.SurfaceType surfaceType { get; set; }
+
+        public SectorPaintObj(SectorObj theSource)
+        {
+            this.Id = theSource.Id;
+            this.surfaceType = theSource.surfaceType;
+        }
+    }
+
 }

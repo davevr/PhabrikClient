@@ -203,7 +203,16 @@ namespace Phabrik.AndroidApp
 				.Show();
 		}
 
-		protected override void OnPostCreate(Bundle savedInstanceState)
+        public static void ShowAlert(Context context, string title, string msg, string buttonText = null)
+        {
+            new Android.Support.V7.App.AlertDialog.Builder(context)
+                .SetTitle(title)
+                .SetMessage(msg)
+                .SetPositiveButton(buttonText, (s2, e2) => { })
+                .Show();
+        }
+
+        protected override void OnPostCreate(Bundle savedInstanceState)
 		{
 			base.OnPostCreate(savedInstanceState);
 			mDrawerToggle.SyncState();

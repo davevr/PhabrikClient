@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 
 namespace Phabrik.Core
 {
+    public delegate void SolSysList_callback(List<SolSysObj> theResult);
     public delegate void PlanetList_callback(List<PlanetObj> theResult);
     public delegate void Player_callback(PlayerObj theResult);
     public delegate void string_callback(string theResult);
@@ -20,6 +21,8 @@ namespace Phabrik.Core
 	public delegate void null_callback();
     public delegate void SolSysObj_callback(SolSysObj theResult);
     public delegate void TerrainObj_callback(TerrainObj theResult);
+    public delegate void SectorObj_callback(SectorObj theResult);
+    public delegate void StructureObj_callback(StructureObj theResult);
 
     public class PhabrikServer
     {
@@ -86,6 +89,27 @@ namespace Phabrik.Core
             _currentUser = null;
         }
 
+
+        public static void FetchKnownSystems(SolSysList_callback callback)
+        {
+            string fullURL = "solsys";
+            RestRequest request = new RestRequest(fullURL, Method.GET);
+            request.AddParameter("known", true);
+
+            apiClient.ExecuteAsync(request, (response) =>
+            {
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    List < SolSysObj> newObj = response.Content.FromJson<List<SolSysObj>>();
+                    callback(newObj);
+                }
+                else
+                {
+                    callback(null);
+                }
+            });
+        }
+
         public static void FetchSolSys(int xLoc, int yLoc, int zLoc, SolSysObj_callback callback)
         {
             string fullURL = "solsys";
@@ -107,10 +131,72 @@ namespace Phabrik.Core
             });
         }
 
+        public static void FetchSolSysById(long solSysId, SolSysObj_callback callback)
+        {
+            string fullURL = "solsys";
+            RestRequest request = new RestRequest(fullURL, Method.GET);
+            request.AddParameter("solsysid", solSysId);
+            apiClient.ExecuteAsync(request, (response) =>
+            {
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    SolSysObj newObj = response.Content.FromJson<SolSysObj>();
+                    callback(newObj);
+                }
+                else
+                {
+                    callback(null);
+                }
+            });
+        }
+
         public static void FetchTerrain(long planetId, TerrainObj_callback callback)
         {
             string fullURL = "terrain";
             RestRequest request = new RestRequest(fullURL, Method.GET);
+            request.AddParameter("planetid", planetId);
+
+
+            apiClient.ExecuteAsync(request, (response) =>
+            {
+                if (response.StatusCode == HttpStatusCode.OK && response.Content != "null")
+                {
+                    TerrainObj newObj = response.Content.FromJson<TerrainObj>();
+                    callback(newObj);
+                }
+                else if (response.StatusCode != 0)
+                {
+                    callback(null);
+                }
+            });
+        }
+
+        public static void FetchSolSysStatus(long solSysId, TerrainObj_callback callback)
+        {
+            string fullURL = "solsys";
+            RestRequest request = new RestRequest(fullURL, Method.GET);
+            request.AddParameter("solsysid", solSysId);
+            request.AddParameter("status", solSysId);
+
+
+            apiClient.ExecuteAsync(request, (response) =>
+            {
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    TerrainObj newObj = response.Content.FromJson<TerrainObj>();
+                    callback(newObj);
+                }
+                else if (response.StatusCode != 0)
+                {
+                    callback(null);
+                }
+            });
+        }
+
+        public static void ProbePlanet(long planetId, TerrainObj_callback callback)
+        {
+            string fullURL = "probeplanet";
+            RestRequest request = new RestRequest(fullURL, Method.POST);
             request.AddParameter("planetid", planetId);
 
 
@@ -127,6 +213,90 @@ namespace Phabrik.Core
                 }
             });
         }
+
+        public static void SaveTerrainPaint(TerrainObj theTerrain, bool_callback callback)
+        {
+            string fullURL = "terrain";
+            RestRequest request = new RestRequest(fullURL, Method.PUT);
+            
+
+            List<SectorPaintObj> sectorList = new List<SectorPaintObj>();
+
+            for (int x = 0; x < theTerrain.width; x++)
+            {
+                for (int y = 0; y < theTerrain.height; y++)
+                {
+                    var curSect = theTerrain._sectorArray[x][y];
+                    if (curSect.dirty)
+                    {
+                        sectorList.Add(new SectorPaintObj(curSect));
+                        curSect.dirty = false;
+                    }
+                }
+            }
+            string sectorStr = sectorList.ToJson<List<SectorPaintObj>>();
+            request.AddParameter("sectormap", sectorStr);
+            request.AddParameter("paint", true);
+
+            apiClient.ExecuteAsync(request, (response) =>
+            {
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    callback(true);
+                }
+                else
+                {
+                    callback(false);
+                }
+            });
+        }
+
+
+
+
+        public static void FetchSector(long sectorId, SectorObj_callback callback)
+        {
+            string fullURL = "sector";
+            RestRequest request = new RestRequest(fullURL, Method.GET);
+            request.AddParameter("sectorid", sectorId);
+
+
+            apiClient.ExecuteAsync(request, (response) =>
+            {
+                if (response.StatusCode == HttpStatusCode.OK && response.Content != "null")
+                {
+                    SectorObj newObj = response.Content.FromJson<SectorObj>();
+                    callback(newObj);
+                }
+                else if (response.StatusCode != 0)
+                {
+                    callback(null);
+                }
+            });
+        }
+
+        public static void FetchStructure(long structureId, StructureObj_callback callback)
+        {
+            string fullURL = "structure";
+            RestRequest request = new RestRequest(fullURL, Method.GET);
+            request.AddParameter("structureid", structureId);
+
+
+            apiClient.ExecuteAsync(request, (response) =>
+            {
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    StructureObj newObj = response.Content.FromJson<StructureObj>();
+                    callback(newObj);
+                }
+                else
+                {
+                    callback(null);
+                }
+            });
+        }
+
+
 
 
         public static void Login(string username, string pwd, bool create, Player_callback callback)

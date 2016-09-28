@@ -11,14 +11,14 @@ namespace Phabrik.Core
         public int width { get; set; }
         public int height { get; set; }
         public long planetId { get; set; }
+        
 
         public SectorObj[][] _sectorArray { get; set; }
 
 
         public TerrainObj() {
-
         }
-
-
     }
+
+    
 }

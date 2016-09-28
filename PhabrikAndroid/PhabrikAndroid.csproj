@@ -47,6 +47,9 @@
   <ItemGroup>
     <Reference Include="Mono.Android" />
     <Reference Include="mscorlib" />
+    <Reference Include="PullToRefresharp">
+      <HintPath>..\Components\pulltorefresharp-1.0.2\lib\android\PullToRefresharp.dll</HintPath>
+    </Reference>
     <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\RestSharp.105.2.3\lib\MonoAndroid10\RestSharp.dll</HintPath>
       <Private>True</Private>
@@ -204,6 +207,9 @@
     <AndroidResource Include="Resources\layout\ResourceListLayout.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\layout\SolSysItemLayout.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml">
@@ -234,8 +240,14 @@
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
+    <AndroidResource Include="Resources\drawable\SelectionBorder.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <XamarinComponentReference Include="pulltorefresharp">
+      <Visible>False</Visible>
+      <Version>1.0.2</Version>
+    </XamarinComponentReference>
     <XamarinComponentReference Include="restsharp">
       <Visible>False</Visible>
       <Version>105.2.3</Version>

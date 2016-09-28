@@ -3,12 +3,37 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-  <TextView
-      android:text="This is a sector view"
-      android:textColor="@color/Phabrik_green"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:background="@color/Phabrik_black"
-      android:layout_gravity="fill_horizontal" />
+    <TextView
+        android:text="This is a sector view"
+        android:textColor="@color/Phabrik_green"
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/Phabrik_black"
+        android:layout_gravity="fill_horizontal" />
+  <GridLayout
+    android:id="@+id/sectorgrid"
+            android:layout_width="match_parent"
+        android:layout_height="0dp"
+    android:layout_weight="1"
+    android:rowCount="10"
+    android:columnCount="10"
+    >
+    <ImageView
+      android:id="@+id/background"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"/>
+    
+  </GridLayout>
+  <LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <Button 
+android:id ="@+id/buildBtn"
+android:text="Build"
+android:layout_width="wrap_content"
+    android:layout_height="wrap_content"/>
+  </LinearLayout>
+    
 </LinearLayout>

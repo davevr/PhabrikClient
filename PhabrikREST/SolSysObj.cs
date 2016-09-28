@@ -16,6 +16,7 @@ namespace Phabrik.Core
         public long discovererId { get; set; }
         public string systemName { get; set; }
         public bool underProtection { get; set; }
+        public int planetcount { get; set; }
 
         public List<SunObj> suns { get; set; }
 
