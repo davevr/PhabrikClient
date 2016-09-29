@@ -1,0 +1,47 @@
+'algae farm','farm','grows a varient of algae to produce food',1,1,TRUE
+'corn farm','farm',"'grows corn, an excellent food source'",1,1,TRUE
+'fish farm','farm','grows fish for food.  Requires water.',1,1,TRUE
+'metal mine','mine','mines metal from the ground',1,1,TRUE
+'gas mine','mine','mines gas from clouds or atmosphere',2,2,TRUE
+'desalination plant','mine','collects purifed water from oceans',1,1,TRUE
+'ice mine','mine','collects water from ice',1,1,TRUE
+'small solar plant','powerplant','turns sunlight into electricity',1,1,TRUE
+'medium solar plant','powerplant','turns sunlight into electricity',2,2,TRUE
+'large solar plant','powerplant','turns sunlight into electricity',3,3,TRUE
+'hydrogen power plant','powerplant','turns hydrogen into electricity',1,1,TRUE
+'methane power plant','powerplant','burns methane for electricity',1,1,TRUE
+'fusion plant','powerplant','converts helium into electricity via fusion',1,1,TRUE
+'wind turbine','powerplant','turns wind into electricity',1,1,TRUE
+'water turbine','powerplant','turns ocean currents into electricity',1,1,TRUE
+'small hab','habitat','housing and support for a basic colony',1,1,TRUE
+'medium hab','habitat','housing and support for a large colony',2,1,TRUE
+'large hab','habitat','housing and support for a small city',2,2,TRUE
+'housing complex','habitat','housing and support for large city',4,2,TRUE
+'library','research','improves the IQ and research capabilities of the sector',1,1,TRUE
+'university','research','greatly improves the IQ and research capabilities of the sector',1,1,TRUE
+'research center','research',"'researches new technologies, structures, and upgrades'",2,2,TRUE
+'hospital','research','improves the health of humans and helps research',1,1,TRUE
+'barracks','military','trains humans to be soldiers',1,1,TRUE
+'shipyard','factory','builds ships',2,2,TRUE
+'electronics factory','factory','builds electronics and computers',1,1,TRUE
+'chemical factory','factory','produces chemicals',1,1,TRUE
+'robot factory','factory','produces robots',1,1,TRUE
+'spaceport','service','allows spaceships to exchange goods and enables interstellar transport',4,4,TRUE
+'recreation center','service','improves the health and well-being of residents',1,1,TRUE
+'cultural center','service','improves the well-being of residents and enhances research',1,1,TRUE
+'philosophy center','service','improves the well-being of residents and enhances research',1,1,TRUE
+'government district','service','improves the efficiency of your planet and allows for customization',2,2,TRUE
+'storage unit','storage','stores solid goods',1,1,TRUE
+'storage facility','storage','stores a large amount of solid goods',2,1,TRUE
+'warehouse complex','storage','stores a massive amount of solid goods',3,1,TRUE
+'gas storage facility','storage','stores gas',1,1,TRUE
+'liquid storage facility','storage','stores liquids',1,1,TRUE
+'food storage unit','storage','stores food',1,1,TRUE
+'capacitive array','storage','stores energy',1,1,TRUE
+'magnetic containment unit','storage','stores strange matter',1,1,TRUE
+'hotel complex','storage','holds people whole are not otherwise employed',2,2,TRUE
+'showroom','storage','allows the sale of manufactured goods',2,2,TRUE
+'defence towers','defence','protects the sector from ground-based attacks',1,1,TRUE
+'missile silo','defence','protects the sector from space-based attacks',1,1,TRUE
+'sheild generator','defence','protects the sector from attacks with an energy shield',1,1,TRUE
+'ECM screen','defence','cloaks this sector from scans',1,1,TRUE
