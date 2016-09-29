@@ -131,6 +131,9 @@
     <Compile Include="..\PhabrikREST\ShipObj.cs">
       <Link>PhabrikREST\ShipObj.cs</Link>
     </Compile>
+    <Compile Include="..\PhabrikREST\ShipRecordObj.cs">
+      <Link>PhabrikREST\ShipRecordObj.cs</Link>
+    </Compile>
     <Compile Include="..\PhabrikREST\SolSysObj.cs">
       <Link>PhabrikREST\SolSysObj.cs</Link>
     </Compile>
@@ -139,6 +142,9 @@
     </Compile>
     <Compile Include="..\PhabrikREST\StructureObj.cs">
       <Link>PhabrikREST\StructureObj.cs</Link>
+    </Compile>
+    <Compile Include="..\PhabrikREST\StructureTypeObj.cs">
+      <Link>PhabrikREST\StructureTypeObj.cs</Link>
     </Compile>
     <Compile Include="..\PhabrikREST\SunObj.cs">
       <Link>PhabrikREST\SunObj.cs</Link>
@@ -150,8 +156,8 @@
     <Compile Include="Activities\PopSubFragment.cs" />
     <Compile Include="Activities\ArmyListFragment.cs" />
     <Compile Include="Activities\ResourcesFragment.cs" />
+    <Compile Include="Dialogs\BuyStructureDialog.cs" />
     <Compile Include="MainActivity.cs" />
-    <Compile Include="PhabrikREST\ShipRecordObj.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Activities\GameFragment.cs" />
@@ -176,7 +182,9 @@
     <AndroidResource Include="Resources\layout\PlanetPopLayout.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\layout\SectorPopLayout.axml" />
+    <AndroidResource Include="Resources\layout\SectorPopLayout.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
     <AndroidResource Include="Resources\layout\GridSectorLayout.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
@@ -208,6 +216,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\SolSysItemLayout.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\BuyStructureLayout.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

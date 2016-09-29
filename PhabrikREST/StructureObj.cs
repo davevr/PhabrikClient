@@ -8,19 +8,6 @@ namespace Phabrik.Core
 {
     public class StructureObj
     {
-
-        public enum StructureType
-        {
-            Mine,
-            Farm,
-            Garden,
-            Housing,
-            Factory,
-            School,
-            Library,
-            SpacePort,
-            Storage
-        }
         public long Id { get; set; }
         public SectorObj sector { get; set; }
         public long sectorId { get; set; }
@@ -54,13 +41,31 @@ namespace Phabrik.Core
         public bool isVacuumSafe { get; set; }
         public bool isRadiationSafe { get; set; }
         public bool isPublic { get; set; }
-        public StructureType structureType { get; set; }
+        public long structureType { get; set; }
+
+        public string nickname { get; set; }
+        public string url;
 
         public StructureObj()
         {
             // empty
             creationDate = new DateTime();
             lastTick = new DateTime();
+        }
+
+        public static StructureObj Instantiate(StructureTypeObj template)
+        {
+            StructureObj newObj = new StructureObj();
+
+            newObj.xLoc = 0;
+            newObj.yLoc = 0;
+            newObj.xSize = template.width;
+            newObj.ySize = template.height;
+            newObj.structureType = template.Id;
+            newObj.nickname = template.structurename;
+            newObj.url = template.imageURL;
+
+            return newObj;
         }
 
         public StructureObj(StructureObj master)

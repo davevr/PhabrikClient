@@ -23,6 +23,9 @@ namespace Phabrik.Core
     public delegate void TerrainObj_callback(TerrainObj theResult);
     public delegate void SectorObj_callback(SectorObj theResult);
     public delegate void StructureObj_callback(StructureObj theResult);
+    public delegate void StructureTypeObjList_callback(List<StructureTypeObj> theResult);
+    public delegate void StructureObjList_callback(List<StructureObj> theResult);
+    
 
     public class PhabrikServer
     {
@@ -35,7 +38,7 @@ namespace Phabrik.Core
         private static string serverPath;
         private static PlayerObj _currentUser = null;
 		public static string LastError {get; set;}
-		private static bool useProdServer = false;
+		private static bool useProdServer = true;
         
         public static void InitServer(bool_callback callback)
         {
@@ -101,6 +104,26 @@ namespace Phabrik.Core
                 if (response.StatusCode == HttpStatusCode.OK)
                 {
                     List < SolSysObj> newObj = response.Content.FromJson<List<SolSysObj>>();
+                    callback(newObj);
+                }
+                else
+                {
+                    callback(null);
+                }
+            });
+        }
+
+        public static void FetchStructureCatalog(StructureTypeObjList_callback callback)
+        {
+            string fullURL = "structure";
+            RestRequest request = new RestRequest(fullURL, Method.GET);
+            request.AddParameter("catalog", true);
+
+            apiClient.ExecuteAsync(request, (response) =>
+            {
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    List<StructureTypeObj> newObj = response.Content.FromJson<List<StructureTypeObj>>();
                     callback(newObj);
                 }
                 else
@@ -287,6 +310,27 @@ namespace Phabrik.Core
                 if (response.StatusCode == HttpStatusCode.OK)
                 {
                     StructureObj newObj = response.Content.FromJson<StructureObj>();
+                    callback(newObj);
+                }
+                else
+                {
+                    callback(null);
+                }
+            });
+        }
+
+        public static void FetchStructuresForSector(long sectorId, StructureObjList_callback callback)
+        {
+            string fullURL = "structure";
+            RestRequest request = new RestRequest(fullURL, Method.GET);
+            request.AddParameter("sectorid", sectorId);
+
+
+            apiClient.ExecuteAsync(request, (response) =>
+            {
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    List<StructureObj> newObj = response.Content.FromJson<List<StructureObj>>();
                     callback(newObj);
                 }
                 else

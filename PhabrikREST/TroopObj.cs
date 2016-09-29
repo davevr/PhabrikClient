@@ -5,7 +5,7 @@
 
 namespace Phabrik.Core
 {
-    public class AnomalyObj {
+    public class TroopObj {
         public long Id;
     }
 }

@@ -94,7 +94,7 @@ namespace Phabrik.AndroidApp
                 titleText.Text = parent.pop.curSolSys.systemName;
                 coordText.Text = string.Format("coord: X:{0}, Y:{1}, Z:{2}", parent.pop.curSolSys.xLoc, parent.pop.curSolSys.yLoc, parent.pop.curSolSys.zLoc);
                 planetCountText.Text = string.Format("{0} planets", parent.pop.curSolSys.suns[0].planets.Count);
-                if (adapter == null)
+                if (adapter == null || adapter.allItems != parent.pop.curSolSys.suns[0].planets)
                 {
                     adapter = new PlanetListAdapter(this, parent.pop.curSolSys.suns[0].planets);
                 }

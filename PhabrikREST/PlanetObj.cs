@@ -202,6 +202,8 @@ namespace Phabrik.Core
 
                     if (earthlike)
                         desc += ", Earth-like";
+                    else if (habitable)
+                        desc += ", habitable";
 
                     /*
                     if (planet->gases > 0)
