@@ -41,19 +41,19 @@ namespace Phabrik.Core
         public bool isVacuumSafe { get; set; }
         public bool isRadiationSafe { get; set; }
         public bool isPublic { get; set; }
-        public long structureType { get; set; }
+        public long structureTypeId { get; set; }
 
         public string nickname { get; set; }
         public string url;
 
         public StructureObj()
         {
-            // empty
-            creationDate = new DateTime();
-            lastTick = new DateTime();
+			// empty
+			creationDate = DateTime.Now;
+			lastTick = DateTime.Now;
         }
 
-        public static StructureObj Instantiate(StructureTypeObj template)
+        public static StructureObj 	Instantiate(StructureTypeObj template)
         {
             StructureObj newObj = new StructureObj();
 
@@ -61,16 +61,17 @@ namespace Phabrik.Core
             newObj.yLoc = 0;
             newObj.xSize = template.width;
             newObj.ySize = template.height;
-            newObj.structureType = template.Id;
+            newObj.structureTypeId = template.Id;
             newObj.nickname = template.structurename;
             newObj.url = template.imageURL;
+
 
             return newObj;
         }
 
         public StructureObj(StructureObj master)
         {
-            structureType = master.structureType;
+            structureTypeId = master.structureTypeId;
             isPublic = master.isPublic;
             xLoc = master.xLoc;
             yLoc = master.yLoc;

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
@@ -11,33 +11,37 @@
         android:layout_height="wrap_content"
         android:background="@color/Phabrik_black"
         android:layout_gravity="fill_horizontal" />
-  <GridLayout
-    android:id="@+id/sectorgrid"
+    <FrameLayout
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/sectorgrid">
+        <ImageView
+            android:id="@+id/background"
             android:layout_width="match_parent"
-        android:layout_height="0dp"
-    android:layout_weight="1"
-    android:rowCount="10"
-    android:columnCount="10"
-    >
-    <ImageView
-      android:id="@+id/background"
-      android:layout_column="0"
-      android:layout_row="0"
-      android:layout_rowSpan="10"
-      android:layout_columnSpan="10"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"/>
-    
-  </GridLayout>
-  <LinearLayout
-    android:orientation="horizontal"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <Button 
-android:id ="@+id/buildBtn"
-android:text="Build"
-android:layout_width="wrap_content"
-    android:layout_height="wrap_content"/>
-  </LinearLayout>
-    
+            android:layout_height="match_parent"
+            android:src="@drawable/davevr"
+            android:scaleType="fitStart" />
+        <View
+            android:id="@+id/selection"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="#8000FF00" />
+    </FrameLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/buildBtn"
+            android:text="Build"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/destroyBtn"
+            android:text="Destroy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 </LinearLayout>

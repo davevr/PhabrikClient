@@ -126,7 +126,6 @@ namespace Phabrik.AndroidApp
 
 				PhabrikServer.Login(username, pwd, create, (theResult) =>
 				{
-					if (theResult == null) theResult = new PlayerObj(); // todo - just for testing
 					if (theResult != null)
 					{
 						// user is logged in!

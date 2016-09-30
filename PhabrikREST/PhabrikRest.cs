@@ -17,6 +17,7 @@ namespace Phabrik.Core
     public delegate void PlanetList_callback(List<PlanetObj> theResult);
     public delegate void Player_callback(PlayerObj theResult);
     public delegate void string_callback(string theResult);
+	public delegate void long_callback(long theResult);
 	public delegate void bool_callback(bool theResult);
 	public delegate void null_callback();
     public delegate void SolSysObj_callback(SolSysObj theResult);
@@ -31,17 +32,19 @@ namespace Phabrik.Core
     {
         private static RestClient apiClient;
         private static string prodServerPath = "http://phabrik-server-01.appspot.com";
-        private static string localServerPath = "http://192.168.0.22:8080";
+		private static string localServerPath = "http://10.0.3.2:8080";//"http://192.168.0.22:8080";
 
 		private static string apiPathExt = "/api/v1/";
         private static string imagePathExt = "/Images/";
         private static string serverPath;
         private static PlayerObj _currentUser = null;
 		public static string LastError {get; set;}
-		private static bool useProdServer = true;
+		private static bool useProdServer = false;//true;
         
         public static void InitServer(bool_callback callback)
         {
+			ServiceStack.Text.JsConfig.DateHandler = JsonDateHandler.ISO8601;
+
 			if (useProdServer)
 			{
 				System.Console.WriteLine("Using Production Server");
@@ -132,6 +135,8 @@ namespace Phabrik.Core
                 }
             });
         }
+
+
 
         public static void FetchSolSys(int xLoc, int yLoc, int zLoc, SolSysObj_callback callback)
         {
@@ -236,6 +241,43 @@ namespace Phabrik.Core
                 }
             });
         }
+
+		public static void SaveNewStructure(StructureObj theStrut, long_callback callback)
+		{
+			string fullURL = "structure";
+			RestRequest request = new RestRequest(fullURL, Method.POST);
+			string theStructStr = theStrut.ToJson<StructureObj>();
+			request.AddParameter("structure", theStructStr);
+
+
+			apiClient.ExecuteAsync(request, (response) =>
+			{
+				if (response.StatusCode == HttpStatusCode.OK)
+				{
+					long newObjId = response.Content.FromJson<long>();
+
+					theStrut.Id = newObjId;
+					callback(newObjId);
+				}
+				else if (response.StatusCode != 0)
+				{
+					callback(0);
+				}
+			});
+		}
+
+		public static void UpdateStructureLoc(StructureObj theStrut)
+		{
+			string fullURL = "structure";
+			RestRequest request = new RestRequest(fullURL, Method.PUT);
+			request.AddParameter("updateloc", true);
+			request.AddParameter("structureid", theStrut.Id);
+			request.AddParameter("xloc", theStrut.xLoc);
+			request.AddParameter("yloc", theStrut.yLoc);
+
+
+			apiClient.ExecuteAsync(request, null);
+		}
 
         public static void SaveTerrainPaint(TerrainObj theTerrain, bool_callback callback)
         {
