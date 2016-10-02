@@ -44,7 +44,7 @@ namespace Phabrik.Core
         public long structureTypeId { get; set; }
 
         public string nickname { get; set; }
-        public string url;
+        
 
         public StructureObj()
         {
@@ -63,7 +63,6 @@ namespace Phabrik.Core
             newObj.ySize = template.height;
             newObj.structureTypeId = template.Id;
             newObj.nickname = template.structurename;
-            newObj.url = template.imageURL;
 
 
             return newObj;
@@ -102,6 +101,17 @@ namespace Phabrik.Core
             energyDefense = master.energyDefense;
             isVacuumSafe = master.isVacuumSafe;
             isRadiationSafe = master.isRadiationSafe;
+        }
+
+        public string imageURL
+        {
+            get
+            {
+                string url = "structures/";
+                url += System.Uri.EscapeUriString(nickname.Replace(' ','_'));
+                url = PhabrikServer.BaseImageUrl + url + ".png";
+                return url;
+            }
         }
 
     }

@@ -359,6 +359,16 @@ namespace Phabrik.AndroidApp
             });
         }
 
+        public void UpdateSectorUrl(SectorObj theSector, string theUrl)
+        {
+            theSector.sectorUrl = theUrl;
+            PhabrikServer.UpdateSectorUrl(theSector, theUrl);
+            if (curScale == PointOfPresenceObj.PopScale.Planet)
+            {
+                planetFragment.UpdateSectorURL(theSector);
+            }
+        }
+
         public void GotoPlanet(long planetId)
         {
             // go to a planet in the current system
@@ -380,10 +390,11 @@ namespace Phabrik.AndroidApp
                             pop.curPlanet = newPlanet;
                             pop.curStructure = null;
                             pop.curSector = null;
-                            EnableBtn(planetBtn);
+                            
                             pop.scale = PointOfPresenceObj.PopScale.Planet;
                             Activity.RunOnUiThread(() =>
                             {
+                                EnableBtn(planetBtn);
                                 SetScale(PointOfPresenceObj.PopScale.Planet);
                             });
                         } else
@@ -411,9 +422,9 @@ namespace Phabrik.AndroidApp
                 PhabrikServer.FetchSector(sectorId, (theResult) =>
                 {
                     pop.curSector = theResult;
-                    EnableBtn(sectorBtn);
                     Activity.RunOnUiThread(() =>
                     {
+                        EnableBtn(sectorBtn);
                         SetScale(PointOfPresenceObj.PopScale.Sector);
                     });
                 });

@@ -21,9 +21,9 @@ namespace Phabrik.Core
             get
             {
                 string url = "structures/";
-                //todo - urls for every object!
-                url += "generic";
-                return PhabrikServer.BaseImageUrl + url + ".png";
+                url += System.Uri.EscapeUriString(structurename);
+                url = PhabrikServer.BaseImageUrl + url + ".png";
+                return url;
             }
         }
     }

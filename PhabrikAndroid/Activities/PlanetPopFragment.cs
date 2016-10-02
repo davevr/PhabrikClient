@@ -175,7 +175,7 @@ namespace Phabrik.AndroidApp
                     if (sectorView != null)
                     {
                         var imageView = sectorView.FindViewById<ImageView>(Resource.Id.backgroundImage);
-                        Koush.UrlImageViewHelper.SetUrlDrawable(imageView, curSector.TextureURL, Resource.Drawable.Icon);
+                        Koush.UrlImageViewHelper.SetUrlDrawable(imageView, curSector.DefaultUrl, Resource.Drawable.Icon);
 
                     }
                     isDirty = true;
@@ -337,6 +337,23 @@ namespace Phabrik.AndroidApp
 
         }
 
+        public void UpdateSectorURL(SectorObj theSector)
+        {
+            if (theSector.terrainId == parent.pop.curTerrain.Id)
+            {
+                RefreshGridSquare(theSector.Id, theSector.sectorUrl);
+            }
+        }
+
+        private void RefreshGridSquare(long sectorId, string theUrl)
+        {
+            Activity.RunOnUiThread(() =>
+            {
+                View newView = gridView.FindViewWithTag(sectorId);
+                var imageView = newView.FindViewById<ImageView>(Resource.Id.backgroundImage);
+                Koush.UrlImageViewHelper.SetUrlDrawable(imageView, theUrl + "=s" + kGridSize);
+            });
+        }
        
         private void RefreshGridView()
         {
@@ -378,7 +395,13 @@ namespace Phabrik.AndroidApp
                                 SectorObj curSec = curTerrain._sectorArray[x][y];
                                 newView.Tag = curSec.Id;
                                 imageView.SetScaleType(ImageView.ScaleType.Center);
-                                Koush.UrlImageViewHelper.SetUrlDrawable(imageView, curSec.TextureURL, Resource.Drawable.Icon);
+                                string url = curSec.sectorUrl;
+                                if (string.IsNullOrEmpty(url))
+                                    url = curSec.DefaultUrl;
+                                else
+                                    url += "=s" + kGridSize;
+
+                                Koush.UrlImageViewHelper.SetUrlDrawable(imageView, url, Resource.Drawable.Icon);
                             } else
                             {
                                 // todo - handle unknown terrain..

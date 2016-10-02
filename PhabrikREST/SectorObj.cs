@@ -29,6 +29,7 @@ namespace Phabrik.Core
         public int xLoc { get; set; }
         public int yLoc { get; set; }
         public long terrainId { get; set; }
+        public string sectorUrl { get; set; }
 
         public bool dirty = false;
 
@@ -55,7 +56,7 @@ namespace Phabrik.Core
 
         }
 
-        public string TextureURL
+        public string DefaultUrl
         {
             get
             {
@@ -89,6 +90,7 @@ namespace Phabrik.Core
 
 
                 return PhabrikServer.BaseImageUrl + url + ".jpg";
+
             }
         }
 

@@ -24,6 +24,7 @@ namespace Phabrik.AndroidApp
         Button buildBtn;
         public static Dictionary<string, List<StructureTypeObj>> catalog = null;
 		View selectionRect;
+        bool isDirty = false;
 
 
         public override void OnCreate(Bundle savedInstanceState)
@@ -147,6 +148,7 @@ namespace Phabrik.AndroidApp
 				theStruct.xLoc = newX;
 				theStruct.yLoc = newY;
 				PhabrikServer.UpdateStructureLoc(theStruct);
+                isDirty = true;
 			}
 		}
 
@@ -247,6 +249,7 @@ namespace Phabrik.AndroidApp
 				{
 					
 					AddStructureToView(newStruct);
+                    isDirty = true;
 				});
             }
         }
@@ -256,12 +259,13 @@ namespace Phabrik.AndroidApp
         private View AddStructureToView(StructureObj newStruct)
         {
 			ImageView newView = new ImageView(this.Activity);
+            newView.SetScaleType(ImageView.ScaleType.FitXy);
 			newView.Tag = newStruct.Id;
             this.Activity.RunOnUiThread(() =>
             {
 				structureGrid.AddView(newView);
 
-                Koush.UrlImageViewHelper.SetUrlDrawable(newView, newStruct.url, Resource.Drawable.Icon);
+                Koush.UrlImageViewHelper.SetUrlDrawable(newView, newStruct.imageURL, Resource.Drawable.Icon);
                 UpdateStructureLoc(newStruct, newView);
             });
 
@@ -271,6 +275,10 @@ namespace Phabrik.AndroidApp
         private void UpdateStructureLoc(StructureObj theStruct, View theView)
         {
 			var cellsize = structureGrid.Width / 10;
+            if (cellsize == 0)
+            {
+                cellsize = Resources.DisplayMetrics.WidthPixels / 10;
+            }
 
 			var gridLayout = new FrameLayout.LayoutParams(cellsize * theStruct.xSize, cellsize * theStruct.ySize);
 			gridLayout.SetMargins(cellsize * theStruct.xLoc, cellsize * theStruct.yLoc, 0, 0);
@@ -280,17 +288,66 @@ namespace Phabrik.AndroidApp
         public override void OnActivityCreated(Bundle savedInstanceState)
         {
             base.OnActivityCreated(savedInstanceState);
-            UpdateSector();
+           
         }
 
+        public override void OnPause()
+        {
+            if (isDirty)
+                SaveSectorImage();
+            isDirty = false;
+            base.OnPause();
+        }
+
+        private void SaveSectorImage()
+        {
+            Bitmap.Config config = Bitmap.Config.Argb8888;
+
+            Bitmap newBitmap = Bitmap.CreateBitmap(1000,1000, config);
+            int cellSize = 100;
+            Canvas canvas = new Canvas(newBitmap);
+            Rect destRect = new Rect(0, 0, 1024, 1024);
+            Bitmap bkgnd = BitmapHelper.GetImageBitmapFromUrl(parent.pop.curSector.DefaultUrl);
+            Rect srcRect = new Rect(0, 0, bkgnd.Width, bkgnd.Height);
+            Paint thePaint = new Paint(PaintFlags.AntiAlias);
+            canvas.DrawBitmap(bkgnd, srcRect, destRect, thePaint);
+            SectorObj curSector = parent.pop.curSector;
+
+            foreach (StructureObj curStructure in parent.pop.curSector.structures)
+            {
+                bkgnd = BitmapHelper.GetImageBitmapFromUrl(curStructure.imageURL);
+                srcRect = new Rect(0, 0, bkgnd.Width, bkgnd.Height);
+                destRect = new Rect(curStructure.xLoc * cellSize, curStructure.yLoc * cellSize,
+                    (curStructure.xLoc + curStructure.xSize) * cellSize,
+                    (curStructure.yLoc + curStructure.ySize) * cellSize);
+                canvas.DrawBitmap(bkgnd, srcRect, destRect, thePaint);
+            }
+            // at this point, the bitmap should be drawn
+            using (System.IO.MemoryStream photoStream = new System.IO.MemoryStream())
+            {
+                newBitmap.Compress(Bitmap.CompressFormat.Jpeg, 90, photoStream);
+                photoStream.Flush();
+                PhabrikServer.UploadImage(photoStream, "sector", (newURL) =>
+                {
+                    parent.UpdateSectorUrl(curSector, newURL);
+                });
+            }
+        }
+
+        public override void OnViewCreated(View view, Bundle savedInstanceState)
+        {
+            base.OnViewCreated(view, savedInstanceState);
+            UpdateSector();
+        }
         private void UpdateSector()
         {
             var curSector = parent.pop.curSector;
             if (curSector != null)
             {
                 header.Text = string.Format("sector {0},{1}", curSector.xLoc, curSector.yLoc);
-                background.SetScaleType(ImageView.ScaleType.FitCenter);
-                Koush.UrlImageViewHelper.SetUrlDrawable(background, curSector.TextureURL, Resource.Drawable.Icon);
+                background.SetScaleType(ImageView.ScaleType.CenterCrop);
+                background.SetAdjustViewBounds(true);
+                Koush.UrlImageViewHelper.SetUrlDrawable(background, curSector.DefaultUrl, Resource.Drawable.Icon);
 
 				foreach (StructureObj curStructure in parent.pop.curSector.structures)
 				{

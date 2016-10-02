@@ -32,14 +32,14 @@ namespace Phabrik.Core
     {
         private static RestClient apiClient;
         private static string prodServerPath = "http://phabrik-server-01.appspot.com";
-		private static string localServerPath = "http://10.0.3.2:8080";//"http://192.168.0.22:8080";
+		private static string localServerPath = "http://192.168.0.22:8080";//"http://10.0.3.2:8080";//"http://192.168.0.22:8080";
 
 		private static string apiPathExt = "/api/v1/";
         private static string imagePathExt = "/Images/";
         private static string serverPath;
         private static PlayerObj _currentUser = null;
 		public static string LastError {get; set;}
-		private static bool useProdServer = false;//true;
+        private static bool useProdServer = true;//false;//true;
         
         public static void InitServer(bool_callback callback)
         {
@@ -382,6 +382,18 @@ namespace Phabrik.Core
             });
         }
 
+        public static void UpdateSectorUrl(SectorObj curSector, string newUrl)
+        {
+            string fullURL = "sector";
+            RestRequest request = new RestRequest(fullURL, Method.PUT);
+            request.AddParameter("updateurl", true);
+            request.AddParameter("url", newUrl);
+            request.AddParameter("sectorid", curSector.Id);
+
+
+            apiClient.ExecuteAsync(request, null);
+        }
+
 
 
 
@@ -418,9 +430,11 @@ namespace Phabrik.Core
 			string uploadURL = GetImageUploadURL();
 			int pathSplit = uploadURL.IndexOf("/", 10);
 			string appPath = uploadURL.Substring(0, pathSplit);
+            if (appPath == "http://MasterSheep:8080")
+                appPath = serverPath;
 			string requestPath = uploadURL.Substring(pathSplit);
 			RestClient onetimeClient = new RestClient(appPath);
-			//onetimeClient.CookieContainer = apiClient.CookieContainer;
+			onetimeClient.CookieContainer = apiClient.CookieContainer;
 			var request = new RestRequest(requestPath, Method.POST);
 			request.AddHeader("Accept", "*/*");
 			request.AddFile("file", ReadToEnd(photoStream), fileName, "image/jpeg");
@@ -429,7 +443,9 @@ namespace Phabrik.Core
 				{
 					if (response.StatusCode == HttpStatusCode.OK)
 					{
-						callback(response.Content);
+                        string urlStr = response.Content.FromJson<string>();
+                        urlStr = urlStr.Replace("http://0.0.0.0:8080", serverPath);
+                        callback(urlStr);
 					}
 					else
 					{

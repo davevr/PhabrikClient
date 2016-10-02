@@ -31,7 +31,7 @@ namespace Phabrik.AndroidApp
 		private Android.Support.V7.Widget.Toolbar toolbar = null;
 		public static List<Android.Support.V4.App.Fragment> fragmentList = new List<Android.Support.V4.App.Fragment>();
 		private PagerSlidingTabStrip tabs;
-		private ViewPager pager;
+		private LockableViewPager pager;
 
 		public class LeaderboardPageAdapter : FragmentPagerAdapter, ICustomTabProvider
 		{
@@ -107,10 +107,11 @@ namespace Phabrik.AndroidApp
 			// return inflater.Inflate(Resource.Layout.YourFragment, container, false);
 
 			var view = inflater.Inflate(Resource.Layout.GameLayout, container, false);
-			pager = view.FindViewById<ViewPager>(Resource.Id.post_pager);
+			pager = view.FindViewById<LockableViewPager>(Resource.Id.post_pager);
 			pager.Adapter = new LeaderboardPageAdapter(MainPage.SupportFragmentManager, MainPage);
 			pager.AddOnPageChangeListener(this);
 			pager.OffscreenPageLimit = 2;
+            pager.SwipeLocked = true;
 			tabs = view.FindViewById<PagerSlidingTabStrip>(Resource.Id.tabs);
 			tabs.SetViewPager(pager);
 			tabs.IndicatorHeight = Resources.GetDimensionPixelSize(Resource.Dimension.tab_indicator_height);
