@@ -32,14 +32,14 @@ namespace Phabrik.Core
     {
         private static RestClient apiClient;
         private static string prodServerPath = "http://phabrik-server-01.appspot.com";
-		private static string localServerPath = "http://192.168.0.22:8080";//"http://10.0.3.2:8080";//"http://192.168.0.22:8080";
+		private static string localServerPath = "http://10.0.3.2:8080";//"http://10.0.3.2:8080";//"http://192.168.0.22:8080";
 
 		private static string apiPathExt = "/api/v1/";
         private static string imagePathExt = "/Images/";
         private static string serverPath;
         private static PlayerObj _currentUser = null;
 		public static string LastError {get; set;}
-        private static bool useProdServer = true;//false;//true;
+        private static bool useProdServer = false;//false;//true;
         
         public static void InitServer(bool_callback callback)
         {

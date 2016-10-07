@@ -22,9 +22,12 @@ namespace Phabrik.AndroidApp
         FrameLayout structureGrid;
         ImageView background;
         Button buildBtn;
+		Button destroyBtn;
+		Button inspectBtn;
         public static Dictionary<string, List<StructureTypeObj>> catalog = null;
 		View selectionRect;
         bool isDirty = false;
+		private View selectionFrame;
 
 
         public override void OnCreate(Bundle savedInstanceState)
@@ -42,23 +45,44 @@ namespace Phabrik.AndroidApp
             structureGrid = theView.FindViewById<FrameLayout>(Resource.Id.sectorgrid);
             background = theView.FindViewById<ImageView>(Resource.Id.background);
             buildBtn = theView.FindViewById<Button>(Resource.Id.buildBtn);
-			selectionRect = theView.FindViewById<View>(Resource.Id.selection);
+			destroyBtn = theView.FindViewById<Button>(Resource.Id.buildBtn);
+			inspectBtn = theView.FindViewById<Button>(Resource.Id.destroyBtn);
+			selectionRect = theView.FindViewById<View>(Resource.Id.inspectBtn);
 
             buildBtn.Click += BuildBtn_Click;
+			inspectBtn.Click += InspectBtn_Click;
+			destroyBtn.Click += DestroyBtn_Click;
+			inspectBtn.Enabled = false;
+			destroyBtn.Enabled = false;
 
 			structureGrid.Touch += StructureGrid_Touch;
+			selectionFrame = new View(this.Activity);
+			structureGrid.AddView(selectionFrame);
+			selectionFrame.Visibility = ViewStates.Gone;
+			selectionFrame.SetBackgroundResource(Resource.Drawable.SelectionBorder);
             return theView;
         }
 
+		void InspectBtn_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		void DestroyBtn_Click(object sender, EventArgs e)
+		{
+
+		}
+
 		bool isDragging = false;
-		float startX, startY;
+		float startX, startY, dx, dy;
 		float lastX, lastY;
-		int dragWidth;
+		int dragWidth, maxX, maxY;
 		int dragHeight;
 		int xWidth;
 		int yWidth;
 		View dragView = null;
-		View hitView = null;
+		View hitView;
+
 
 		void StructureGrid_Touch(object sender, View.TouchEventArgs e)
 		{
@@ -69,23 +93,33 @@ namespace Phabrik.AndroidApp
 				startX = e.Event.GetX();
 				startY = e.Event.GetY();
 
+
 				lastX = startX;
 				lastY = startY;
-				int newLeft = (int)(lastX / cellsize) * cellsize;
-				int newTop = (int)(lastY / cellsize) * cellsize;
 
-				dragView = FindViewAtLoc((int)(lastX / cellsize), (int)(lastY / cellsize), 1, 1);
+
+				var newDragView = FindViewAtLoc((int)(lastX / cellsize), (int)(lastY / cellsize), 1, 1);
+				SetSelectedView(newDragView);
 				if (dragView != null)
 				{
+					dx = startX - dragView.Left;
+					dy = startY - dragView.Top;
 					dragWidth = dragView.Width;
 					dragHeight = dragView.Height;
 					xWidth = dragWidth / cellsize;
 					yWidth = dragHeight / cellsize;
 					isDragging = true;
+					int newLeft = (int)(lastX / cellsize) * cellsize;
+					int newTop = (int)(lastY / cellsize) * cellsize;
+					maxX = 10 - xWidth;
+					maxY = 10 - yWidth;
 
 					selectionRect.Visibility = ViewStates.Visible;
 					selectionRect.BringToFront();
-					selectionRect.Layout(newLeft, newTop, newLeft + cellsize, newTop + cellsize);
+					selectionRect.Layout(newLeft, newTop, newLeft + dragWidth, newTop + dragHeight);
+					selectionFrame.Visibility = ViewStates.Visible;
+					selectionFrame.BringToFront();
+					selectionFrame.Layout(newLeft-2, newTop-2, newLeft + dragWidth+2, newTop + dragHeight+2);
 				}
 
 			}
@@ -93,17 +127,26 @@ namespace Phabrik.AndroidApp
 			{
 				if (isDragging)
 				{
-					lastX = e.Event.GetX();
-					lastY = e.Event.GetY();
+					lastX = e.Event.GetX() - dx;
+					lastY = e.Event.GetY() - dy;
 					dragView.Layout((int)lastX, (int)lastY, (int)lastX + dragWidth, (int)lastY + dragHeight);
-					int newLeft = (int)(lastX / cellsize) * cellsize;
-					int newTop = (int)(lastY / cellsize) * cellsize;
+					int newLeft = (int)(lastX / cellsize) ;
+					int newTop = (int)(lastY / cellsize) ;
+					if (newLeft > maxX)
+						newLeft = maxX;
+					if (newTop > maxY)
+						newTop = maxY;
+					newLeft *= cellsize;
+					newTop *= cellsize;
+
 					selectionRect.Layout(newLeft, newTop, newLeft + dragWidth, newTop + dragHeight);
 					hitView = FindViewAtLoc((int)(lastX / cellsize), (int)(lastY / cellsize), xWidth, yWidth, dragView);
 					if (hitView == null)
 						selectionRect.SetBackgroundColor(new Color(0, 255, 0, 128));
 					else
 						selectionRect.SetBackgroundColor(new Color(255, 0, 0, 128));
+
+					selectionFrame.Visibility = ViewStates.Invisible;
 
 
 				}
@@ -119,25 +162,59 @@ namespace Phabrik.AndroidApp
 						FrameLayout.LayoutParams gridLayout = (FrameLayout.LayoutParams)dragView.LayoutParameters;
 						int newX = (int)(lastX / cellsize);
 						int newY = (int)(lastY / cellsize);
+						if (newX > maxX)
+							newX = maxX;
+						if (newY > maxY)
+							newY = maxY;
 						gridLayout.SetMargins(newX * cellsize, newY * cellsize, 0, 0);
 						dragView.LayoutParameters = gridLayout;
 						dragView.ForceLayout();
 						UpdateStructureLoc(dragView, newX, newY);
+						gridLayout = (FrameLayout.LayoutParams)selectionFrame.LayoutParameters;
+						gridLayout.SetMargins(newX * cellsize, newY * cellsize, 0, 0);
+						gridLayout.Width = dragWidth;
+						gridLayout.Height = dragHeight;
+						selectionFrame.LayoutParameters = gridLayout;
+						selectionFrame.ForceLayout();
+						selectionFrame.Visibility = ViewStates.Visible;
+
 					}
 
-					dragView = null;
 					hitView = null;
 					selectionRect.Visibility = ViewStates.Invisible;
 				}
-			}
+			} 
 			else {
 				selectionRect.Visibility = ViewStates.Invisible;
 				dragView = null;
 				hitView = null;
 				isDragging = false;
+				SetSelectedView(null);
 			}
 			
 			e.Handled = true;
+		}
+
+		private void SetSelectedView(View theView)
+		{
+			if (dragView != null)
+			{
+				selectionFrame.Visibility = ViewStates.Gone;
+			}
+
+			dragView = theView;
+
+			if (dragView != null)
+			{
+				selectionFrame.Visibility = ViewStates.Visible;
+				inspectBtn.Enabled = true;
+				destroyBtn.Enabled = true;
+			}
+			else {
+				inspectBtn.Enabled = false;
+				destroyBtn.Enabled = false;
+			}
+
 		}
 
 		private void UpdateStructureLoc(View theView, int newX, int newY)
@@ -172,7 +249,7 @@ namespace Phabrik.AndroidApp
 			for (int i = 0; i < structureGrid.ChildCount; i++)
 			{
 				var curView = structureGrid.GetChildAt(i);
-				if (curView != background && curView != selectionRect && curView != ignoreView)
+				if (curView != background && curView != selectionRect && curView != ignoreView && curView != selectionFrame)
 				{
 					Rect curRect = new Rect();
 					curView.GetHitRect(curRect);
