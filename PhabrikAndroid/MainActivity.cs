@@ -45,7 +45,8 @@ namespace Phabrik.AndroidApp
 		public static int LOGIN_RESULT = 0x4444;
 
 
-		class MyDrawerToggle : Android.Support.V7.App.ActionBarDrawerToggle
+
+        class MyDrawerToggle : Android.Support.V7.App.ActionBarDrawerToggle
 		{
 			private MainActivity baseActivity;
 
