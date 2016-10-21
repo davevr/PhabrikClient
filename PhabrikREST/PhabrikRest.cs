@@ -430,7 +430,7 @@ namespace Phabrik.Core
 			string uploadURL = GetImageUploadURL();
 			int pathSplit = uploadURL.IndexOf("/", 10);
 			string appPath = uploadURL.Substring(0, pathSplit);
-            if (appPath == "http://MasterSheep:8080")
+			if (appPath == "http://MasterSheep:8080" || appPath == "http://localhost:8080")
                 appPath = serverPath;
 			string requestPath = uploadURL.Substring(pathSplit);
 			RestClient onetimeClient = new RestClient(appPath);
@@ -445,6 +445,7 @@ namespace Phabrik.Core
 					{
                         string urlStr = response.Content.FromJson<string>();
                         urlStr = urlStr.Replace("http://0.0.0.0:8080", serverPath);
+						urlStr = urlStr.Replace("http://127.0.0.1:8080", serverPath);
                         callback(urlStr);
 					}
 					else
