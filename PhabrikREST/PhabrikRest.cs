@@ -39,7 +39,7 @@ namespace Phabrik.Core
         private static string serverPath;
         private static PlayerObj _currentUser = null;
 		public static string LastError {get; set;}
-        private static bool useProdServer = false;//false;//true;
+        private static bool useProdServer = true;//false;//true;
         
         public static void InitServer(bool_callback callback)
         {

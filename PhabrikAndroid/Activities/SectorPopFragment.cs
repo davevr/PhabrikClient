@@ -360,19 +360,20 @@ namespace Phabrik.AndroidApp
 				PhabrikServer.SaveNewStructure(newStruct, (newId) =>
 				{
 					
-					View newView = AddStructureToView(newStruct);
+					View newView = AddStructureToView(newStruct, true);
 					if (newView != null)
                     	isDirty = true;
 				});
             }
         }
 
-		private StructureObj RectInWhichStructure(int xLoc, int yLoc, int width, int height)
+		private StructureObj RectInWhichStructure(int xLoc, int yLoc, int width, int height, StructureObj stopStruct)
 		{
 			foreach (StructureObj curStruct in parent.pop.curSector.structures)
 			{
 				if ((!(xLoc > curStruct.xLoc + curStruct.xSize || xLoc + width < curStruct.xLoc)) &&
-					(!(yLoc > curStruct.yLoc + curStruct.ySize || yLoc + height < curStruct.yLoc)))
+					(!(yLoc > curStruct.yLoc + curStruct.ySize || yLoc + height < curStruct.yLoc)) &&
+                        (curStruct != stopStruct))
 				{
 
 					return curStruct;
@@ -382,25 +383,30 @@ namespace Phabrik.AndroidApp
 			return null;
 		}
 
-        private View AddStructureToView(StructureObj newStruct)
+        private View AddStructureToView(StructureObj newStruct, bool checkOverlap)
         {
-			int width = newStruct.xSize;
-			int height = newStruct.ySize;
-			bool fits = false;
+            int width = newStruct.xSize;
+            int height = newStruct.ySize;
+            bool fits = false;
 
-			for (int curX = 0; curX < 9 - width; curX++)
-			{
-				for (int curY = 0; curY < 9 - height; curY++)
-				{
-					if (RectInWhichStructure(curX, curY, width, height) == null)
-					{
-						fits = true;
-						break;
-					}
-				}
-				if (fits)
-					break;
-			}
+            if (!checkOverlap)
+                fits = true;
+            else
+            {
+                for (int curX = 0; curX < 9 - width; curX++)
+                {
+                    for (int curY = 0; curY < 9 - height; curY++)
+                    {
+                        if (RectInWhichStructure(curX, curY, width, height, newStruct) == null)
+                        {
+                            fits = true;
+                            break;
+                        }
+                    }
+                    if (fits)
+                        break;
+                }
+            }
 
 			if (fits)
 			{
@@ -507,7 +513,7 @@ namespace Phabrik.AndroidApp
 
 				foreach (StructureObj curStructure in parent.pop.curSector.structures)
 				{
-					AddStructureToView(curStructure);
+					AddStructureToView(curStructure, false);
 				}
             } else
             {
